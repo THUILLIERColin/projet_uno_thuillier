@@ -1,1 +1,2 @@
-# projet_uno_zell_thuillier
+# Projet UNO
+> **Camille ZELL & Colin THUILLIER**
