@@ -3,12 +3,15 @@ package partie;
 import java.util.ArrayList;
 
 import cartes.Cartes;
+import expert.Expert;
 import joueur.Joueur;
 
 public class Partie {
 
     public final static boolean AIGUILLE_MONTRE = true;
     public final static boolean SENS_INVERSE = false;
+
+    private Expert expert;
 
     private int NbJoueurs;
     private boolean sens=AIGUILLE_MONTRE;
@@ -74,7 +77,9 @@ public class Partie {
         return cartesPioche;
     }
 
-    public void
+    public boolean CoutValide(String ligne) throws Exception {
+        return expert.traiter(ligne);
+    }
 
     public void poser(){
         

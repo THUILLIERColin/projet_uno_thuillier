@@ -8,10 +8,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * La classe Fichier correspond au demandeur. Elle contient qu'une seule méthode, statique, appelée 'lire'.
- * Tout se passe dans cette méthode
- */
 public class Fichier {
 
 

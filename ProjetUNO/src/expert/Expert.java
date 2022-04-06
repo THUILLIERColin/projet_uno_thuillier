@@ -14,16 +14,14 @@ public abstract class Expert {
      * La fonction traiter() parcours la liste à la recherche d'un maillon qui sait comment parser
      * la ligne. Dans ce cas la ligne est parsée et la recherche s'arrête
      * @param ligne la ligne à parser
-     * @exception lance une exception si quelque chose a mal tourné
      */
-    public void traiter(String ligne) throws Exception {
-        if (expertise(ligne))
-            expert(ligne);
+    public boolean traiter(String ligne) throws Exception {
+        if (analyse(ligne))
+            return expertise(ligne);
         else if (aUnSuivant())
-            getSuivant().traiter(ligne);
+            return getSuivant().traiter(ligne);
         else
             throw new ExpertManquantException();
-
     }
 
     private Expert getSuivant() {
@@ -39,7 +37,7 @@ public abstract class Expert {
      * @param ligne
      * @throws Exception
      */
-    public abstract void expert(String ligne) throws Exception;
+    public abstract boolean expertise(String ligne) throws Exception;
 
     /**
      * Renvoie true si le parser en question reconnait le type de ligne, c'est-à-dire
@@ -48,6 +46,6 @@ public abstract class Expert {
      * @param ligne
      * @return true si la ligne est reconnue
      */
-    public abstract boolean expertise(String ligne);
+    public abstract boolean analyse(String ligne);
 
 }
