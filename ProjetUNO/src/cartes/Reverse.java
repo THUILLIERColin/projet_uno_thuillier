@@ -28,9 +28,9 @@ public class Reverse extends Cartes{
 
     //AUTRE
     public void ChangeDeSens(Joueur j){
-        if(j.getPartie().getSens == Partie.SENS_INVERSE){
-            j.getPartie().setSens == Partie.AIGUILLE_MONTRE;
+        if(j.getPartie().getSens() == Partie.SENS_INVERSE){
+            j.getPartie().setSens(Partie.AIGUILLE_MONTRE) ;
         }
-        j.getPartie().setSens == Partie.SENS_INVERSE;
+        j.getPartie().setSens(Partie.SENS_INVERSE) ;
     }
 }
