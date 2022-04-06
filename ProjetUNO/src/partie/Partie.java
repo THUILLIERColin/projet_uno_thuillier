@@ -74,6 +74,8 @@ public class Partie {
         return cartesPioche;
     }
 
+    public void
+
     public void poser(){
         
     }

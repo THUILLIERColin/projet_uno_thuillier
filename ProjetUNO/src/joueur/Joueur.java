@@ -1,6 +1,7 @@
 package joueur;
 
 import cartes.Cartes;
+import partie.Partie;
 
 import java.util.ArrayList;
 
@@ -36,5 +37,9 @@ public class Joueur {
     public void ajouterCartes(Cartes cartes){
         if(lesCartes.size() < 0 || lesCartes.size() >7)
             throw new IllegalArgumentException("Nombres de cartes non valide");
+    }
+
+    public void piocher(){
+        lesCartes.add();
     }
 }
