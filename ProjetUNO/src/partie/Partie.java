@@ -3,6 +3,7 @@ package partie;
 import java.util.ArrayList;
 
 import cartes.Cartes;
+import exceptions.CartesValideException;
 import expert.Expert;
 import joueur.Joueur;
 
@@ -15,9 +16,9 @@ public class Partie {
 
     private int NbJoueurs;
     private boolean sens=AIGUILLE_MONTRE;
-    private ArrayList<Joueur> lesJoueurs = new ArrayList<>();
-    private ArrayList<Cartes> leTas = new ArrayList<>();
-    private ArrayList<Cartes> laPioche = new ArrayList<>();
+    private ArrayList<Joueur> lesJoueurs = new ArrayList<Joueur>();
+    private ArrayList<Cartes> leTas = new ArrayList<Cartes>();
+    private ArrayList<Cartes> laPioche = new ArrayList<Cartes>();
 
     public Partie() {}
 
@@ -77,11 +78,13 @@ public class Partie {
         return cartesPioche;
     }
 
-    public boolean CoutValide(String ligne) throws Exception {
-        return expert.traiter(ligne);
+    public boolean CoutValide(Cartes cartes) throws Exception {
+        return expert.traiter(cartes);
     }
 
-    public void poser(){
-        
+    public void poser(Cartes cartes) throws Exception{
+        if(!CoutValide(cartes))
+            throw new CartesValideException("Cout invalide",cartes);
+        leTas.add(cartes);
     }
 }

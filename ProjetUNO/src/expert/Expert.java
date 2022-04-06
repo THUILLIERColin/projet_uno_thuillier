@@ -1,5 +1,6 @@
 package expert;
 
+import cartes.Cartes;
 import exceptions.ExpertManquantException;
 
 public abstract class Expert {
@@ -13,13 +14,13 @@ public abstract class Expert {
     /**
      * La fonction traiter() parcours la liste à la recherche d'un maillon qui sait comment parser
      * la ligne. Dans ce cas la ligne est parsée et la recherche s'arrête
-     * @param ligne la ligne à parser
+     * @param cartes la ligne à parser
      */
-    public boolean traiter(String ligne) throws Exception {
-        if (analyse(ligne))
-            return expertise(ligne);
+    public boolean traiter(Cartes cartes) throws Exception {
+        if (analyse(cartes))
+            return expertise(cartes);
         else if (aUnSuivant())
-            return getSuivant().traiter(ligne);
+            return getSuivant().traiter(cartes);
         else
             throw new ExpertManquantException();
     }
@@ -37,7 +38,7 @@ public abstract class Expert {
      * @param ligne
      * @throws Exception
      */
-    public abstract boolean expertise(String ligne) throws Exception;
+    public abstract boolean expertise(Cartes cartes) throws Exception;
 
     /**
      * Renvoie true si le parser en question reconnait le type de ligne, c'est-à-dire
@@ -46,6 +47,6 @@ public abstract class Expert {
      * @param ligne
      * @return true si la ligne est reconnue
      */
-    public abstract boolean analyse(String ligne);
+    public abstract boolean analyse(Cartes cartes);
 
 }

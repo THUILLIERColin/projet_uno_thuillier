@@ -13,7 +13,7 @@ public class Reverse extends Cartes{
         super(r.getCouleur());
     }
 
-    //EQUALS + TOSTRING
+    //EQUALS + TO STRING
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
