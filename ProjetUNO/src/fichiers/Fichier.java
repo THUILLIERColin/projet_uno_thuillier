@@ -18,6 +18,7 @@ public class Fichier {
      * @param nomFichier nom du fichier à lire et à parser
      * @param expert c'est le premier parser de la liste
      */
+    /*
     public static void lire(String nomFichier, Expert expert) {
         if (nomFichier == null)
             throw new IllegalArgumentException("yoh ! man ! tu crois m'avoir avec un null ? Même pas en rêve alors dégage !!!");
@@ -56,5 +57,5 @@ public class Fichier {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }

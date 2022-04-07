@@ -11,7 +11,7 @@ public class Joueur {
     private boolean uno=false;
     private ArrayList<Cartes> lesCartes = new ArrayList<>();
 
-    private Partie partie;
+    private Partie partie = Partie.getInstance();
 
     public Partie getPartie() {
         return partie;

@@ -1,5 +1,7 @@
 package cartes;
 
+import partie.Partie;
+
 public abstract class Cartes {
     public enum Color {BLEU, ROUGE, JAUNE, VERT, NOIR};
     private Color couleur;
@@ -15,6 +17,4 @@ public abstract class Cartes {
     public Color getCouleur() {
         return couleur;
     }
-
-
 }

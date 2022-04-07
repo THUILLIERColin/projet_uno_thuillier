@@ -1,6 +1,7 @@
 package partie;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import cartes.Cartes;
 import exceptions.CartesValideException;
@@ -19,8 +20,9 @@ public class Partie {
     private ArrayList<Joueur> lesJoueurs = new ArrayList<Joueur>();
     private ArrayList<Cartes> leTas = new ArrayList<Cartes>();
     private ArrayList<Cartes> laPioche = new ArrayList<Cartes>();
+    private static volatile Partie instance= null;
 
-    public Partie() {}
+    private Partie() {}
 
     /*
     ***********   Initialisation dans ajouter  ************
@@ -32,6 +34,16 @@ public class Partie {
     }
     */
 
+    public static Partie getInstance() {
+        if (instance == null) {
+            instance = new Partie();
+        }
+        return instance;
+    }
+
+    /*
+            DE BASE
+     */
     public void setSens(boolean sens) {
         this.sens = sens;
     }
@@ -43,6 +55,18 @@ public class Partie {
     public int getNbJoueurs() {
         return NbJoueurs;
     }
+
+    public void setExpert(Expert expert) {
+        this.expert = expert;
+    }
+
+    public Expert getExpert() {
+        return expert;
+    }
+
+    /*
+            POUR LES JOUEURS
+     */
 
     public ArrayList<Joueur> getLesJoueurs() {
         return lesJoueurs;
@@ -72,19 +96,38 @@ public class Partie {
         NbJoueurs = lesJoueurs.size();
     }
 
+    /*
+            POUR LES CARTES DE PIOCHE
+     */
+
     public Cartes prendre(){
         Cartes cartesPioche= laPioche.get(0);
         laPioche.remove(cartesPioche);
         return cartesPioche;
     }
 
-    public boolean CoutValide(Cartes cartes) throws Exception {
-        return expert.traiter(cartes);
+    /*
+            POUR LES CARTES DU TAS
+     */
+
+    public ArrayList<Cartes> getLeTas() {
+        return leTas;
+    }
+
+    public Cartes getPremiereCarte(){
+        return leTas.get(0);
     }
 
     public void poser(Cartes cartes) throws Exception{
-        if(!CoutValide(cartes))
+        if(!expert.traiter(cartes))
             throw new CartesValideException("Cout invalide",cartes);
         leTas.add(cartes);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(expert, NbJoueurs, sens, lesJoueurs, leTas, laPioche);
+    }
+
+    /* ATTENTION SI LE SENS EST MODIFIER ON VA CHANGER DE JOUEUR SUIVANT DONC IL FAUT UN MAJ DE SENS*/
 }

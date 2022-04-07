@@ -2,10 +2,13 @@ package expert;
 
 import cartes.Cartes;
 import exceptions.ExpertManquantException;
+import partie.Partie;
 
 public abstract class Expert {
 
     private Expert suivant = null;
+
+    Partie partie = Partie.getInstance();
 
     public Expert(Expert suivant) {
         this.suivant = suivant;
