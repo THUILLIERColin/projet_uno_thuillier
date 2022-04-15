@@ -3,9 +3,9 @@ package expert;
 import cartes.CarteSimple;
 import cartes.Cartes;
 
-public class ExpertCartesSimple extends Expert{
+public class ExpertCarteSimple extends Expert{
 
-    public ExpertCartesSimple(Expert suivant){
+    public ExpertCarteSimple(Expert suivant){
         super(suivant);
     }
 
@@ -20,8 +20,9 @@ public class ExpertCartesSimple extends Expert{
     @Override
     public boolean expertise(Cartes carte) throws Exception {
         CarteSimple o = (CarteSimple) carte;
+        CarteSimple tas = (CarteSimple) super.getPartie().getPremiereCarte();
         if(carte.getCouleur() == super.getPartie().getPremiereCarte().getCouleur())
-            /* if(carte.getNumero() == super.getPartie().getPremiereCarte().getNumero()) */
+            if(o.getNumero() == tas.getNumero())
                 // C'est un class Carte et il n'existe pas de getNumero() dedans, il faudrait convertir en CarteSimple
                 // Ou bien recevoir directement une carte simple
                 return true;
