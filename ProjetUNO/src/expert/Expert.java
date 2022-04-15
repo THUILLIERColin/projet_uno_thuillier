@@ -8,7 +8,7 @@ public abstract class Expert {
 
     private Expert suivant = null;
 
-    Partie partie = Partie.getInstance();
+    private Partie partie = Partie.getInstance();
 
     public Expert(Expert suivant) {
         this.suivant = suivant;
@@ -35,6 +35,11 @@ public abstract class Expert {
     private boolean aUnSuivant() {
         return suivant != null;
     }
+
+    public Partie getPartie() {
+        return partie;
+    }
+
 
     /**
      * Parse une ligne. Renvoie une Exception si quelque chose a mal tourné...
