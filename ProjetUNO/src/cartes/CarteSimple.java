@@ -1,33 +1,31 @@
 package cartes;
 
-import java.util.Objects;
-
 public class CarteSimple extends Cartes {
-    private int Numéro;
+    private int numero;
 
     //CONSTRUCTEUR
-    public CarteSimple(Color c,int numéro) {
+    public CarteSimple(Color c,int numero) {
         super(c);
-        setNuméro(numéro);
+        setNumero(numero);
     }
 
     public CarteSimple(CarteSimple c){
         super(c.getCouleur());
-        this.Numéro=c.Numéro;
+        this.numero =c.numero;   // Pas obligé d'appeler le setter car on sait que c'est juste
     }
 
     //SETTER
-    public void setNuméro(int numéro) {
-        if(numéro<1 || numéro>9){
+    public void setNumero(int numero) {
+        if(this.numero <1 || this.numero >9){
             throw new IllegalArgumentException("Numéro de carte simple incorrect il doit être entre 1 et 9");
         }
-        Numéro = numéro;
+        this.numero = numero;
     }
 
 
     //GETTER
-    public int getNuméro() {
-        return Numéro;
+    public int getNumero() {
+        return numero;
     }
 
     //EQUALS + TOSTRING
@@ -36,13 +34,13 @@ public class CarteSimple extends Cartes {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CarteSimple that = (CarteSimple) o;
-        return Numéro == that.Numéro && super.getCouleur()==that.getCouleur();
+        return numero == that.numero && super.getCouleur()==that.getCouleur();
     }
 
     @Override
     public String toString() {
         return "CarteSimple[ " +
-                "Numéro= " + Numéro +
+                "Numéro= " + numero +
                 "Couleur : " +super.getCouleur()+
                 ']';
     }
