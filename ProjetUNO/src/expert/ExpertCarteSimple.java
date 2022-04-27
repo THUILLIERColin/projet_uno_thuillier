@@ -19,8 +19,20 @@ public class ExpertCarteSimple extends Expert{
 
     @Override
     public boolean expertise(Cartes carte) throws Exception {
+
+        /*
+                    ATTENTION UNE CARTE SIMPLE PEU ETRE POSÉ SUR TOUTES LES AUTRE CARTES
+
+            Si la carte est ChangerCouleur / Plus2 / Reverse
+                Alors verifier la couleur et si on est bien le joueur qui doit jouer
+                Sinon pénalité
+
+            Si c'est une carte simple
+         */
+
         CarteSimple o = (CarteSimple) carte;
-        CarteSimple tas = (CarteSimple) super.getPartie().getPremiereCarte();
+
+        CarteSimple tas = (CarteSimple) super.getPartie().getPremiereCarte() ;
         if(carte.getCouleur() == super.getPartie().getPremiereCarte().getCouleur())
             if(o.getNumero() == tas.getNumero())
                 return true;
@@ -29,14 +41,9 @@ public class ExpertCarteSimple extends Expert{
         return false;
     }
 
-    /*
-            ICI IL FAUT VERIFIER SI LA CLASS EST LA MEME
-            Mais également si elle est de type CarteSimple
-     */
-
     @Override
     public boolean analyse(Cartes cartes) {
-        if(cartes instanceof CarteSimple && super.getPartie().getPremiereCarte() instanceof CarteSimple)
+        if(cartes instanceof CarteSimple)
             return true;
         return false;
     }
