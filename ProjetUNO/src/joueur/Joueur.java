@@ -4,12 +4,11 @@ import cartes.Cartes;
 import partie.Partie;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Joueur {
     private String nom;
     private boolean uno=false;
-    private ArrayList<Cartes> lesCartes = new ArrayList<>();
+    private ArrayList<Cartes> laMain = new ArrayList<>();
 
     private Partie partie = Partie.getInstance();
 
@@ -17,9 +16,12 @@ public class Joueur {
         return partie;
     }
 
+    /*
+            DE BASES
+     */
+
     public Joueur(String nom){
         setNom(nom);
-
     }
 
     public void setNom(String nom) {
@@ -40,26 +42,46 @@ public class Joueur {
         return uno;
     }
 
-    public ArrayList<Cartes> getLesCartes() {
-        return lesCartes;
+    /*
+            POUR LaMain
+     */
+
+    public ArrayList<Cartes> getLaMain() {
+        return laMain;
     }
 
-    public void ajouterCartes(Cartes cartes){
-        if(lesCartes.size() < 0 || lesCartes.size() >7)
+    public Cartes getCarte(int i){
+        return laMain.get(i);
+    }
+
+    public void InitialisationCartes(Cartes cartes){
+        if(laMain.size() < 0 || laMain.size() >7)
             throw new IllegalArgumentException("Nombres de cartes non valide");
-        lesCartes.add(cartes);
+        laMain.add(cartes);
+    }
+
+    /*
+            FONCTION POUR JOUER
+     */
+
+    public void disUNO(){
+        this.uno=true;
     }
 
     public void piocher(){
-        lesCartes.add(partie.prendre());
+        laMain.add(partie.prendre());
     }
+
+    /*
+           TO STRING
+     */
 
     @Override
     public String toString() {
         return "Joueur{" +
                 "nom='" + nom + '\'' +
                 ", uno=" + uno +
-                ", lesCartes=" + lesCartes +
+                ", lesCartes=" + laMain +
                 ", partie=" + partie +
                 '}';
     }

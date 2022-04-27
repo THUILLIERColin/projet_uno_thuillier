@@ -23,15 +23,15 @@ public class ExpertCarteSimple extends Expert{
         CarteSimple tas = (CarteSimple) super.getPartie().getPremiereCarte();
         if(carte.getCouleur() == super.getPartie().getPremiereCarte().getCouleur())
             if(o.getNumero() == tas.getNumero())
+                return true;
                 // C'est un class Carte et il n'existe pas de getNumero() dedans, il faudrait convertir en CarteSimple
                 // Ou bien recevoir directement une carte simple
-                return true;
         return false;
     }
 
     /*
             ICI IL FAUT VERIFIER SI LA CLASS EST LA MEME
-            Mais egalement si elle est de type CarteSimple
+            Mais également si elle est de type CarteSimple
      */
 
     @Override

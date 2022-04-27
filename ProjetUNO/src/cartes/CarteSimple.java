@@ -3,7 +3,9 @@ package cartes;
 public class CarteSimple extends Cartes {
     private int numero;
 
-    //CONSTRUCTEUR
+    /*
+            CONSTRUCTEUR
+     */
     public CarteSimple(Color c,int numero) {
         super(c);
         setNumero(numero);
@@ -14,7 +16,9 @@ public class CarteSimple extends Cartes {
         this.numero =c.numero;   // Pas obligé d'appeler le setter car on sait que c'est juste
     }
 
-    //SETTER
+    /*
+            SETTER
+     */
     public void setNumero(int numero) {
         if(this.numero <1 || this.numero >9){
             throw new IllegalArgumentException("Numéro de carte simple incorrect il doit être entre 1 et 9");
@@ -23,12 +27,16 @@ public class CarteSimple extends Cartes {
     }
 
 
-    //GETTER
+    /*
+            GETTER
+     */
     public int getNumero() {
         return numero;
     }
 
-    //EQUALS + TOSTRING
+    /*
+            EQUALS + TOSTRING
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

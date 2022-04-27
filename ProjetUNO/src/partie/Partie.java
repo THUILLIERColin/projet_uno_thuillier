@@ -136,11 +136,32 @@ public class Partie {
         return lesJoueurs.get(indiceJoueurEnJeu+1);
     }
 
+    /*
+           FONCTIONS GÉNÉRÉES
+     */
+
+    @Override
+    public String toString() {
+        return "Partie{" +
+                "expert=" + expert +
+                ", NbJoueurs=" + NbJoueurs +
+                ", sens=" + sens +
+                ", lesJoueurs=" + lesJoueurs +
+                ", leTas=" + leTas +
+                ", laPioche=" + laPioche +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Partie partie = (Partie) o;
+        return NbJoueurs == partie.NbJoueurs && sens == partie.sens && Objects.equals(expert, partie.expert) && Objects.equals(lesJoueurs, partie.lesJoueurs) && Objects.equals(leTas, partie.leTas) && Objects.equals(laPioche, partie.laPioche);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(expert, NbJoueurs, sens, lesJoueurs, leTas, laPioche);
     }
-
-    /* ATTENTION SI LE SENS EST MODIFIER ON VA CHANGER DE JOUEUR SUIVANT DONC IL FAUT UN MAJ DE SENS*/
-
 }
