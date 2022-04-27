@@ -152,6 +152,10 @@ public class Partie {
     }
 
     /*
+            FAIRE FONCTION DISTRIBUER +
+     */
+
+    /*
            FONCTIONS GÉNÉRÉES
      */
 
