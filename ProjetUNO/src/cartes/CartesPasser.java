@@ -10,6 +10,7 @@ public class CartesPasser extends Cartes{
     }
 
     public Joueur joueurSuivant(Joueur joueur){
-        return Partie.getInstance().Suivant(Partie.getInstance().Suivant(joueur));
+        Partie partie = Partie.getInstance();
+        return partie.Suivant(partie.Suivant(joueur));
     }
 }
