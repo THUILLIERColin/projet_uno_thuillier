@@ -124,10 +124,23 @@ public class Partie {
         leTas.add(cartes);
     }
 
+    /*
+            FONCTION POUR JOUER
+     */
+
+    public Joueur Suivant(Joueur joueurEnJeu){
+        int indiceJoueurEnJeu = lesJoueurs.indexOf(joueurEnJeu);
+        if(sens==SENS_INVERSE){
+            return lesJoueurs.get(indiceJoueurEnJeu-1);
+        }
+        return lesJoueurs.get(indiceJoueurEnJeu+1);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(expert, NbJoueurs, sens, lesJoueurs, leTas, laPioche);
     }
 
     /* ATTENTION SI LE SENS EST MODIFIER ON VA CHANGER DE JOUEUR SUIVANT DONC IL FAUT UN MAJ DE SENS*/
+
 }

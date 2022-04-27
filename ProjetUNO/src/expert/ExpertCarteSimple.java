@@ -36,9 +36,7 @@ public class ExpertCarteSimple extends Expert{
 
     @Override
     public boolean analyse(Cartes cartes) {
-        if(cartes.getClass() == super.getPartie().getPremiereCarte().getClass())
-            // Il faut verifier que ce soit bien un class de CarteSimple car ici
-            // si les deux cartes sont de meme class c'est vrai or, elles ne seront pas forcément CarteSimple
+        if(cartes instanceof CarteSimple && super.getPartie().getPremiereCarte() instanceof CarteSimple)
             return true;
         return false;
     }
