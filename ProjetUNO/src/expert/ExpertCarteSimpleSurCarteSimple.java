@@ -3,9 +3,9 @@ package expert;
 import cartes.CarteSimple;
 import cartes.Cartes;
 
-public class ExpertCarteSimple extends Expert{
+public class ExpertCarteSimpleSurCarteSimple extends Expert{
 
-    public ExpertCarteSimple(Expert suivant){
+    public ExpertCarteSimpleSurCarteSimple(Expert suivant){
         super(suivant);
     }
 
@@ -28,13 +28,15 @@ public class ExpertCarteSimple extends Expert{
                 Sinon pénalité
 
             Si c'est une carte simple
+
+            --> faire dans un autre
+            -->
          */
 
-        CarteSimple o = (CarteSimple) carte;
-
-        CarteSimple tas = (CarteSimple) super.getPartie().getPremiereCarte() ;
+        CarteSimple carteJoueur = (CarteSimple) carte;
+        CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarte() ;
         if(carte.getCouleur() == super.getPartie().getPremiereCarte().getCouleur())
-            if(o.getNumero() == tas.getNumero())
+            if(carteJoueur.getNumero() == carteTas.getNumero())
                 return true;
                 // C'est un class Carte et il n'existe pas de getNumero() dedans, il faudrait convertir en CarteSimple
                 // Ou bien recevoir directement une carte simple
@@ -43,7 +45,7 @@ public class ExpertCarteSimple extends Expert{
 
     @Override
     public boolean analyse(Cartes cartes) {
-        if(cartes instanceof CarteSimple)
+        if(cartes instanceof CarteSimple && super.getPartie().getPremiereCarte() instanceof CarteSimple)
             return true;
         return false;
     }

@@ -10,12 +10,6 @@ public class Joueur {
     private boolean uno=false;
     private ArrayList<Cartes> laMain = new ArrayList<>();
 
-    private Partie partie = Partie.getInstance();
-
-    public Partie getPartie() {
-        return partie;
-    }
-
     /*
             DE BASES
      */
@@ -68,8 +62,11 @@ public class Joueur {
         this.uno=true;
     }
 
-    public void piocher(){
-        laMain.add(partie.prendre());
+    public void piocher() throws Exception{
+        Partie partie = Partie.getInstance();
+        if(this == partie.getJoueurCourant())
+            laMain.add(partie.prendre());
+        throw new IllegalArgumentException("Erreur ce n'est pas son tour");
     }
 
     /*
@@ -82,7 +79,7 @@ public class Joueur {
                 "nom='" + nom + '\'' +
                 ", uno=" + uno +
                 ", lesCartes=" + laMain +
-                ", partie=" + partie +
+                ", partie=" + Partie.getInstance() +
                 '}';
     }
 }

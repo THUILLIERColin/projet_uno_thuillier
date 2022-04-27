@@ -22,6 +22,8 @@ public class Partie {
     private ArrayList<Cartes> laPioche = new ArrayList<Cartes>();
     private static volatile Partie instance= null;
 
+    private Joueur joueurCourant;
+
     private Partie() {}
 
     /*
@@ -64,6 +66,14 @@ public class Partie {
         return expert;
     }
 
+    public void setJoueurCourant(Joueur joueurCourant) {
+        this.joueurCourant = joueurCourant;
+    }
+
+    public Joueur getJoueurCourant() {
+        return joueurCourant;
+    }
+
     /*
             POUR LES JOUEURS
      */
@@ -77,6 +87,8 @@ public class Partie {
     }
 
     public Joueur getJoueur(int i){
+        if(i<0)
+            return lesJoueurs.get(lesJoueurs.size()-i);
         return lesJoueurs.get(i);
     }
 
@@ -94,6 +106,10 @@ public class Partie {
             throw new IllegalArgumentException("Joueur non trouvé");
         lesJoueurs.remove(joueur);
         NbJoueurs = lesJoueurs.size();
+    }
+
+    public int getIndiceJoueur(Joueur joueurEnJeu){
+        return lesJoueurs.indexOf(joueurEnJeu);
     }
 
     /*
@@ -129,11 +145,10 @@ public class Partie {
      */
 
     public Joueur Suivant(Joueur joueurEnJeu){
-        int indiceJoueurEnJeu = lesJoueurs.indexOf(joueurEnJeu);
         if(sens==SENS_INVERSE){
-            return lesJoueurs.get(indiceJoueurEnJeu-1);
+            return lesJoueurs.get(getIndiceJoueur(joueurEnJeu)-1);
         }
-        return lesJoueurs.get(indiceJoueurEnJeu+1);
+        return lesJoueurs.get(getIndiceJoueur(joueurEnJeu)+1);
     }
 
     /*

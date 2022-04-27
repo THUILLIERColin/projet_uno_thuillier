@@ -1,4 +1,37 @@
 package cartes;
 
-public class ChangerCouleur {
+public class ChangerCouleur extends Cartes {
+
+    private Color couleurChanger;
+
+    /*
+            CONSTRUCTEUR
+     */
+    public ChangerCouleur() {
+        super(Color.NOIR);
+    }
+
+    /*
+            SETTER
+     */
+
+    public void setCouleurChanger(Color couleur){
+        couleurChanger =couleur;
+    }
+
+    public Color JeVeuxCouleur(Color couleur){
+        setCouleurChanger(couleur);
+        return couleur;
+    }
+
+    /*
+            EQUALS + TO STRING
+     */
+
+    @Override
+    public String toString() {
+        return "ChangerCouleur{" +
+                "couleurChanger=" + couleurChanger +
+                '}';
+    }
 }
