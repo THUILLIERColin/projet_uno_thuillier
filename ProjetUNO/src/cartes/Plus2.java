@@ -4,8 +4,8 @@ import partie.Partie;
 
 public class Plus2 extends Carte {
 
-    public Plus2() {
-        super(Color.NOIR);
+    public Plus2(Color c) {
+        super(c);
     }
 
     public void prendre2() throws Exception{
