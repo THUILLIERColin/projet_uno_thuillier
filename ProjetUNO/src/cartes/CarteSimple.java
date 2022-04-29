@@ -52,4 +52,7 @@ public class CarteSimple extends Cartes {
                 "Couleur : " +super.getCouleur()+
                 ']';
     }
+
+    @Override
+    public void effet() {}
 }

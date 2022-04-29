@@ -15,4 +15,6 @@ public abstract class Cartes {
     public Color getCouleur() {
         return couleur;
     }
+
+    public abstract void effet();
 }
