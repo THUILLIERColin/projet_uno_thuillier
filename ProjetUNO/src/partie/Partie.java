@@ -76,6 +76,7 @@ public class Partie {
         return joueurCourant;
     }
 
+
     /*
             POUR LES JOUEURS
      */
@@ -133,13 +134,13 @@ public class Partie {
     }
 
     public Carte getPremiereCarte(){
-        return leTas.get(leTas.size());
+        return leTas.get(leTas.size()-1);
     }
 
-    public void poser(Carte cartes) throws Exception{
-        if(!expert.traiter(cartes))
-            throw new CartesValideException("Cout invalide",cartes);
-        leTas.add(cartes);
+    public void ajouterDansTas(Carte carte) throws Exception {
+        if(!expert.traiter(carte))
+            throw new CartesValideException("Cout invalide",carte);
+        leTas.add(carte);
     }
 
     /*
@@ -198,11 +199,12 @@ public class Partie {
             FONCTION D'INITIALISATION
      */
 
-    public void initialisationPartie(int nbJoueurs, int nbCartesParJoueur){
+    public void initialisationPartie(int nbCartesParJoueur){
         ajouterJoueurs(new Joueur("Alice"));
         ajouterJoueurs(new Joueur("Bob"));
         ajouterJoueurs(new Joueur("Charles"));
         distribuerCartes(nbCartesParJoueur);
+        joueurCourant=lesJoueurs.get(0);
     }
 
     /*

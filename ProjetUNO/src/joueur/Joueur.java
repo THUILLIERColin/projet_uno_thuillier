@@ -1,6 +1,7 @@
 package joueur;
 
 import cartes.Carte;
+import exceptions.CartesValideException;
 import exceptions.UnoException;
 import partie.Partie;
 
@@ -55,6 +56,9 @@ public class Joueur {
         laMain.add(cartes);
     }
 
+    public int TailleDeLaMain(){
+        return laMain.size();
+    }
     public boolean doitDireUno(){
         return laMain.size()==1;
     }
@@ -78,17 +82,20 @@ public class Joueur {
         throw new IllegalArgumentException("Erreur ce n'est pas son tour");
     }
 
+    public void jouer(Carte carte) throws Exception{
+        Partie partie = Partie.getInstance();
+        if(this != partie.getJoueurCourant())
+            throw new IllegalArgumentException("Erreur le joueur n'est pas celui qui doit jouer");
+        partie.ajouterDansTas(carte);
+        laMain.remove(carte);
+    }
+
     /*
            TO STRING
      */
 
     @Override
     public String toString() {
-        return "Joueur{" +
-                "nom='" + nom + '\'' +
-                ", uno=" + uno +
-                ", lesCartes=" + laMain +
-                ", partie=" + Partie.getInstance() +
-                '}';
+        return ""+nom;
     }
 }
