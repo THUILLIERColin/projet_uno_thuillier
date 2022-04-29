@@ -4,8 +4,17 @@
     <list default="true" id="6ede0efc-1f2e-4d51-8b76-8a1d9e116368" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cartes/CarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CarteSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/Cartes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/Carte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/CartesPasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CartePasser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/ChangerCouleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/ChangerCouleur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/Plus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/Plus2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/Reverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/Reverse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/Expert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/ExpertCarteSimpleSurCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/ExpertCarteSimpleSurCarteSimple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fichiers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fichiers/ParserCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/ParserCarteSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/partie/Partie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCarteSimple.java" afterDir="false" />
     </list>
@@ -26,6 +35,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

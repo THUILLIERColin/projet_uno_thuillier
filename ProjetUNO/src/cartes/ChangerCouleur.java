@@ -1,6 +1,6 @@
 package cartes;
 
-public class ChangerCouleur extends Cartes {
+public class ChangerCouleur extends Carte {
 
     private Color couleurChanger;
 

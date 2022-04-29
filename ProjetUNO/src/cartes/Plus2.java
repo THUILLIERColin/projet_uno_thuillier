@@ -1,9 +1,8 @@
 package cartes;
 
-import joueur.Joueur;
 import partie.Partie;
 
-public class Plus2 extends Cartes{
+public class Plus2 extends Carte {
 
     public Plus2() {
         super(Color.NOIR);

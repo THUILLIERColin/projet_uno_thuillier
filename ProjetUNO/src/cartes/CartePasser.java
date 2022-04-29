@@ -1,11 +1,10 @@
 package cartes;
 
-import joueur.Joueur;
 import partie.Partie;
 
-public class CartesPasser extends Cartes{
+public class CartePasser extends Carte {
 
-    public CartesPasser(){
+    public CartePasser(){
         super(Color.NOIR);
     }
 

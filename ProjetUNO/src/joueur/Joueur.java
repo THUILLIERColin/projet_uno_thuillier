@@ -1,6 +1,6 @@
 package joueur;
 
-import cartes.Cartes;
+import cartes.Carte;
 import exceptions.UnoException;
 import partie.Partie;
 
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Joueur {
     private String nom;
     private boolean uno=false;
-    private ArrayList<Cartes> laMain = new ArrayList<>();
+    private ArrayList<Carte> laMain = new ArrayList<>();
 
     /*
             DE BASES
@@ -41,15 +41,15 @@ public class Joueur {
             POUR LaMain
      */
 
-    public ArrayList<Cartes> getLaMain() {
+    public ArrayList<Carte> getLaMain() {
         return laMain;
     }
 
-    public Cartes getCarte(int i){
+    public Carte getCarte(int i){
         return laMain.get(i);
     }
 
-    public void InitialisationCartes(Cartes cartes){
+    public void InitialisationCartes(Carte cartes){
         if(laMain.size() < 0 || laMain.size() >7)
             throw new IllegalArgumentException("Nombres de cartes non valide");
         laMain.add(cartes);

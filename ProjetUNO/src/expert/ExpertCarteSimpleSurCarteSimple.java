@@ -1,7 +1,7 @@
 package expert;
 
 import cartes.CarteSimple;
-import cartes.Cartes;
+import cartes.Carte;
 import exceptions.UnoException;
 import partie.Partie;
 
@@ -20,7 +20,7 @@ public class ExpertCarteSimpleSurCarteSimple extends Expert{
      */
 
     @Override
-    public boolean expertise(Cartes carte) throws Exception {
+    public boolean expertise(Carte carte) throws Exception {
 
         /*
                     ATTENTION UNE CARTE SIMPLE PEU ETRE POSÉ SUR TOUTES LES AUTRE CARTES
@@ -51,7 +51,7 @@ public class ExpertCarteSimpleSurCarteSimple extends Expert{
     }
 
     @Override
-    public boolean analyse(Cartes cartes) {
+    public boolean analyse(Carte cartes) {
         if(cartes instanceof CarteSimple && super.getPartie().getPremiereCarte() instanceof CarteSimple)
             return true;
         return false;

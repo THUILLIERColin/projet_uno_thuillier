@@ -1,9 +1,8 @@
 package fichiers;
 
-import cartes.Cartes;
+import cartes.Carte;
 import exceptions.ParserManquantException;
-
-import java.util.ArrayList;
+import partie.Partie;
 
 public abstract class Parser {
 
@@ -12,23 +11,11 @@ public abstract class Parser {
     // Chaque maillon représente un "case" du switch
     private Parser suivant = null;
 
-    private ArrayList<Cartes> initialisationJeu = new ArrayList<>();
-
-    public ArrayList<Cartes> getInitialisationJeu() {
-        return initialisationJeu;
-    }
-
-    public Cartes getCartes(int i){
-        return initialisationJeu.get(i);
-    }
-
-    public void ajouter(Cartes cartes){
-        initialisationJeu.add(cartes);
-    }
-
     public Parser(Parser suivant) {
         this.suivant = suivant;
     }
+
+    private Partie partie = Partie.getInstance();
 
     /*
      * La fonction traiter() parcours la liste à la recherche d'un maillon qui sait comment parser
@@ -39,7 +26,7 @@ public abstract class Parser {
     public void traiter(String ligne) throws Exception {
         if (saitParser(ligne))
             // Si le parser sait parser la ligne, il la parse
-            ajouter(parser(ligne));
+            partie.ajouterInitialisation(parser(ligne));
         else if (aUnSuivant())
             // S'il ne sait pas mais qu'il a un suivant dans la liste chaine, il lui repasse la ligne et qu'il se débrouille !
             getSuivant().traiter(ligne);
@@ -63,7 +50,7 @@ public abstract class Parser {
      * @param ligne
      * @throws Exception
      */
-    public abstract Cartes parser(String ligne) throws Exception;
+    public abstract Carte parser(String ligne) throws Exception;
 
     /**
      * Renvoie true si le parser en question reconnait le type de ligne, c'est-à-dire
@@ -77,7 +64,7 @@ public abstract class Parser {
     @Override
     public String toString() {
         return "Parser{" +
-                ", initialisationJeu=" + initialisationJeu +
+                ", initialisationJeu=" + partie.getListeCartesInitiales() +
                 '}';
     }
 }

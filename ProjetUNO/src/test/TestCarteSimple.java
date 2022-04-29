@@ -30,9 +30,10 @@ public class TestCarteSimple {
 
             /*
                     TEST AFFICHAGE CARTE OK
+             */
 
             System.out.println(premierParser.toString());
-             */
+
 
             // System.out.println("Wouais...coool...j'arrive à ouvrir /Users/thuillercolin/Documents/WorkspaceJAVA/Monopoly/Parametre/Terrains.csv");
         } catch (IllegalArgumentException e) {
