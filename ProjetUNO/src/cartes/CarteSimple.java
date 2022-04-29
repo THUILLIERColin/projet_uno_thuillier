@@ -20,7 +20,7 @@ public class CarteSimple extends Cartes {
             SETTER
      */
     public void setNumero(int numero) {
-        if(this.numero <1 || this.numero >9){
+        if(this.numero <0 || this.numero >9){
             throw new IllegalArgumentException("Numéro de carte simple incorrect il doit être entre 1 et 9");
         }
         this.numero = numero;
@@ -47,9 +47,9 @@ public class CarteSimple extends Cartes {
 
     @Override
     public String toString() {
-        return "CarteSimple[ " +
+        return "\nCarteSimple[ " +
                 "Numéro= " + numero +
-                "Couleur : " +super.getCouleur()+
+                "; Couleur : " +super.getCouleur()+
                 ']';
     }
 

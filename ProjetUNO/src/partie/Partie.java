@@ -155,8 +155,12 @@ public class Partie {
     }
 
     /*
-            FAIRE FONCTION DISTRIBUER +
+            FAIRE FONCTION DISTRIBUER
      */
+
+    public void distribuer(){
+        
+    }
 
     /*
            FONCTIONS GÉNÉRÉES

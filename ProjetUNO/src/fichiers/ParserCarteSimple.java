@@ -10,18 +10,18 @@ public class ParserCarteSimple extends Parser {
     }
 
     @Override
-    public void parser(String ligne) throws Exception {
+    public Cartes parser(String ligne) throws Exception {
         Cartes.Color couleur = null;
         switch (ligne.split(";")[1]){ //récupère la couleur de la carte
-            case "Vert" : couleur = Color.VERT;
-            case "Rouge" : couleur = Color.ROUGE;
-            case "Jaune" : couleur = Color.JAUNE;
-            case "Bleu" : couleur = Color.BLEU;
+            case "Vert" : couleur = Color.VERT; break;
+            case "Rouge" : couleur = Color.ROUGE; break;
+            case "Jaune" : couleur = Color.JAUNE; break;
+            case "Bleu" : couleur = Color.BLEU; break;
         }
 
         String val = ligne.split(";")[2]; //récupère le numéro de la carte
         int num = Integer.parseInt(val); //transforme un String en Int
-        new CarteSimple(couleur,num); //Création de la carte
+        return new CarteSimple(couleur,num); //Création de la carte
     }
 
     @Override
