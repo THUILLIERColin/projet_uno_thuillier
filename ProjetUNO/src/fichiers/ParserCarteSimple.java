@@ -1,8 +1,8 @@
 package fichiers;
 
 import cartes.CarteSimple;
-import cartes.Cartes;
-import cartes.Cartes.Color;
+import cartes.Carte;
+import cartes.Carte.Color;
 
 public class ParserCarteSimple extends Parser {
     public ParserCarteSimple(Parser suivant) {
@@ -10,7 +10,7 @@ public class ParserCarteSimple extends Parser {
     }
 
     @Override
-    public Cartes parser(String ligne) throws Exception {
+    public Carte parser(String ligne) throws Exception {
         Color couleur = ExtractColor(ligne);
 
         String val = ligne.split(";")[2]; //récupère le numéro de la carte
