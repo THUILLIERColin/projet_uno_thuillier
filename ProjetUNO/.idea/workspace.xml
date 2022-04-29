@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6ede0efc-1f2e-4d51-8b76-8a1d9e116368" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/fichiers/ParserCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/ParserCarteSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fichiers/ParserCartesPasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/ParserCartesPasser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fichiers/ParserPlus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/ParserPlus2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
