@@ -4,8 +4,8 @@ import partie.Partie;
 
 public class CartePasser extends Carte {
 
-    public CartePasser(){
-        super(Color.NOIR);
+    public CartePasser(Color c){
+        super(c);
     }
 
     public void joueurSuivant(){

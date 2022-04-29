@@ -1,8 +1,8 @@
 package fichiers;
 
 import cartes.Plus2;
-import cartes.Cartes;
-import cartes.Cartes.Color;
+import cartes.Carte;
+import cartes.Carte.Color;
 
 public class ParserPlus2 extends Parser {
     public ParserPlus2(Parser suivant) {
@@ -10,8 +10,8 @@ public class ParserPlus2 extends Parser {
     }
 
     @Override
-    public Cartes parser(String ligne) throws Exception {
-        Cartes.Color couleur = null;
+    public Carte parser(String ligne) throws Exception {
+        Carte.Color couleur = null;
         switch (ligne.split(";")[1]) { //récupère la couleur de la carte
             case "Vert":
                 couleur = Color.VERT;

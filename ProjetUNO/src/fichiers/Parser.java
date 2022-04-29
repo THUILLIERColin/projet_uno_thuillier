@@ -26,7 +26,7 @@ public abstract class Parser {
     public void traiter(String ligne) throws Exception {
         if (saitParser(ligne))
             // Si le parser sait parser la ligne, il la parse
-            partie.ajouterInitialisation(parser(ligne));
+            partie.ajouterListeCartesInitiales(parser(ligne));
         else if (aUnSuivant())
             // S'il ne sait pas mais qu'il a un suivant dans la liste chaine, il lui repasse la ligne et qu'il se débrouille !
             getSuivant().traiter(ligne);

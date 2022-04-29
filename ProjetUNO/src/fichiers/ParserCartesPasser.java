@@ -1,8 +1,8 @@
 package fichiers;
 
-import cartes.CartesPasser;
-import cartes.Cartes;
-import cartes.Cartes.Color;
+import cartes.CartePasser;
+import cartes.Carte;
+import cartes.Carte.Color;
 
 public class ParserCartesPasser extends Parser {
     public ParserCartesPasser(Parser suivant) {
@@ -10,8 +10,8 @@ public class ParserCartesPasser extends Parser {
     }
 
     @Override
-    public Cartes parser(String ligne) throws Exception {
-        Cartes.Color couleur = null;
+    public Carte parser(String ligne) throws Exception {
+        Carte.Color couleur = null;
         switch (ligne.split(";")[1]) { //récupère la couleur de la carte
             case "Vert":
                 couleur = Color.VERT;
@@ -26,7 +26,7 @@ public class ParserCartesPasser extends Parser {
                 couleur = Color.BLEU;
                 break;
         }
-        return new CartesPasser(couleur); //Création de la carte
+        return new CartePasser(couleur); //Création de la carte
     }
 
     @Override
