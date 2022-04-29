@@ -1,6 +1,6 @@
 package cartes;
 
-public class CarteSimple extends Cartes {
+public class CarteSimple extends Carte {
     private int numero;
 
     /*

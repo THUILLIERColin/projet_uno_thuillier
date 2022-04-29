@@ -1,6 +1,6 @@
 package expert;
 
-import cartes.Cartes;
+import cartes.Carte;
 import exceptions.ExpertManquantException;
 import partie.Partie;
 
@@ -19,7 +19,7 @@ public abstract class Expert {
      * la ligne. Dans ce cas la ligne est parsée et la recherche s'arrête
      * @param cartes la ligne à parser
      */
-    public boolean traiter(Cartes cartes) throws Exception {
+    public boolean traiter(Carte cartes) throws Exception {
         if (analyse(cartes))
             return expertise(cartes);
         else if (aUnSuivant())
@@ -46,7 +46,7 @@ public abstract class Expert {
      * @param ligne
      * @throws Exception
      */
-    public abstract boolean expertise(Cartes cartes) throws Exception;
+    public abstract boolean expertise(Carte cartes) throws Exception;
 
     /**
      * Renvoie true si le parser en question reconnait le type de ligne, c'est-à-dire
@@ -55,6 +55,6 @@ public abstract class Expert {
      * @param ligne
      * @return true si la ligne est reconnue
      */
-    public abstract boolean analyse(Cartes cartes);
+    public abstract boolean analyse(Carte cartes);
 
 }

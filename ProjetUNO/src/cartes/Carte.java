@@ -1,10 +1,10 @@
 package cartes;
 
-public abstract class Cartes {
+public abstract class Carte {
     public enum Color {BLEU, ROUGE, JAUNE, VERT, NOIR};
     private Color couleur;
 
-    public Cartes(Color c){
+    public Carte(Color c){
         setCouleur(c);
     }
 

@@ -1,6 +1,7 @@
 package joueur;
 
-import cartes.Cartes;
+import cartes.Carte;
+import exceptions.CartesValideException;
 import exceptions.UnoException;
 import partie.Partie;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class Joueur {
     private String nom;
     private boolean uno=false;
-    private ArrayList<Cartes> laMain = new ArrayList<>();
+    private ArrayList<Carte> laMain = new ArrayList<>();
 
     /*
             DE BASES
@@ -41,20 +42,23 @@ public class Joueur {
             POUR LaMain
      */
 
-    public ArrayList<Cartes> getLaMain() {
+    public ArrayList<Carte> getLaMain() {
         return laMain;
     }
 
-    public Cartes getCarte(int i){
+    public Carte getCarte(int i){
         return laMain.get(i);
     }
 
-    public void InitialisationCartes(Cartes cartes){
+    public void InitialisationCartes(Carte cartes){
         if(laMain.size() < 0 || laMain.size() >7)
             throw new IllegalArgumentException("Nombres de cartes non valide");
         laMain.add(cartes);
     }
 
+    public int TailleDeLaMain(){
+        return laMain.size();
+    }
     public boolean doitDireUno(){
         return laMain.size()==1;
     }
@@ -78,17 +82,20 @@ public class Joueur {
         throw new IllegalArgumentException("Erreur ce n'est pas son tour");
     }
 
+    public void jouer(Carte carte) throws Exception{
+        Partie partie = Partie.getInstance();
+        if(this != partie.getJoueurCourant())
+            throw new IllegalArgumentException("Erreur le joueur n'est pas celui qui doit jouer");
+        partie.ajouterDansTas(carte);
+        laMain.remove(carte);
+    }
+
     /*
            TO STRING
      */
 
     @Override
     public String toString() {
-        return "Joueur{" +
-                "nom='" + nom + '\'' +
-                ", uno=" + uno +
-                ", lesCartes=" + laMain +
-                ", partie=" + Partie.getInstance() +
-                '}';
+        return ""+nom;
     }
 }

@@ -1,10 +1,6 @@
 package cartes;
 
-import exceptions.CartesValideException;
-import joueur.Joueur;
-import partie.Partie;
-
-public class Reverse extends Cartes{
+public class Reverse extends Carte {
     @Override
     public void effet() throws Exception {
 

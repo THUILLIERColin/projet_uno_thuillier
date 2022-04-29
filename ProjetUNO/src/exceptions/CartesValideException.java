@@ -1,11 +1,11 @@
 package exceptions;
 
-import cartes.Cartes;
+import cartes.Carte;
 
 public class CartesValideException extends Exception{
-    private Cartes cartesErreur;
+    private Carte cartesErreur;
 
-    public CartesValideException(String msg, Cartes cartesErreur){
+    public CartesValideException(String msg, Carte cartesErreur){
         super(msg);
         this.cartesErreur = cartesErreur;
     }
