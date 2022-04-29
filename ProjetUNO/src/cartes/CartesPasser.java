@@ -9,14 +9,14 @@ public class CartesPasser extends Cartes{
         super(Color.NOIR);
     }
 
-    public Joueur joueurSuivant(){
+    public void joueurSuivant(){
         Partie partie = Partie.getInstance();
         partie.Suivant();
-        return partie.Suivant();
+        partie.Suivant();
     }
 
     @Override
     public void effet() throws Exception {
-
+        joueurSuivant();
     }
 }

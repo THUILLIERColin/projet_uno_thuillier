@@ -88,7 +88,7 @@ public class Partie {
 
     public Joueur getJoueur(int i){
         if(i<0)
-            return lesJoueurs.get(lesJoueurs.size()-i);
+            return lesJoueurs.get(lesJoueurs.size()+i);  // A verifier car peut-etre ajouter 1
         return lesJoueurs.get(i);
     }
 
@@ -144,7 +144,7 @@ public class Partie {
             FONCTION POUR JOUER
      */
 
-    public Joueur Suivant(){
+    public void Suivant(){
         if(sens==SENS_INVERSE){
             joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)-1);
         }
