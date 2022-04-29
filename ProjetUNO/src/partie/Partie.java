@@ -143,7 +143,7 @@ public class Partie {
     }
 
     /*
-            FONCTION D'INITIALISATION
+            FONCTION DE LISTE POUR L'INITIALISATION
      */
 
     public ArrayList<Carte> getListeCartesInitiales() {
@@ -182,8 +182,8 @@ public class Partie {
      */
 
     public void distribuerCartes(int nbCartesJoueur){
-        for(int i=0; i<= nbCartesJoueur; i++){
-            for(int j=0; j<=lesJoueurs.size(); j++) {
+        for(int i=0; i< nbCartesJoueur; i++){
+            for(int j=0; j<lesJoueurs.size(); j++) {
                 lesJoueurs.get(j).InitialisationCartes(listeCartesInitiales.get(0));
                 removeListeCartesInitiales();
             }
@@ -192,6 +192,17 @@ public class Partie {
         removeListeCartesInitiales();
 
         laPioche = listeCartesInitiales;
+    }
+
+    /*
+            FONCTION D'INITIALISATION
+     */
+
+    public void initialisationPartie(int nbJoueurs, int nbCartesParJoueur){
+        ajouterJoueurs(new Joueur("Alice"));
+        ajouterJoueurs(new Joueur("Bob"));
+        ajouterJoueurs(new Joueur("Charles"));
+        distribuerCartes(nbCartesParJoueur);
     }
 
     /*
