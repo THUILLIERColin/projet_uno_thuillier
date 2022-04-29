@@ -1,11 +1,11 @@
 package fichiers;
 
-import cartes.CarteSimple;
+import cartes.CartesPasser;
 import cartes.Cartes;
 import cartes.Cartes.Color;
 
-public class ParserCarteSimple extends Parser {
-    public ParserCarteSimple(Parser suivant) {
+public class ParserCartesPasser extends Parser {
+    public ParserCartesPasser(Parser suivant) {
         super(suivant);
     }
 
@@ -26,14 +26,11 @@ public class ParserCarteSimple extends Parser {
                 couleur = Color.BLEU;
                 break;
         }
-
-        String val = ligne.split(";")[2]; //récupère le numéro de la carte
-        int num = Integer.parseInt(val); //transforme un String en Int
-        return new CarteSimple(couleur, num); //Création de la carte
+        return new CartesPasser(couleur); //Création de la carte
     }
 
     @Override
     public boolean saitParser(String ligne) {
-        return ligne.contains("CarteSimple");
+        return ligne.contains("CartePasser");
     }
 }

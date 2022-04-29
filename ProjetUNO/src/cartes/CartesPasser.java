@@ -5,8 +5,8 @@ import partie.Partie;
 
 public class CartesPasser extends Cartes{
 
-    public CartesPasser(){
-        super(Color.NOIR);
+    public CartesPasser(Color couleur){
+        super(couleur);
     }
 
     public void joueurSuivant(){
