@@ -2,6 +2,8 @@ package expert;
 
 import cartes.CarteSimple;
 import cartes.Cartes;
+import exceptions.UnoException;
+import partie.Partie;
 
 public class ExpertCarteSimpleSurCarteSimple extends Expert{
 
@@ -32,9 +34,14 @@ public class ExpertCarteSimpleSurCarteSimple extends Expert{
             --> faire dans un autre
             -->
          */
+        Partie partie = Partie.getInstance();
 
         CarteSimple carteJoueur = (CarteSimple) carte;
         CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarte() ;
+        if(partie.getJoueurCourant().doitDireUno() && !partie.getJoueurCourant().getUno())
+            throw new UnoException("Ce joueur possede une carte et n'a pas dit UNO",partie.getJoueurCourant());
+        if(partie.getJoueurCourant().doitDireUno() && partie.getJoueurCourant().getUno())
+            throw new UnoException("",partie.getJoueurCourant());
         if(carte.getCouleur() == super.getPartie().getPremiereCarte().getCouleur())
             if(carteJoueur.getNumero() == carteTas.getNumero())
                 return true;

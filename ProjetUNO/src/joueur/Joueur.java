@@ -1,6 +1,7 @@
 package joueur;
 
 import cartes.Cartes;
+import exceptions.UnoException;
 import partie.Partie;
 
 import java.util.ArrayList;
@@ -54,12 +55,20 @@ public class Joueur {
         laMain.add(cartes);
     }
 
+    public boolean doitDireUno(){
+        return laMain.size()==1;
+    }
+
     /*
             FONCTION POUR JOUER
      */
 
-    public void disUNO(){
-        this.uno=true;
+    public void disUNO() throws UnoException{
+        if(doitDireUno())
+            this.uno=true;
+        else{
+            throw new UnoException("Le joueur "+ this +"possède plus d'une cartes",this);
+        }
     }
 
     public void piocher() throws Exception{

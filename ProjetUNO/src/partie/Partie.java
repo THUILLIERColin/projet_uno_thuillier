@@ -131,7 +131,7 @@ public class Partie {
     }
 
     public Cartes getPremiereCarte(){
-        return leTas.get(0);
+        return leTas.get(leTas.size());
     }
 
     public void poser(Cartes cartes) throws Exception{

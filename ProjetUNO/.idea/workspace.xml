@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ede0efc-1f2e-4d51-8b76-8a1d9e116368" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/jeux_test/JeuTest.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeux_test/JeuTestCarteCouleur.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeux_test/JeuTestCartePasser.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeux_test/JeuTestCartePlus2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeux_test/JeuTestCarteSimple.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jeux_test/JeuTestCarteSimplePourTestUno.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JeuTest.csv" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exceptions/UnoException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetUNO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetUNO.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCarteSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jeux_test/JeuTestCarteCouleur.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jeux_test/JeuTestCartePasser.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jeux_test/JeuTestCartePlus2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jeux_test/JeuTestCarteSimple.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jeux_test/JeuTestCarteSimplePourTestUno.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/ExpertCarteSimpleSurCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/ExpertCarteSimpleSurCarteSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/partie/Partie.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
