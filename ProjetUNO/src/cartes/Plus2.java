@@ -1,6 +1,7 @@
 package cartes;
 
 import joueur.Joueur;
+import partie.Partie;
 
 public class Plus2 extends Cartes{
 
@@ -8,9 +9,13 @@ public class Plus2 extends Cartes{
         super(Color.NOIR);
     }
 
-    public void prendre2(Joueur joueur) throws Exception{
+    public void prendre2() throws Exception{
         for(int i=0; i< 2; i++)
-        joueur.piocher();
+            Partie.getInstance().getJoueurCourant().piocher();
     }
 
+    @Override
+    public void effet() throws Exception {
+        prendre2();
+    }
 }

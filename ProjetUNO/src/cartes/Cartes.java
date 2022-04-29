@@ -16,5 +16,5 @@ public abstract class Cartes {
         return couleur;
     }
 
-    public abstract void effet();
+    public abstract void effet() throws Exception;
 }

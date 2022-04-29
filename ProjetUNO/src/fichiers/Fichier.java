@@ -1,7 +1,7 @@
 package fichiers;
 
 import exceptions.ExpertManquantException;
-import expert.Expert;
+import expert.Parser;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,10 +16,10 @@ public class Fichier {
      * chaque ligne et confie au parser le traitement de la ligne. S'il n'y a pas de parser,
      * la ligne est tout simplement affichée dans la console
      * @param nomFichier nom du fichier à lire et à parser
-     * @param expert c'est le premier parser de la liste
+     * @param parser c'est le premier parser de la liste
      */
-    /*
-    public static void lire(String nomFichier, Expert expert) {
+
+    public static void lire(String nomFichier, Parser parser) {
         if (nomFichier == null)
             throw new IllegalArgumentException("yoh ! man ! tu crois m'avoir avec un null ? Même pas en rêve alors dégage !!!");
 
@@ -36,14 +36,14 @@ public class Fichier {
 
             while ((ligne = reader.readLine()) != null) {
                 // On a bien lu une ligne ue fichier, maintenant qu'est-ce qu'on en fait ??
-                if (expert ==null)
+                if (parser ==null)
                     // Si y a pas de parser, alors on ne sait vraiment pas quoi faire avec et on l'affiche...
                     System.out.println("Ligne : "+ligne);
                 else
                     // Puisqu'on a un parser, on l'utilise. C'est lui qui traitera la ligne
                     // pour créer des objets, afficher des trucs, ou je ne sais quoi !
                     try {
-                        expert.traiter(ligne);
+                        parser.traiter(ligne);
                     }
                     catch (ExpertManquantException e) {
                         System.err.println("Aucun parser n'existe pour la ligne "+ligne);
@@ -57,5 +57,5 @@ public class Fichier {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }

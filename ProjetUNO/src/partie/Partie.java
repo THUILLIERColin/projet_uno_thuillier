@@ -144,11 +144,14 @@ public class Partie {
             FONCTION POUR JOUER
      */
 
-    public Joueur Suivant(Joueur joueurEnJeu){
+    public Joueur Suivant(){
         if(sens==SENS_INVERSE){
-            return lesJoueurs.get(getIndiceJoueur(joueurEnJeu)-1);
+            joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)-1);
         }
-        return lesJoueurs.get(getIndiceJoueur(joueurEnJeu)+1);
+        else
+        {
+            joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)+1);
+        }
     }
 
     /*
