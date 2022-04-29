@@ -11,21 +11,7 @@ public class ParserCartesPasser extends Parser {
 
     @Override
     public Cartes parser(String ligne) throws Exception {
-        Cartes.Color couleur = null;
-        switch (ligne.split(";")[1]) { //récupère la couleur de la carte
-            case "Vert":
-                couleur = Color.VERT;
-                break;
-            case "Rouge":
-                couleur = Color.ROUGE;
-                break;
-            case "Jaune":
-                couleur = Color.JAUNE;
-                break;
-            case "Bleu":
-                couleur = Color.BLEU;
-                break;
-        }
+        Color couleur = ParserCarteSimple.ExtractColor(ligne);
         return new CartesPasser(couleur); //Création de la carte
     }
 

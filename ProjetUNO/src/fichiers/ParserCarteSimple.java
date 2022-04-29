@@ -11,7 +11,15 @@ public class ParserCarteSimple extends Parser {
 
     @Override
     public Cartes parser(String ligne) throws Exception {
-        Cartes.Color couleur = null;
+        Color couleur = ExtractColor(ligne);
+
+        String val = ligne.split(";")[2]; //récupère le numéro de la carte
+        int num = Integer.parseInt(val); //transforme un String en Int
+        return new CarteSimple(couleur, num); //Création de la carte
+    }
+
+    static Color ExtractColor(String ligne) {
+        Color couleur = null;
         switch (ligne.split(";")[1]) { //récupère la couleur de la carte
             case "Vert":
                 couleur = Color.VERT;
@@ -26,10 +34,7 @@ public class ParserCarteSimple extends Parser {
                 couleur = Color.BLEU;
                 break;
         }
-
-        String val = ligne.split(";")[2]; //récupère le numéro de la carte
-        int num = Integer.parseInt(val); //transforme un String en Int
-        return new CarteSimple(couleur, num); //Création de la carte
+        return couleur;
     }
 
     @Override
