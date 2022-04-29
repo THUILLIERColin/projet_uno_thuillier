@@ -20,6 +20,7 @@ public class ParserCarteSimple extends Parser {
 
     static Color ExtractColor(String ligne) {
         Color couleur = null;
+        
         switch (ligne.split(";")[1]) { //récupère la couleur de la carte
             case "Vert":
                 couleur = Color.VERT;
