@@ -5,6 +5,10 @@ import joueur.Joueur;
 import partie.Partie;
 
 public class Reverse extends Cartes{
+    @Override
+    public void effet() throws Exception {
+
+    }
     //CONSTRUCTEUR
     public Reverse(Color c) {
         super(c);
@@ -28,7 +32,7 @@ public class Reverse extends Cartes{
     }
 
     // PEUT-ETRE ENLEVER LE BOOL SENS ET FOURNIR A LA FONCTION LA LISTE DES JOUEURS
-    public void ChangeDeSens(Joueur j) throws Exception {
+    /*public void ChangeDeSens(Joueur j) throws Exception {
         if(j.getPartie().getExpert().traiter(this))
         {
             if(j.getPartie().getSens() == Partie.SENS_INVERSE){
@@ -40,5 +44,5 @@ public class Reverse extends Cartes{
         else
             throw new CartesValideException("Impossible de changer de sens le coup n'est pas valide",this);
     }
-
+    */
 }

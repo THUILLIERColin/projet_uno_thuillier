@@ -34,4 +34,9 @@ public class ChangerCouleur extends Cartes {
                 "couleurChanger=" + couleurChanger +
                 '}';
     }
+
+    @Override
+    public void effet() throws Exception {
+        
+    }
 }

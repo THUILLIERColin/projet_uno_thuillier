@@ -1,7 +1,6 @@
 package fichiers;
 
-import exceptions.ExpertManquantException;
-import expert.Parser;
+import exceptions.ParserManquantException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -45,7 +44,7 @@ public class Fichier {
                     try {
                         parser.traiter(ligne);
                     }
-                    catch (ExpertManquantException e) {
+                    catch (ParserManquantException e) {
                         System.err.println("Aucun parser n'existe pour la ligne "+ligne);
                     }
                     catch (Exception e) {
