@@ -44,7 +44,7 @@ public class TestCarteSimple {
             System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
             System.out.println("Alice possede "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
 
-            Joueur joueurCourant = partie.getJoueurCourant();[]
+            Joueur joueurCourant = partie.getJoueurCourant();
             try{
                 joueurCourant.jouer(joueurCourant.getCarte(0));
             }catch (Exception e){

@@ -36,7 +36,8 @@ public abstract class Parser {
             throw new ParserManquantException();
 
     }
-    protected Carte.Color extractColor(String ligne) {
+
+    public Carte.Color extractColor(String ligne) {
         Carte.Color couleur = null;
 
         switch (ligne.split(";")[1]) { //récupère la couleur de la carte
