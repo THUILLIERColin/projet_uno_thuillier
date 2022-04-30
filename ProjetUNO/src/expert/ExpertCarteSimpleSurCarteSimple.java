@@ -43,8 +43,12 @@ public class ExpertCarteSimpleSurCarteSimple extends Expert{
         if(partie.getJoueurCourant().doitDireUno() && partie.getJoueurCourant().getUno())
             throw new UnoException("",partie.getJoueurCourant());
         if(carte.getCouleur() == super.getPartie().getPremiereCarte().getCouleur())
+                return true;
+        else
+        {
             if(carteJoueur.getNumero() == carteTas.getNumero())
                 return true;
+        }
                 // C'est un class Carte et il n'existe pas de getNumero() dedans, il faudrait convertir en CarteSimple
                 // Ou bien recevoir directement une carte simple
         return false;
