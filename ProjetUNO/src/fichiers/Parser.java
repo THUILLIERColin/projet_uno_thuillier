@@ -36,6 +36,25 @@ public abstract class Parser {
             throw new ParserManquantException();
 
     }
+    protected Carte.Color extractColor(String ligne) {
+        Carte.Color couleur = null;
+
+        switch (ligne.split(";")[1]) { //récupère la couleur de la carte
+            case "Vert":
+                couleur = Carte.Color.VERT;
+                break;
+            case "Rouge":
+                couleur = Carte.Color.ROUGE;
+                break;
+            case "Jaune":
+                couleur = Carte.Color.JAUNE;
+                break;
+            case "Bleu":
+                couleur = Carte.Color.BLEU;
+                break;
+        }
+        return couleur;
+    }
 
     private Parser getSuivant() {
         return suivant;
