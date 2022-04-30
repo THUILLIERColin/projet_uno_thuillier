@@ -4,8 +4,8 @@ import cartes.CartePasser;
 import cartes.Carte;
 import cartes.Carte.Color;
 
-public class ParserCartesPasser extends Parser {
-    public ParserCartesPasser(Parser suivant) {
+public class ParserCartePasser extends Parser {
+    public ParserCartePasser(Parser suivant) {
         super(suivant);
     }
 

@@ -139,8 +139,12 @@ public class Partie {
 
     public void ajouterDansTas(Carte carte) throws Exception {
         if(!expert.traiter(carte))
-            throw new CartesValideException("Cout invalide",carte);
+            throw new CartesValideException("Cout invalide",carte); // try catch
         leTas.add(carte);
+    }
+
+    public int getTailleTas(){
+        return leTas.size();
     }
 
     /*

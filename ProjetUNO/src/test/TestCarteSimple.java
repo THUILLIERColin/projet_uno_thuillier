@@ -1,5 +1,7 @@
 package test;
 
+import expert.Expert;
+import expert.ExpertCarteSimpleSurCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
 import fichiers.ParserCarteSimple;
@@ -36,19 +38,25 @@ public class TestCarteSimple {
                     TEST AFFICHAGE CARTE OK
              */
 
+            partie.setExpert(new ExpertCarteSimpleSurCarteSimple(null));
+
             partie.initialisationPartie(3);
             System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
-            System.out.println("Alice possède "+ partie.getJoueurCourant().TailleDeLaMain());
-            System.out.println("Alice joue le");
-            Joueur joueurCourant = partie.getJoueurCourant();
+            System.out.println("Alice possede "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
+
+            Joueur joueurCourant = partie.getJoueurCourant();[]
             try{
                 joueurCourant.jouer(joueurCourant.getCarte(0));
             }catch (Exception e){
                 System.out.println(e);
             }
-            System.out.println("Alice possède : "+ joueurCourant.TailleDeLaMain());
+
+            System.out.println("Alice possède : "+ joueurCourant.TailleDeLaMain()+" cartes");
             System.out.println("Alice a la main : " + joueurCourant.getLaMain());
             System.out.println("La premiere carte est :" + partie.getPremiereCarte());
+            System.out.println("Le nombre de cartes du tas est "+ partie.getTailleTas());
+            System.out.println("Alice a fini");
+            System.out.println("C'est le tour de "+ partie.getJoueurCourant());
 
             // System.out.println(premierParser.toString());
 

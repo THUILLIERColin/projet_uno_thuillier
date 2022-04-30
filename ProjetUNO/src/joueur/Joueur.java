@@ -86,8 +86,10 @@ public class Joueur {
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
             throw new IllegalArgumentException("Erreur le joueur n'est pas celui qui doit jouer");
+        System.out.println(""+ this+" joue le" + carte);
         partie.ajouterDansTas(carte);
         laMain.remove(carte);
+        partie.Suivant();
     }
 
     /*
