@@ -125,6 +125,10 @@ public class Partie {
         return cartesPioche;
     }
 
+    public ArrayList<Carte> getLaPioche() {
+        return laPioche;
+    }
+
     /*
             POUR LES CARTES DU TAS
      */

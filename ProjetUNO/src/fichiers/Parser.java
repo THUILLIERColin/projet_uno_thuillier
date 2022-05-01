@@ -37,7 +37,7 @@ public abstract class Parser {
 
     }
 
-    public Carte.Color extractColor(String ligne) {
+    public static Carte.Color extractColor(String ligne) {
         Carte.Color couleur = null;
 
         switch (ligne.split(";")[1]) { //récupère la couleur de la carte

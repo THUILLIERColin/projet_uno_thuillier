@@ -44,19 +44,45 @@ public class TestCarteSimple {
             System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
             System.out.println("Alice possede "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
 
-            Joueur joueurCourant = partie.getJoueurCourant();
+            Joueur joueurAyantJoue= partie.getJoueurCourant();
+            // Faire une variable joueurAyantJoue dans Partie ???
+
             try{
-                joueurCourant.jouer(joueurCourant.getCarte(0));
+                partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
             }catch (Exception e){
                 System.out.println(e);
             }
 
-            System.out.println("Alice possède : "+ joueurCourant.TailleDeLaMain()+" cartes");
-            System.out.println("Alice a la main : " + joueurCourant.getLaMain());
+            /*
+                    juste après avoir joué le joueur suivant devient Bob donc pour voir la mains de Alice
+                    on ne peut plus utiliser partie.getJoueurCourant()
+             */
+
+            System.out.println(""+joueurAyantJoue+" possède : "+ joueurAyantJoue.TailleDeLaMain()+" cartes");
+            System.out.println("Alice a la main : " + joueurAyantJoue.getLaMain());
             System.out.println("La premiere carte est :" + partie.getPremiereCarte());
             System.out.println("Le nombre de cartes du tas est "+ partie.getTailleTas());
             System.out.println("Alice a fini");
             System.out.println("C'est le tour de "+ partie.getJoueurCourant());
+
+            System.out.println("\n"+partie.getJoueurCourant()+" possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
+
+            joueurAyantJoue= partie.getJoueurCourant();
+            try{
+                partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
+            }catch (Exception e){
+                System.out.println(e);
+            }
+
+
+            System.out.println("Bob possède : "+ joueurAyantJoue.TailleDeLaMain()+" cartes");
+            System.out.println("Bob a la main : " + joueurAyantJoue.getLaMain());
+            System.out.println("La premiere carte est :" + partie.getPremiereCarte());
+            System.out.println("Le nombre de cartes du tas est "+ partie.getTailleTas());
+            System.out.println("Bob a fini");
+            System.out.println("C'est le tour de "+ partie.getJoueurCourant());
+
+            System.out.println("la pioche : "+ partie.getLaPioche());
 
             // System.out.println(premierParser.toString());
 
