@@ -25,6 +25,7 @@ public class Partie {
     private static volatile Partie instance= null;
 
     private Joueur joueurCourant;
+    private boolean JoueurAJoue=false;
 
     private Partie() {}
 
@@ -129,6 +130,10 @@ public class Partie {
         return laPioche;
     }
 
+    public Carte getPremiereCartePioche(){
+        return laPioche.get(0);
+    }
+
     /*
             POUR LES CARTES DU TAS
      */
@@ -137,18 +142,22 @@ public class Partie {
         return leTas;
     }
 
-    public Carte getPremiereCarte(){
+    public Carte getPremiereCarteTas(){
         return leTas.get(leTas.size()-1);
     }
 
     public void ajouterDansTas(Carte carte) throws Exception {
         if(!expert.traiter(carte))
-            throw new CartesValideException("Cout invalide",carte); // try catch
+            throw new CartesValideException("Cout invalide, la carte "+ carte +" ne peut pas etre pose sur " + getPremiereCarteTas() , joueurCourant, carte);
         leTas.add(carte);
     }
 
     public int getTailleTas(){
         return leTas.size();
+    }
+
+    public void removeCarteTas(Carte carte){
+        leTas.remove(carte);
     }
 
     /*
@@ -184,6 +193,14 @@ public class Partie {
         {
             joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)+1);
         }
+    }
+
+    public void setJoueurAJoue(boolean joueurAJoue) {
+        JoueurAJoue = joueurAJoue;
+    }
+
+    public boolean getJoueurAJoue() {
+        return JoueurAJoue;
     }
 
     /*

@@ -37,12 +37,12 @@ public class ExpertCarteSimpleSurCarteSimple extends Expert{
         Partie partie = Partie.getInstance();
 
         CarteSimple carteJoueur = (CarteSimple) carte;
-        CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarte() ;
+        CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarteTas() ;
         if(partie.getJoueurCourant().doitDireUno() && !partie.getJoueurCourant().getUno())
             throw new UnoException("Ce joueur possede une carte et n'a pas dit UNO",partie.getJoueurCourant());
         if(partie.getJoueurCourant().doitDireUno() && partie.getJoueurCourant().getUno())
             throw new UnoException("",partie.getJoueurCourant());
-        if(carte.getCouleur() == super.getPartie().getPremiereCarte().getCouleur())
+        if(carte.getCouleur() == super.getPartie().getPremiereCarteTas().getCouleur())
                 return true;
         else
         {
@@ -56,7 +56,7 @@ public class ExpertCarteSimpleSurCarteSimple extends Expert{
 
     @Override
     public boolean analyse(Carte cartes) {
-        if(cartes instanceof CarteSimple && super.getPartie().getPremiereCarte() instanceof CarteSimple)
+        if(cartes instanceof CarteSimple && super.getPartie().getPremiereCarteTas() instanceof CarteSimple)
             return true;
         return false;
     }
