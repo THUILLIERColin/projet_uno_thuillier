@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ede0efc-1f2e-4d51-8b76-8a1d9e116368" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/TestCartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCartePasser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCarteSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/ExpertCartePasserCartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/ExpertCartePasserCartePasser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
