@@ -1,6 +1,6 @@
 package test;
 
-import expert.ExpertCarteSimpleSurCarteSimple;
+import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
 import fichiers.ParserCarteSimple;
@@ -26,7 +26,7 @@ public class TestPunition {
 
             Fichier.lire(nomDuFichier, premierParser);
 
-            partie.setExpert(new ExpertCarteSimpleSurCarteSimple(null));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(null));
 
             partie.initialisationPartie(3);
 
