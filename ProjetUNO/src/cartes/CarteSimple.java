@@ -47,7 +47,7 @@ public class CarteSimple extends Carte {
 
     @Override
     public String toString() {
-        return "\n" + numero + " "+super.getCouleur();
+        return "" + numero + " "+super.getCouleur();
     }
 
     @Override
