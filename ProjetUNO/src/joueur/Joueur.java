@@ -68,9 +68,13 @@ public class Joueur {
             FONCTION POUR JOUER
      */
 
-    public void disUNO() throws UnoException{
-        if(doitDireUno())
+    public void disUNO() throws JoueurException, UnoException{
+        if(this != Partie.getInstance().getJoueurCourant())
+            throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
+        if(doitDireUno()) {
             this.uno=true;
+            System.out.println("UNOOOO !!!!");
+        }
         else{
             throw new UnoException("Le joueur "+ this +"possède plus d'une cartes",this);
         }
@@ -82,7 +86,7 @@ public class Joueur {
             throw new JoueurException("Erreur : tu as deja joue", this);
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
-        laMain.add(partie.prendre());
+        laMain.add(partie.prendrePioche());
         partie.setJoueurAJoue(true);
     }
 
@@ -104,6 +108,8 @@ public class Joueur {
             throw new JoueurException("Ce n'est pas ton tour", this);
         if(!partie.getJoueurAJoue())
             throw new JoueurException(""+ this +" tu n'as pas encore joue", this);
+        if(doitDireUno() && !uno)
+            throw new UnoException("Le joueur n'a pas dit UNO", this);
         System.out.println(this+ " a fini");
         partie.Suivant();
         partie.setJoueurAJoue(false);
@@ -111,10 +117,15 @@ public class Joueur {
 
     public void punir(Exception e){
         Partie partie = Partie.getInstance();
-        laMain.add(partie.prendre());
-        laMain.add(partie.prendre());
+        laMain.add(partie.prendrePioche());
+        laMain.add(partie.prendrePioche());
         if(e instanceof CartesValideException)
             partie.Suivant();
+        if(e instanceof UnoException){
+            laMain.add(partie.getPremiereCarteTas());
+            partie.removeCarteTas(partie.getPremiereCarteTas());
+            partie.Suivant();
+        }
     }
 
     /*

@@ -120,7 +120,7 @@ public class Partie {
             POUR LES CARTES DE PIOCHE
      */
 
-    public Carte prendre(){
+    public Carte prendrePioche(){
         Carte cartesPioche= laPioche.get(0);
         laPioche.remove(cartesPioche);
         return cartesPioche;
