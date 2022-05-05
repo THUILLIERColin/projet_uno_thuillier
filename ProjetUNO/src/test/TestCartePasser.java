@@ -1,8 +1,11 @@
 package test;
 
+import expert.ExpertCartePasserCartePasser;
+import expert.ExpertCartePasserCarteSimple;
 import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
+import fichiers.ParserCartePasser;
 import fichiers.ParserCarteSimple;
 import partie.Partie;
 
@@ -11,14 +14,14 @@ public class TestCartePasser {
         try {
             Partie partie = Partie.getInstance();
 
-            String nomDuFichier = "/JeuTestCarteSimple.csv";
+            String nomDuFichier = "/JeuTestCartePasser.csv";
             nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
-            Parser premierParser = new ParserCarteSimple(null);
+            Parser premierParser = new ParserCarteSimple(new ParserCartePasser(null));
 
             Fichier.lire(nomDuFichier, premierParser);
 
-            partie.setExpert(new ExpertCarteSimpleCarteSimple(null));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser( new ExpertCartePasserCarteSimple(null))));
 
             partie.initialisationPartie(3);
 
@@ -26,38 +29,28 @@ public class TestCartePasser {
                     TEST 1 : ALICE
              */
 
+            System.out.println("\n---------------------------------\nTEST 1 : Passer\n");
+
             System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
-            System.out.println(""+partie.getJoueurCourant()+" possede "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
-
 
             try{
                 partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-                System.out.println(""+partie.getJoueurCourant()+" possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
-                System.out.println("Alice a la main : " + partie.getJoueurCourant().getLaMain());
-                System.out.println("La premiere carte est :" + partie.getPremiereCarteTas());
-                System.out.println("Le nombre de cartes du tas est "+ partie.getTailleTas());
                 partie.getJoueurCourant().finirTour();
-                System.out.println("C'est le tour de "+ partie.getJoueurCourant());
-
-            }catch (Exception e){
-                System.out.println(e);
-            }
-
-            /*
-                    TEST 2 : BOB
-             */
-
-            System.out.println("\n---------------------------------\nTEST 2 : BOB\n");
-            System.out.println("\n"+partie.getJoueurCourant()+" possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
-
-            try{
-                partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-                System.out.println("Bob possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
-                System.out.println("Bob a la main : " + partie.getJoueurCourant().getLaMain());
+                System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
                 System.out.println("La premiere carte est :" + partie.getPremiereCarteTas());
-                System.out.println("Le nombre de cartes du tas est "+ partie.getTailleTas());
+
+                System.out.println("");
+                partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
                 partie.getJoueurCourant().finirTour();
-                System.out.println("C'est le tour de "+ partie.getJoueurCourant());
+                System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
+                System.out.println("La premiere carte est :" + partie.getPremiereCarteTas());
+
+                System.out.println("");
+                partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
+                partie.getJoueurCourant().finirTour();
+                System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
+                System.out.println("La premiere carte est :" + partie.getPremiereCarteTas());
+
             }catch (Exception e){
                 System.out.println(e);
             }

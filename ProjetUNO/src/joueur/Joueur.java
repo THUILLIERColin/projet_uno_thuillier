@@ -95,9 +95,8 @@ public class Joueur {
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(partie.getJoueurAJoue())
-            throw new JoueurException("Erreur ce joueur a deja joue", this);
-        System.out.println(""+ this+" joue le" + carte);
-        carte.effet();
+            throw new JoueurException("Erreur ce joueur a deja joue ", this);
+        System.out.println(""+ this+" joue le " + carte);
         partie.ajouterDansTas(carte);
         laMain.remove(carte);
         partie.setJoueurAJoue(true);
@@ -106,12 +105,13 @@ public class Joueur {
     public void finirTour() throws Exception{
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
-            throw new JoueurException("Ce n'est pas ton tour", this);
+            throw new JoueurException("Ce n'est pas ton tour ", this);
         if(!partie.getJoueurAJoue())
-            throw new JoueurException(""+ this +" tu n'as pas encore joue", this);
+            throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
         if(doitDireUno() && !uno)
-            throw new UnoException("Le joueur n'a pas dit UNO", this);
-        System.out.println(this+ " a fini");
+            throw new UnoException("Le joueur n'a pas dit UNO ", this);
+        System.out.println(this+ " a fini ");
+        partie.getPremiereCarteTas().effet();
         partie.Suivant();
         partie.setJoueurAJoue(false);
     }

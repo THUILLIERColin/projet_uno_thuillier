@@ -11,11 +11,15 @@ public class CartePasser extends Carte {
     public void joueurSuivant(){
         Partie partie = Partie.getInstance();
         partie.Suivant();
-        partie.Suivant();
     }
 
     @Override
     public void effet() throws Exception {
         joueurSuivant();
+    }
+
+    @Override
+    public String toString() {
+        return "CartePasser "+ getCouleur();
     }
 }

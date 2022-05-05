@@ -186,12 +186,26 @@ public class Partie {
      */
 
     public void Suivant(){
-        if(sens==SENS_INVERSE){
-            joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)-1);
+        if(getIndiceJoueur(joueurCourant) == lesJoueurs.size()-1){
+            if(sens==SENS_INVERSE){
+                joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)-1);
+            }
+            else
+            {
+                joueurCourant= lesJoueurs.get(0);
+            }
         }
-        else
-        {
-            joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)+1);
+        else{
+            if(sens==SENS_INVERSE){
+                if(getIndiceJoueur(joueurCourant) == 0)
+                    joueurCourant= lesJoueurs.get(lesJoueurs.size()-1-1);
+                else
+                joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)-1);
+            }
+            else
+            {
+                joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)+1);
+            }
         }
     }
 
