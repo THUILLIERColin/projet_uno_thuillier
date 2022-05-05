@@ -1,6 +1,7 @@
 package joueur;
 
 import cartes.Carte;
+import cartes.CartePlus2;
 import exceptions.CartesValideException;
 import exceptions.JoueurException;
 import exceptions.UnoException;
@@ -86,7 +87,16 @@ public class Joueur {
             throw new JoueurException("Erreur : tu as deja joue", this);
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
-        laMain.add(partie.prendrePioche());
+        /*if(partie.getPremiereCarteTas() instanceof CartePlus2){
+            int nbPlus2 = ((CartePlus2) partie.getPremiereCarteTas()).getNbPlus2Pose()
+            for(int i=0; i< 2*nbPlus2; i++)
+                Partie.getInstance().getJoueurCourant().laMain.add(partie.prendrePioche());
+
+        }
+        else
+        {*/
+            laMain.add(partie.prendrePioche());
+        //}
         partie.setJoueurAJoue(true);
     }
 
@@ -111,7 +121,8 @@ public class Joueur {
         if(doitDireUno() && !uno)
             throw new UnoException("Le joueur n'a pas dit UNO ", this);
         System.out.println(this+ " a fini ");
-        partie.getPremiereCarteTas().effet();
+        if(partie.getPremiereCarteTas() instanceof CartePlus2 && !partie.getJoueurAJoue())
+            partie.getPremiereCarteTas().effet();
         partie.Suivant();
         partie.setJoueurAJoue(false);
     }

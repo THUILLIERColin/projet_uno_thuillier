@@ -1,13 +1,13 @@
 package cartes;
 
-public class ChangerCouleur extends Carte {
+public class CarteChangerCouleur extends Carte {
 
     private Color couleurChanger;
 
     /*
             CONSTRUCTEUR
      */
-    public ChangerCouleur() {
+    public CarteChangerCouleur() {
         super(Color.NOIR);
     }
 

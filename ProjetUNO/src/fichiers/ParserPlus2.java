@@ -1,6 +1,6 @@
 package fichiers;
 
-import cartes.Plus2;
+import cartes.CartePlus2;
 import cartes.Carte;
 import cartes.Carte.Color;
 
@@ -12,7 +12,7 @@ public class ParserPlus2 extends Parser {
     @Override
     public Carte parser(String ligne) throws Exception {
         Color couleur = extractColor(ligne);
-        return new Plus2(couleur); //Création de la carte
+        return new CartePlus2(couleur); //Création de la carte
     }
 
     @Override

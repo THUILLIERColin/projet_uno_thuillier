@@ -1,8 +1,7 @@
 package fichiers;
 
-import cartes.ChangerCouleur;
+import cartes.CarteChangerCouleur;
 import cartes.Carte;
-import cartes.Carte.Color;
 
 public class ParserChangerCouleur extends Parser {
     public ParserChangerCouleur(Parser suivant) {
@@ -11,7 +10,7 @@ public class ParserChangerCouleur extends Parser {
 
     @Override
     public Carte parser(String ligne) throws Exception {
-        return new ChangerCouleur(); //Création de la carte
+        return new CarteChangerCouleur(); //Création de la carte
     }
 
     @Override

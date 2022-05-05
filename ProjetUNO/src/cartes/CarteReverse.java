@@ -1,16 +1,16 @@
 package cartes;
 
-public class Reverse extends Carte {
+public class CarteReverse extends Carte {
     @Override
     public void effet() throws Exception {
 
     }
     //CONSTRUCTEUR
-    public Reverse(Color c) {
+    public CarteReverse(Color c) {
         super(c);
     }
 
-    public Reverse(Reverse r){
+    public CarteReverse(CarteReverse r){
         super(r.getCouleur());
     }
 
@@ -18,7 +18,7 @@ public class Reverse extends Carte {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Reverse that = (Reverse) o;
+        CarteReverse that = (CarteReverse) o;
         return super.getCouleur()==that.getCouleur();
     }
 

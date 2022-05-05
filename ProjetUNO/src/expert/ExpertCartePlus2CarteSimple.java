@@ -1,7 +1,7 @@
 package expert;
 
 import cartes.Carte;
-import cartes.Plus2;
+import cartes.CartePlus2;
 import cartes.CarteSimple;
 import partie.Partie;
 
@@ -22,8 +22,8 @@ public class ExpertCartePlus2CarteSimple extends Expert{
 
     @Override
     public boolean analyse(Carte carte) {
-        if(carte instanceof Plus2 && super.getPartie().getPremiereCarteTas() instanceof CarteSimple
-                || carte instanceof CarteSimple && super.getPartie().getPremiereCarteTas() instanceof Plus2)
+        if(carte instanceof CartePlus2 && super.getPartie().getPremiereCarteTas() instanceof CarteSimple
+                || carte instanceof CarteSimple && super.getPartie().getPremiereCarteTas() instanceof CartePlus2)
             return true;
         return false;
     }
