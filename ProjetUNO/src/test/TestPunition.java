@@ -43,13 +43,8 @@ public class TestPunition {
                 partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
                 System.out.println(""+partie.getJoueurCourant()+" possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
             }catch (Exception e){
-                System.out.println(e);
+                System.out.println("\nATTENTION " + e.getMessage()+"\n");
                 partie.getJoueurCourant().punir(e);
-                /*
-                Vérifier que Bob est le joueur courant
-                Vérifier que Alice possède 5 cartes dont le « 6 jaune » et le « 4 rouge » (les 2 cartes de la pioche)
-                Vérifier que la prochaine carte de la pioche est le « 2 vert »
-                 */
                 System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
                 System.out.println(""+partie.getJoueur(0)+" possede "+ partie.getJoueur(0).TailleDeLaMain()+" cartes");
                 System.out.println("Alice a la main : " + partie.getJoueur(0).getLaMain());
@@ -71,7 +66,7 @@ public class TestPunition {
                 partie.getJoueur(1).piocher();
                 System.out.println("Bob possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
             }catch (Exception e){
-                System.out.println(e);
+                System.out.println("\nATTENTION " + e.getMessage()+"\n");
                 partie.getJoueur(1).punir(e);
                 System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
                 System.out.println("Bob a la main : " + partie.getJoueur(1).getLaMain());
