@@ -16,16 +16,25 @@ public class ExpertCartePasserSurCarteSimple extends Expert{
     public boolean expertise(Carte carte) throws Exception {
         Partie partie = Partie.getInstance();
 
-        CartePasser carteJoueur = (CartePasser) carte;
-        CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarteTas();
-        if ((carte.getCouleur() == super.getPartie().getPremiereCarteTas().getCouleur()))
-            return true;
+        if(carte instanceof CartePasser && super.getPartie().getPremiereCarteTas() instanceof CarteSimple){
+            CartePasser carteJoueur = (CartePasser) carte;
+            CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarteTas();
+            if ((carte.getCouleur() == super.getPartie().getPremiereCarteTas().getCouleur()))
+                return true;
+        }
+        if(carte instanceof CarteSimple && super.getPartie().getPremiereCarteTas() instanceof CartePasser) {
+            CarteSimple carteJoueur = (CarteSimple) carte;
+            CartePasser carteTas = (CartePasser) super.getPartie().getPremiereCarteTas();
+            if ((carte.getCouleur() == super.getPartie().getPremiereCarteTas().getCouleur()))
+                return true;
+        }
         return false;
     }
 
     @Override
-    public boolean analyse(Carte cartes) {
-        if(cartes instanceof CartePasser && super.getPartie().getPremiereCarteTas() instanceof CarteSimple)
+    public boolean analyse(Carte carte) {
+        if(carte instanceof CartePasser && super.getPartie().getPremiereCarteTas() instanceof CarteSimple
+                || carte instanceof CarteSimple && super.getPartie().getPremiereCarteTas() instanceof CartePasser)
             return true;
         return false;
     }
