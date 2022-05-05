@@ -40,7 +40,7 @@ public class TestCarteSimple {
                 System.out.println("C'est le tour de "+ partie.getJoueurCourant());
 
             }catch (Exception e){
-                System.out.println(e);
+                System.out.println("\nATTENTION " + e.getMessage()+"\n");
             }
 
 
@@ -60,7 +60,7 @@ public class TestCarteSimple {
                 partie.getJoueurCourant().finirTour();
                 System.out.println("C'est le tour de "+ partie.getJoueurCourant());
             }catch (Exception e){
-                System.out.println(e);
+                System.out.println("\nATTENTION " + e.getMessage()+"\n");
             }
 
         } catch (IllegalArgumentException e) {
