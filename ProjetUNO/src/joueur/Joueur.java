@@ -97,6 +97,7 @@ public class Joueur {
         if(partie.getJoueurAJoue())
             throw new JoueurException("Erreur ce joueur a deja joue", this);
         System.out.println(""+ this+" joue le" + carte);
+        carte.effet();
         partie.ajouterDansTas(carte);
         laMain.remove(carte);
         partie.setJoueurAJoue(true);
