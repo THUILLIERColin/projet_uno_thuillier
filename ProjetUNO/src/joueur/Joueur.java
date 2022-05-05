@@ -76,7 +76,6 @@ public class Joueur {
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(doitDireUno()) {
             this.uno=true;
-            System.out.println("UNOOOO !!!!");
         }
         else{
             throw new UnoException("Le joueur "+ this +"possède plus d'une cartes",this);

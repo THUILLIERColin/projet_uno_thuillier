@@ -12,7 +12,7 @@ public class TestPunition {
         try {
             Partie partie = Partie.getInstance();
 
-            String nomDuFichier = "/JeuTestCarteSimple.csv";
+            String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
             nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
             Parser premierParser = new ParserCarteSimple(null);

@@ -9,14 +9,12 @@ import fichiers.ParserCarteSimple;
 import joueur.Joueur;
 import partie.Partie;
 
-import static java.lang.System.exit;
-
 public class TestCarteSimpleIllegale {
 
     private static void Test1(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimple.csv";
+        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -50,7 +48,7 @@ public class TestCarteSimpleIllegale {
     private static void Test2(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimple.csv";
+        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -93,7 +91,7 @@ public class TestCarteSimpleIllegale {
     private static void Test3(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimple.csv";
+        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -125,7 +123,7 @@ public class TestCarteSimpleIllegale {
     private static void Test4(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimple.csv";
+        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);

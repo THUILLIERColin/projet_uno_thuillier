@@ -9,6 +9,8 @@ import fichiers.ParserCarteSimple;
 import joueur.Joueur;
 import partie.Partie;
 
+import static java.lang.System.exit;
+
 public class TestDisUno {
     private static void Test1(){
         /*
@@ -16,7 +18,7 @@ public class TestDisUno {
          */
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimple.csv";
+        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -29,7 +31,7 @@ public class TestDisUno {
         Joueur bob = new Joueur("Bob");
         Joueur charles = new Joueur("Charles");
 
-        partie.initialisationPartie(3);
+        partie.initialisationPartie(2);
 
         int NbTestPasse=0,NbTest=0;
 
@@ -37,16 +39,19 @@ public class TestDisUno {
 
         if(partie.getJoueurCourant()==alice) NbTestPasse++; NbTest++;
         if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++; NbTest++;
-
         try{
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));NbTestPasse++; NbTest++;//alice joue le 2 Vert
+            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));//alice joue le 2 Vert
             partie.getJoueurCourant().disUNO();//alice dit uno
-            if(partie.getJoueurCourant().getUno())NbTestPasse++; NbTest++;//verification de uno
+            if(partie.getJoueurCourant().getUno())NbTestPasse++;NbTest++;//verification de uno
             partie.getJoueurCourant().finirTour(); //Alice fini le tour
 
-            if(partie.getJoueurCourant().TailleDeLaMain()==1)NbTestPasse++; NbTest++;//verification que alice a que 1 carte
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++; NbTest++;//verification 1er carte tas = 2vert
-            if(partie.getJoueurCourant()==bob) NbTestPasse++; NbTest++;
+            if(alice.TailleDeLaMain()==1)NbTestPasse++;
+            else System.out.println("Erreur : taille");
+            NbTest++;//verification que alice a que 1 carte
+            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++;
+            else System.out.println("Erreur : premiereCarteTas"); ; NbTest++;//verification 1er carte tas = 2vert
+            if(partie.getJoueurCourant()==bob) NbTestPasse++;
+            else System.out.println("Erreur : JoueurCourant"); NbTest++;
         }catch(Exception e){
             System.out.println("\nATTENTION " + e.getMessage()+"\n");
         }
@@ -60,7 +65,7 @@ public class TestDisUno {
          */
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimple.csv";
+        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -73,7 +78,7 @@ public class TestDisUno {
         Joueur bob = new Joueur("Bob");
         Joueur charles = new Joueur("Charles");
 
-        partie.initialisationPartie(3);
+        partie.initialisationPartie(2);
 
         int NbTestPasse=0,NbTest=0;
 
@@ -81,13 +86,12 @@ public class TestDisUno {
 
         try{
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            if(partie.getJoueurCourant().TailleDeLaMain()==4)NbTestPasse++; NbTest++;
-            if(partie.getJoueurCourant()==bob) NbTestPasse++; NbTest++;
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPasse++; NbTest++;
+            partie.getJoueurCourant().finirTour();
         }catch (Exception e){
-            if(!partie.getJoueurCourant().getUno() && partie.getJoueurCourant().TailleDeLaMain()==1){
-                partie.getJoueurCourant().punir(e);
-            }
+            alice.punir(e);
+            if(alice.TailleDeLaMain()==4)NbTestPasse++; NbTest++;
+            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPasse++; NbTest++;
+            if(partie.getJoueurCourant()==bob) NbTestPasse++; NbTest++;
         }
 
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
@@ -95,7 +99,7 @@ public class TestDisUno {
     private static void Test3(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimple.csv";
+        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -108,7 +112,7 @@ public class TestDisUno {
         Joueur bob = new Joueur("Bob");
         Joueur charles = new Joueur("Charles");
 
-        partie.initialisationPartie(3);
+        partie.initialisationPartie(2);
 
         int NbTestPasse=0,NbTest=0;
 
