@@ -20,6 +20,6 @@ public class CartePasser extends Carte {
 
     @Override
     public String toString() {
-        return "CartePasser "+ getCouleur();
+        return "Passe ton tour "+ getCouleur();
     }
 }
