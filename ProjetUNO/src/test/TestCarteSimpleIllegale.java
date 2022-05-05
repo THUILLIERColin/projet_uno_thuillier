@@ -79,15 +79,11 @@ public class TestCarteSimpleIllegale {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
             if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
             NbTest++;
-            System.out.println("lol");
 
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
         }catch (Exception e){
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
-            NbTest++;
-
-            System.out.println(""+partie.getJoueurCourant().getLaMain());
+            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;NbTest++;
             if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7)))NbTestPasse++;NbTest++;
         }
 
