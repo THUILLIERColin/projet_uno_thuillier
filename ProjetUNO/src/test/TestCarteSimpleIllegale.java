@@ -1,13 +1,9 @@
 package test;
 
-import exceptions.CartesValideException;
-import exceptions.JoueurException;
-import exceptions.UnoException;
 import expert.*;
 import fichiers.Fichier;
 import fichiers.Parser;
 import fichiers.ParserCarteSimple;
-import joueur.Joueur;
 import partie.Partie;
 
 public class TestCarteSimpleIllegale {
@@ -40,7 +36,7 @@ public class TestCarteSimpleIllegale {
                     TEST AFFICHAGE CARTE : OK
              */
 
-            partie.setExpert(new ExpertCarteSimpleSurCarteSimple(null));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(null));
 
             partie.initialisationPartie(3);
 

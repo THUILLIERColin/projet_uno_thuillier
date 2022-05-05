@@ -3,12 +3,11 @@ package expert;
 import cartes.Carte;
 import cartes.CartePasser;
 import cartes.CarteSimple;
-import exceptions.UnoException;
 import partie.Partie;
 
-public class ExpertCartePasserSurCarteSimple extends Expert{
+public class ExpertCartePasserCarteSimple extends Expert{
 
-    public ExpertCartePasserSurCarteSimple(Expert suivant){
+    public ExpertCartePasserCarteSimple(Expert suivant){
         super(suivant);
     }
 

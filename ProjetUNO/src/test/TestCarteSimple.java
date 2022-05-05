@@ -1,6 +1,6 @@
 package test;
 
-import expert.ExpertCarteSimpleSurCarteSimple;
+import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
 import fichiers.ParserCarteSimple;
@@ -36,7 +36,7 @@ public class TestCarteSimple {
                     TEST AFFICHAGE CARTE : OK
              */
 
-            partie.setExpert(new ExpertCarteSimpleSurCarteSimple(null));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(null));
 
             partie.initialisationPartie(3);
 
