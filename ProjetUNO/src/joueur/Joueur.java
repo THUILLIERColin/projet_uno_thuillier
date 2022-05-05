@@ -109,6 +109,14 @@ public class Joueur {
         partie.setJoueurAJoue(false);
     }
 
+    public void punir(Exception e){
+        Partie partie = Partie.getInstance();
+        laMain.add(partie.prendre());
+        laMain.add(partie.prendre());
+        if(e instanceof CartesValideException)
+            partie.Suivant();
+    }
+
     /*
            TO STRING
      */
