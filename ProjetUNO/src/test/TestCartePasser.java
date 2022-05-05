@@ -7,6 +7,7 @@ import fichiers.Fichier;
 import fichiers.Parser;
 import fichiers.ParserCartePasser;
 import fichiers.ParserCarteSimple;
+import joueur.Joueur;
 import partie.Partie;
 
 public class TestCartePasser {
@@ -23,15 +24,22 @@ public class TestCartePasser {
 
             partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser( new ExpertCartePasserCarteSimple(null))));
 
+            Joueur alice = new Joueur("Alice");
+            Joueur bob = new Joueur("Bob");
+            Joueur charles = new Joueur("Charles");
+
             partie.initialisationPartie(3);
 
             /*
                     TEST 1 : PASSER
-
+            */
 
             System.out.println("\n---------------------------------\nTEST 1 : Passer\n");
 
-            System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
+            System.out.println(""+partie.getJoueurCourant());
+            System.out.println("La ca doit marcher");
+            if(partie.getJoueurCourant().toString()==""+"Alice")
+                System.out.println("OUI");
 
             try{
                 partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));

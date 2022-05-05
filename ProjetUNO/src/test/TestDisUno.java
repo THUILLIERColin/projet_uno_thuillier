@@ -4,6 +4,7 @@ import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
 import fichiers.ParserCarteSimple;
+import joueur.Joueur;
 import partie.Partie;
 
 public class TestDisUno {
@@ -19,6 +20,11 @@ public class TestDisUno {
             Fichier.lire(nomDuFichier, premierParser);
 
             partie.setExpert(new ExpertCarteSimpleCarteSimple(null));
+
+            Joueur alice = new Joueur("Alice");
+            Joueur bob = new Joueur("Bob");
+            Joueur charles = new Joueur("Charles");
+
             partie.initialisationPartie(2);
 
             /*

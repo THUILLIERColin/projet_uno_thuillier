@@ -1,5 +1,7 @@
 package cartes;
 
+import java.util.Objects;
+
 public class CarteSimple extends Carte {
     private int numero;
 
@@ -37,12 +39,19 @@ public class CarteSimple extends Carte {
     /*
             EQUALS + TOSTRING
      */
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         CarteSimple that = (CarteSimple) o;
-        return numero == that.numero && super.getCouleur()==that.getCouleur();
+        return numero == that.numero;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero);
     }
 
     @Override

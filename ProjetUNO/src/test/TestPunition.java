@@ -4,6 +4,7 @@ import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
 import fichiers.ParserCarteSimple;
+import joueur.Joueur;
 import partie.Partie;
 
 public class TestPunition {
@@ -27,6 +28,10 @@ public class TestPunition {
             Fichier.lire(nomDuFichier, premierParser);
 
             partie.setExpert(new ExpertCarteSimpleCarteSimple(null));
+
+            Joueur alice = new Joueur("Alice");
+            Joueur bob = new Joueur("Bob");
+            Joueur charles = new Joueur("Charles");
 
             partie.initialisationPartie(3);
 

@@ -8,6 +8,7 @@ import exceptions.UnoException;
 import partie.Partie;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Joueur {
     private String nom;
@@ -20,6 +21,7 @@ public class Joueur {
 
     public Joueur(String nom){
         setNom(nom);
+        Partie.getInstance().ajouterJoueurs(this);
     }
 
     public void setNom(String nom) {
@@ -81,9 +83,11 @@ public class Joueur {
         }
     }
 
+    // FONCTION ENCAISSER 2
+
     public void piocher() throws Exception{
         Partie partie = Partie.getInstance();
-        if(partie.getJoueurAJoue())
+        if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur : tu as deja joue", this);
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
@@ -104,9 +108,8 @@ public class Joueur {
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
-        if(partie.getJoueurAJoue())
+        if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur ce joueur a deja joue ", this);
-        System.out.println(""+ this+" joue le " + carte);
         partie.ajouterDansTas(carte);
         laMain.remove(carte);
         partie.setJoueurAJoue(true);
@@ -116,12 +119,11 @@ public class Joueur {
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Ce n'est pas ton tour ", this);
-        if(!partie.getJoueurAJoue())
+        if(!partie.getSiJoueurAJoue())
             throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
         if(doitDireUno() && !uno)
             throw new UnoException("Le joueur n'a pas dit UNO ", this);
-        System.out.println(this+ " a fini ");
-        if(partie.getPremiereCarteTas() instanceof CartePlus2 && !partie.getJoueurAJoue())
+        if(partie.getPremiereCarteTas() instanceof CartePlus2 && !partie.getSiJoueurAJoue())
             partie.getPremiereCarteTas().effet();
         partie.Suivant();
         partie.setJoueurAJoue(false);
@@ -147,5 +149,18 @@ public class Joueur {
     @Override
     public String toString() {
         return ""+nom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Joueur joueur = (Joueur) o;
+        return uno == joueur.uno && Objects.equals(nom, joueur.nom) && Objects.equals(laMain, joueur.laMain);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nom, uno, laMain);
     }
 }

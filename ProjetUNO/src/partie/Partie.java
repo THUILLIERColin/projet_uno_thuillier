@@ -213,7 +213,7 @@ public class Partie {
         JoueurAJoue = joueurAJoue;
     }
 
-    public boolean getJoueurAJoue() {
+    public boolean getSiJoueurAJoue() {
         return JoueurAJoue;
     }
 
@@ -239,11 +239,12 @@ public class Partie {
      */
 
     public void initialisationPartie(int nbCartesParJoueur){
-        ajouterJoueurs(new Joueur("Alice"));
-        ajouterJoueurs(new Joueur("Bob"));
-        ajouterJoueurs(new Joueur("Charles"));
         distribuerCartes(nbCartesParJoueur);
         joueurCourant=lesJoueurs.get(0);
+    }
+
+    public void reinitialiserPartie(){
+        instance= new Partie();
     }
 
     /*
