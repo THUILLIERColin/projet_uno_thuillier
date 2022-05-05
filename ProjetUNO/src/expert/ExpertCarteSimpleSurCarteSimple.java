@@ -37,18 +37,13 @@ public class ExpertCarteSimpleSurCarteSimple extends Expert{
         Partie partie = Partie.getInstance();
 
         CarteSimple carteJoueur = (CarteSimple) carte;
-        CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarteTas() ;
-        if(partie.getJoueurCourant().doitDireUno() && !partie.getJoueurCourant().getUno())
-            throw new UnoException("Ce joueur possede une carte et n'a pas dit UNO",partie.getJoueurCourant());
-        if(partie.getJoueurCourant().doitDireUno() && partie.getJoueurCourant().getUno())
-            throw new UnoException("",partie.getJoueurCourant());
-        if(carte.getCouleur() == super.getPartie().getPremiereCarteTas().getCouleur())
-                return true;
-        else
-        {
-            if(carteJoueur.getNumero() == carteTas.getNumero())
-                return true;
-        }
+        CarteSimple carteTas = (CarteSimple) super.getPartie().getPremiereCarteTas();
+        if (partie.getJoueurCourant().doitDireUno() && !partie.getJoueurCourant().getUno())
+            throw new UnoException("Ce joueur possede une carte et n'a pas dit UNO", partie.getJoueurCourant());
+        if (partie.getJoueurCourant().doitDireUno() && partie.getJoueurCourant().getUno())
+            throw new UnoException("", partie.getJoueurCourant());
+        if ((carte.getCouleur() == super.getPartie().getPremiereCarteTas().getCouleur()) || (carteJoueur.getNumero() == carteTas.getNumero()))
+            return true;
                 // C'est un class Carte et il n'existe pas de getNumero() dedans, il faudrait convertir en CarteSimple
                 // Ou bien recevoir directement une carte simple
         return false;
