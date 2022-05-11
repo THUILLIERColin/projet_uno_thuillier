@@ -14,7 +14,7 @@ public class TestCarteSimpleIllegale {
     private static void Test1(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
+        String nomDuFichier = "/JeuTestCarteSimple.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -48,7 +48,7 @@ public class TestCarteSimpleIllegale {
     private static void Test2(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
+        String nomDuFichier = "/JeuTestCarteSimple.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -76,13 +76,18 @@ public class TestCarteSimpleIllegale {
 
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
             if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            else System.out.println("Charles ne possede pas 2 cartes");
             NbTest++;
 
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
         }catch (Exception e){
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;NbTest++;
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7)))NbTestPasse++;NbTest++;
+            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            else System.out.println("Charles ne possede pas 2 cartes");
+            NbTest++;
+            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7)))NbTestPasse++;
+            else System.out.println("Charles ne possede pas le 7 BLEU");
+            NbTest++;
         }
 
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
@@ -91,7 +96,7 @@ public class TestCarteSimpleIllegale {
     private static void Test3(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
+        String nomDuFichier = "/JeuTestCarteSimple.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
@@ -123,7 +128,7 @@ public class TestCarteSimpleIllegale {
     private static void Test4(){
         Partie partie = Partie.getInstance();
 
-        String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
+        String nomDuFichier = "/JeuTestCarteSimple.csv";
         nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
         Parser premierParser = new ParserCarteSimple(null);
