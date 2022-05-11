@@ -42,6 +42,7 @@ public class Joueur {
         return uno;
     }
 
+
     /*
             POUR LaMain
      */
@@ -90,16 +91,7 @@ public class Joueur {
             throw new JoueurException("Erreur : tu as deja joue", this);
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
-        /*if(partie.getPremiereCarteTas() instanceof CartePlus2){
-            int nbPlus2 = ((CartePlus2) partie.getPremiereCarteTas()).getNbPlus2Pose()
-            for(int i=0; i< 2*nbPlus2; i++)
-                Partie.getInstance().getJoueurCourant().laMain.add(partie.prendrePioche());
-
-        }
-        else
-        {*/
-            laMain.add(partie.prendrePioche());
-        //}
+        laMain.add(partie.prendrePioche());
         partie.setJoueurAJoue(true);
     }
 
@@ -112,6 +104,7 @@ public class Joueur {
         partie.ajouterDansTas(carte);
         laMain.remove(carte);
         partie.setJoueurAJoue(true);
+        partie.getPremiereCarteTas().effet();
     }
 
     public void finirTour() throws Exception{
@@ -122,13 +115,11 @@ public class Joueur {
             throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
         if(doitDireUno() && !uno)
             throw new UnoException("Le joueur n'a pas dit UNO ", this);
-        if(partie.getPremiereCarteTas() instanceof CartePlus2 && !partie.getSiJoueurAJoue())
-            partie.getPremiereCarteTas().effet();
         partie.Suivant();
         partie.setJoueurAJoue(false);
     }
 
-    public void punir(Exception e){
+    public void punir(Exception e) throws Exception {
         Partie partie = Partie.getInstance();
         laMain.add(partie.prendrePioche());
         laMain.add(partie.prendrePioche());
@@ -138,6 +129,21 @@ public class Joueur {
             laMain.add(partie.getPremiereCarteTas());
             partie.removeCarteTas(partie.getPremiereCarteTas());
             partie.Suivant();
+        }
+        if(e instanceof JoueurException){
+            if(partie.getPremiereCarteTas() instanceof CartePlus2);
+                prendre();
+        }
+    }
+
+    public void prendre() throws Exception {
+        Partie partie = Partie.getInstance();
+
+        if(partie.getPremiereCarteTas() instanceof CartePlus2){
+            CartePlus2 plus2 = (CartePlus2) partie.getPremiereCarteTas();
+            for (int i=0; i < plus2.getNbPlus2Pose(); i++ )
+                piocher();
+                partie.setJoueurAJoue(false);
         }
     }
 

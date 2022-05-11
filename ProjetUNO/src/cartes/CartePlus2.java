@@ -15,7 +15,12 @@ public class CartePlus2 extends Carte {
     }
 
     public int getNbPlus2Pose() {
-        return nbPlus2Pose;
+        return nbPlus2Pose*2;
+    }
+
+    @Override
+    public String toString() {
+        return "CartePlus2" + " "+ super.getCouleur();
     }
 
     @Override

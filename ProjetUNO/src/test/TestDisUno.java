@@ -37,21 +37,30 @@ public class TestDisUno {
 
         System.out.println("\n---------------------------------\nTEST 1 : ALICE UNO BON MOMENT\n");
 
-        if(partie.getJoueurCourant()==alice) NbTestPasse++; NbTest++;
-        if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++; NbTest++;
+        if(partie.getJoueurCourant()==alice) NbTestPasse++;
+        else
+            System.out.println("Le joueur courant n'est pas Alice");
+        NbTest++;
+        if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+        else
+            System.out.println("");
+        NbTest++;
         try{
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));//alice joue le 2 Vert
             partie.getJoueurCourant().disUNO();//alice dit uno
-            if(partie.getJoueurCourant().getUno())NbTestPasse++;NbTest++;//verification de uno
+            if(partie.getJoueurCourant().getUno())NbTestPasse++;
+            else
+                System.out.println("");
+            NbTest++;//verification de uno
             partie.getJoueurCourant().finirTour(); //Alice fini le tour
 
             if(alice.TailleDeLaMain()==1)NbTestPasse++;
-            else System.out.println("Erreur : taille");
+            else System.out.println("Alice ne possede pas une carte");
             NbTest++;//verification que alice a que 1 carte
             if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++;
-            else System.out.println("Erreur : premiereCarteTas"); ; NbTest++;//verification 1er carte tas = 2vert
+            else System.out.println("La premiere carte du tas n'est pas le 2 VERT"); ; NbTest++;//verification 1er carte tas = 2vert
             if(partie.getJoueurCourant()==bob) NbTestPasse++;
-            else System.out.println("Erreur : JoueurCourant"); NbTest++;
+            else System.out.println("le joueur courant n'est pas bob"); NbTest++;
         }catch(Exception e){
             System.out.println("\nATTENTION " + e.getMessage()+"\n");
         }
@@ -88,7 +97,11 @@ public class TestDisUno {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
             partie.getJoueurCourant().finirTour();
         }catch (Exception e){
-            alice.punir(e);
+            try{
+                alice.punir(e);
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
             if(alice.TailleDeLaMain()==4)NbTestPasse++; NbTest++;
             if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPasse++; NbTest++;
             if(partie.getJoueurCourant()==bob) NbTestPasse++; NbTest++;

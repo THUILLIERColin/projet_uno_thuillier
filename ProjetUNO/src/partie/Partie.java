@@ -27,6 +27,8 @@ public class Partie {
     private Joueur joueurCourant;
     private boolean JoueurAJoue=false;
 
+
+
     private Partie() {}
 
     /*
