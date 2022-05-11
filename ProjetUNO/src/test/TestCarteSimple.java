@@ -126,6 +126,7 @@ public class TestCarteSimple {
         NbTest++;
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
     }
+
     public static void main(String[] args) {
         try {
             Partie partie = Partie.getInstance();
