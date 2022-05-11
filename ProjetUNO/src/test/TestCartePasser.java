@@ -40,8 +40,6 @@ public class TestCartePasser {
         int NbTestPassee = 0, NbTest = 0;
         System.out.println("\n---------------------------------\nTEST 1 : Passer\n");
 
-        System.out.println("" + partie.getJoueurCourant());
-
         //test alice joueur courant
         if (partie.getJoueurCourant().getNom() == "Alice") {
             NbTestPassee++;
@@ -180,7 +178,7 @@ public class TestCartePasser {
         }
     }
 
-    private void Test3() {
+    private static void Test3() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCartePasser.csv";

@@ -127,9 +127,33 @@ public class TestDisUno {
 
         partie.initialisationPartie(2);
 
-        int NbTestPasse=0,NbTest=0;
+        int NbTestPassee=0,NbTest=0;
 
         System.out.println("\n---------------------------------\nTEST 3 : MAUVAIS UNO\n");
+
+        //verification Alice joueur courant
+        if (partie.getJoueurCourant().getNom() == "Alice") {
+            NbTestPassee++;
+        } else {
+            System.out.println("Alice n'est pas le joueur courant");
+        }
+        NbTest++;
+
+        try{
+            partie.getJoueur(1).getUno();
+        }catch (Exception e){
+            try{
+                bob.punir(e);NbTestPassee++; NbTest++;
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
+            if(bob.TailleDeLaMain()==4)NbTestPassee++; NbTest++;
+            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPassee++; NbTest++;
+            if(partie.getJoueurCourant().getNom()=="Alice") NbTestPassee++; NbTest++;
+        }
+
+        System.out.println("Test passé : "+NbTestPassee+"/"+NbTest);
+
     }
     public static void main(String[] args) {
         try {
