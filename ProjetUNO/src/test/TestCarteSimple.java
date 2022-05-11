@@ -2,6 +2,7 @@ package test;
 
 import cartes.Carte;
 import cartes.CarteSimple;
+import exceptions.CartesValideException;
 import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
@@ -21,24 +22,49 @@ public class TestCarteSimple {
 
         System.out.println("\n---------------------------------\nTEST 1 : ALICE\n");
 
-        if(partie.getJoueurCourant()==alice) NbTestPasse++; NbTest++;
-        if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++; NbTest++;
+        if(partie.getJoueurCourant()==alice) NbTestPasse++;
+        else
+            System.out.println("Alice n'est pas le joueur courant");
+        NbTest++;
+        if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++;
+        else
+            System.out.println("Alice ne possède pas 3 cartes");
+        NbTest++;
 
         try{
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));NbTestPasse++; NbTest++;
+            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));NbTestPasse++;            NbTest++;
 
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++; NbTest++;
+            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            else
+                System.out.println("Alice ne possede pas 2 cartes");
+            NbTest++;
 
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6)))NbTestPasse++; NbTest++;
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 1)))NbTestPasse++; NbTest++;
+            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6)))NbTestPasse++;
+            else
+                System.out.println("La carte 6 JAUNE n'est pas dans la main d'alice");
+            NbTest++;
+            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 1)))NbTestPasse++;
+            else
+                System.out.println("La carte 1 ROUGE n'est pas dans la main d'alice");
+            NbTest++;
 
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++; NbTest++;
-            if(partie.getTailleTas()==2)NbTestPasse++; NbTest++;
+            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++;
+            else
+                System.out.println("La premiere carte du tas n'est pas le 2 VERT");
+            NbTest++;
+            if(partie.getTailleTas()==2)NbTestPasse++;
+            else
+                System.out.println("Le tas ne possede pas 2 carte");
+            NbTest++;
             partie.getJoueurCourant().finirTour();
 
-            if(partie.getJoueurCourant()==bob) NbTestPasse++; NbTest++;
+            if(partie.getJoueurCourant()==bob) NbTestPasse++;
+            else
+                System.out.println("Le joueur courant n'est pas bob");
+            NbTest++;
+            NbTest++;
         }catch (Exception e){
-            System.out.println("\nATTENTION " + e.getMessage()+"\n");
+            if(e instanceof CartesValideException)NbTestPasse++;
         }
 
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
@@ -56,24 +82,48 @@ public class TestCarteSimple {
 
         System.out.println("\n---------------------------------\nTEST 2 : BOB\n");
 
-        if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++; NbTest++;
+        if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++;
+        else
+            System.out.println("Bob ne possede pas 3 cartes");
+        NbTest++;
 
         try{
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
 
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++; NbTest++;
+            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            else
+                System.out.println("Bob ne possede pas 2 cartes");NbTest++;
 
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 4)))NbTestPasse++; NbTest++;
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 9)))NbTestPasse++; NbTest++;
+            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 4)))NbTestPasse++;
+            else
+                System.out.println("La carte 4 JAUNE n'est pas dans la main de Bob");
+            NbTest++;
+            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 9)))NbTestPasse++;
+            else
+                System.out.println("La carte 9 ROUGE n'est pas dans la main de Bob");
+            NbTest++;
 
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.BLEU, 2)))NbTestPasse++; NbTest++;
+            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.BLEU, 2)))NbTestPasse++;
+            else
+                System.out.println("La carte 2 BLEU n'est pas la premiere carte du tas");
+            NbTest++;
 
-            if(partie.getTailleTas()==3)NbTestPasse++; NbTest++;
+            if(partie.getTailleTas()==3)NbTestPasse++;
+            else
+                System.out.println("Le tas n'est pas de taille 3");
+            NbTest++;
+
             partie.getJoueurCourant().finirTour();
-            if(partie.getJoueurCourant().equals(charles))NbTestPasse++; NbTest++;
+
+            if(partie.getJoueurCourant().equals(charles))NbTestPasse++;
+            else
+                System.out.println("Charles n'est pas le joueur courant");
+            NbTest++;
+
         }catch (Exception e){
-            System.out.println("\nATTENTION " + e.getMessage()+"\n");
+            if(e instanceof CartesValideException)NbTestPasse++;
         }
+        NbTest++;
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
     }
     public static void main(String[] args) {
