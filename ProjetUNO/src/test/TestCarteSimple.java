@@ -26,7 +26,7 @@ public class TestCarteSimple {
         else
             System.out.println("Alice n'est pas le joueur courant");
         NbTest++;
-        if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++;
+        if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPasse++;
         else
             System.out.println("Alice ne possède pas 3 cartes");
         NbTest++;

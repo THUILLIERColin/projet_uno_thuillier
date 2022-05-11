@@ -11,7 +11,7 @@ import partie.Partie;
 
 public class TestCarteSimpleIllegale {
 
-    private static void Test1(){
+    private static void Test1() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -29,23 +29,25 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse=0,NbTest=0;
+        int NbTestPasse = 0, NbTest = 0;
 
         System.out.println("\n---------------------------------\nTEST 1 : MAUVAISE CARTE\n");
 
-        try{
+        try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-        }catch (Exception e){
+        } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++; NbTest++;
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6)))NbTestPasse++; NbTest++;
+            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPasse++;
+            NbTest++;
+            if (partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6))) NbTestPasse++;
+            NbTest++;
         }
 
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
 
     }
 
-    private static void Test2(){
+    private static void Test2() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -63,11 +65,11 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse=0,NbTest=0;
+        int NbTestPasse = 0, NbTest = 0;
 
         System.out.println("\n---------------------------------\nTEST 2 : JOUE 2X\n");
 
-        try{
+        try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
             partie.getJoueurCourant().finirTour();
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
@@ -75,25 +77,25 @@ public class TestCarteSimpleIllegale {
             // Bob et Alice ont joué
 
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            if (partie.getJoueurCourant().TailleDeLaMain() == 2) NbTestPasse++;
             else System.out.println("Charles ne possede pas 2 cartes");
             NbTest++;
 
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-        }catch (Exception e){
+        } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            if (partie.getJoueurCourant().TailleDeLaMain() == 2) NbTestPasse++;
             else System.out.println("Charles ne possede pas 2 cartes");
             NbTest++;
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7)))NbTestPasse++;
+            if (partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7))) NbTestPasse++;
             else System.out.println("Charles ne possede pas le 7 BLEU");
             NbTest++;
         }
 
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
     }
 
-    private static void Test3(){
+    private static void Test3() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -111,21 +113,22 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse=0,NbTest=0;
+        int NbTestPasse = 0, NbTest = 0;
 
         System.out.println("\n---------------------------------\nTEST 3 : FINIR LE TOUR \n");
 
-        try{
+        try {
             partie.getJoueurCourant().finirTour();
-        }catch (Exception e){
+        } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++; NbTest++;
+            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPasse++;
+            NbTest++;
         }
 
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
     }
 
-    private static void Test4(){
+    private static void Test4() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -143,20 +146,22 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse=0,NbTest=0;
+        int NbTestPasse = 0, NbTest = 0;
 
         System.out.println("\n---------------------------------\nTEST 4 : PIOCHE\n");
 
-        try{
+        try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
             partie.getJoueurCourant().piocher();
-        }catch (Exception e){
+        } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++; NbTest++;
-            if(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.JAUNE, 6)))NbTestPasse++; NbTest++;
+            if (partie.getJoueurCourant().TailleDeLaMain() == 2) NbTestPasse++;
+            NbTest++;
+            if (partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.JAUNE, 6))) NbTestPasse++;
+            NbTest++;
         }
 
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
     }
 
 

@@ -217,7 +217,8 @@ public class TestCartePasser {
             NbTestPassee++;
             partie.getJoueurCourant().finirTour();
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(2)); NbTest++;
+            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(2));
+            NbTest++;
             NbTestPassee++;
             partie.getJoueurCourant().finirTour();
 
@@ -235,7 +236,9 @@ public class TestCartePasser {
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));NbTest++;NbTestPassee++;
+            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
+            NbTest++;
+            NbTestPassee++;
             partie.getJoueurCourant().finirTour();
         } catch (Exception e) {
             System.out.println("\nATTENTION " + e.getMessage() + "\n");
@@ -245,7 +248,7 @@ public class TestCartePasser {
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
 
-            System.out.println("Test passé : "+NbTestPassee+"/"+NbTest);
+            System.out.println("Test passé : " + NbTestPassee + "/" + NbTest);
         }
     }
 

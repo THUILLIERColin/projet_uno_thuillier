@@ -6,7 +6,7 @@ import joueur.Joueur;
 import partie.Partie;
 
 public class TestPunition {
-    public static void Test1(){
+    public static void Test1() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -31,18 +31,18 @@ public class TestPunition {
             */
 
         System.out.println("\n---------------------------------\nTEST 1 : ALICE\n");
-        System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
-        System.out.println(""+partie.getJoueurCourant()+" possede "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
+        System.out.println("Le joueur courant est " + partie.getJoueurCourant());
+        System.out.println("" + partie.getJoueurCourant() + " possede " + partie.getJoueurCourant().TailleDeLaMain() + " cartes");
 
 
-        try{
+        try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-            System.out.println(""+partie.getJoueurCourant()+" possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
-        }catch (Exception e) {
+            System.out.println("" + partie.getJoueurCourant() + " possède : " + partie.getJoueurCourant().TailleDeLaMain() + " cartes");
+        } catch (Exception e) {
             System.out.println("\nATTENTION " + e.getMessage() + "\n");
-            try{
+            try {
                 partie.getJoueurCourant().punir(e);
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
             System.out.println("Le joueur courant est " + partie.getJoueurCourant());
@@ -52,7 +52,7 @@ public class TestPunition {
         }
     }
 
-    public static void Test2(){
+    public static void Test2() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -77,24 +77,25 @@ public class TestPunition {
 
         System.out.println("\n---------------------------------\nTEST 2 : BOB\n");
 
-        System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
+        System.out.println("Le joueur courant est " + partie.getJoueurCourant());
 
-        try{
+        try {
             partie.getJoueur(1).piocher();
-            System.out.println("Bob possède : "+ partie.getJoueurCourant().TailleDeLaMain()+" cartes");
-        }catch (Exception e){
-            System.out.println("\nATTENTION " + e.getMessage()+"\n");
+            System.out.println("Bob possède : " + partie.getJoueurCourant().TailleDeLaMain() + " cartes");
+        } catch (Exception e) {
+            System.out.println("\nATTENTION " + e.getMessage() + "\n");
             try {
                 partie.getJoueur(1).punir(e);
-            }catch (Exception ex){
+            } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-            System.out.println("Le joueur courant est "+ partie.getJoueurCourant());
+            System.out.println("Le joueur courant est " + partie.getJoueurCourant());
             System.out.println("Bob a la main : " + partie.getJoueur(1).getLaMain());
-            System.out.println("La prochaine carte de la pioche est " +partie.getPremiereCartePioche());
+            System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
         }
 
     }
+
     public static void main(String[] args) {
         try {
             Partie partie = Partie.getInstance();
