@@ -124,7 +124,7 @@ public class Joueur {
         laMain.add(partie.prendrePioche());
         laMain.add(partie.prendrePioche());
         if(e instanceof CartesValideException)
-            partie.Suivant();
+            partie.Suivant();//directement dans le catch
         if(e instanceof UnoException){
             laMain.add(partie.getPremiereCarteTas());
             partie.removeCarteTas(partie.getPremiereCarteTas());

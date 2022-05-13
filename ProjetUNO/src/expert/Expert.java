@@ -20,7 +20,7 @@ public abstract class Expert {
      * @param carte la ligne à parser
      */
     public boolean traiter(Carte carte) throws Exception {
-        if (analyse(carte))
+        if (saitExpertiser(carte))
             return expertise(carte);
         else if (aUnSuivant())
             return getSuivant().traiter(carte);
@@ -55,6 +55,6 @@ public abstract class Expert {
      * @param ligne
      * @return true si la ligne est reconnue
      */
-    public abstract boolean analyse(Carte carte);
+    public abstract boolean saitExpertiser(Carte carte);
 
 }

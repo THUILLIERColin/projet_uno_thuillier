@@ -25,7 +25,7 @@ public class ExpertCarteSimpleCarteSimple extends Expert{
     }
 
     @Override
-    public boolean analyse(Carte cartes) {
+    public boolean saitExpertiser(Carte cartes) {
         if(cartes instanceof CarteSimple && super.getPartie().getPremiereCarteTas() instanceof CarteSimple)
             return true;
         return false;

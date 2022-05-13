@@ -92,8 +92,9 @@ public class TestDisUno {
         System.out.println("\nTEST 2 : OUBLIE UNO\n");
 
         try{
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            partie.getJoueurCourant().finirTour();
+            alice.jouer(alice.getCarte(0));
+            alice.finirTour();
+            //mettre 2 exeption : 1 uno et une general(ou y doit jamais aller)
         }catch (Exception e){
             try{
                 alice.punir(e);
@@ -102,7 +103,7 @@ public class TestDisUno {
             }
             if(alice.getTailleDeLaMain()==4)NbTestPasse++;
             else
-                System.out.println("Alice ne possede pas carte");
+                System.out.println("Alice ne possede pas le bon nombre de carte");
             NbTest++;
             if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPasse++;
             else

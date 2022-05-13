@@ -14,7 +14,7 @@ public class ExpertCarteReveseCarteSimple extends Expert{
     }
 
     @Override
-    public boolean analyse(Carte carte) {
+    public boolean saitExpertiser(Carte carte) {
         //return if(carte instanceof CarteReverse);
         return false;
     }
