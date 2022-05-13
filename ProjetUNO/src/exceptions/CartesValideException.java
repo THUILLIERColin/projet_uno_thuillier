@@ -3,11 +3,13 @@ package exceptions;
 import cartes.Carte;
 import joueur.Joueur;
 
-public class CartesValideException extends JoueurException{
+public class CartesValideException extends Exception{
     private Carte cartesErreur;
+    private Joueur mauvaisJoueur;
 
     public CartesValideException(String msg, Joueur mauvaisJoueur, Carte cartesErreur){
-        super(msg, mauvaisJoueur);
+        super(msg);
+        this.mauvaisJoueur=mauvaisJoueur;
         this.cartesErreur = cartesErreur;
     }
 
