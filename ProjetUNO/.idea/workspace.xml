@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6ede0efc-1f2e-4d51-8b76-8a1d9e116368" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestCartePlus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCartePlus2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +55,9 @@
       <recent name="$PROJECT_DIR$/jeux_test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestPunition">
-    <configuration name="TestCartePasser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.TestCartePasser" />
+  <component name="RunManager" selected="Application.TestCartePlus2">
+    <configuration name="TestCartePlus2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.TestCartePlus2" />
       <module name="ProjetUNO" />
       <extension name="coverage">
         <pattern>
@@ -123,11 +123,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestCartePlus2" />
         <item itemvalue="Application.TestPunition" />
         <item itemvalue="Application.TestCarteSimple" />
         <item itemvalue="Application.TestDisUno" />
         <item itemvalue="Application.TestCarteSimpleIllegale" />
-        <item itemvalue="Application.TestCartePasser" />
       </list>
     </recent_temporary>
   </component>

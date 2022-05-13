@@ -141,7 +141,7 @@ public class Joueur {
 
         if(partie.getPremiereCarteTas() instanceof CartePlus2) {
             CartePlus2 plus2 = (CartePlus2) partie.getPremiereCarteTas();
-            for(int i =0; i < partie.getCumulPlus2(); i++){
+            for(int i =0; i < partie.getCumulPlus2()*2; i++){
                 piocher();
                 partie.setJoueurAJoue(false);
             }

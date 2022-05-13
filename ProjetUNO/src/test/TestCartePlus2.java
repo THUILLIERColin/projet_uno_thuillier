@@ -33,7 +33,7 @@ public class TestCartePlus2 {
         int NbTest=0,NbTestPassee=0;
 
         //test alice joueur courant
-        if (partie.getJoueurCourant().getNom() == "Alice") {
+        if (partie.getJoueurCourant()==alice) {
             NbTestPassee++;
         } else {
             System.out.println("Alice n'est pas le joueur courant");
@@ -46,7 +46,7 @@ public class TestCartePlus2 {
             partie.getJoueurCourant().finirTour();
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant().getNom() == "Bob") {
+            if (partie.getJoueurCourant()==bob) {
                 NbTestPassee++;
             } else {
                 System.out.println("Bob n'est pas le joueur courant");
@@ -69,7 +69,7 @@ public class TestCartePlus2 {
             NbTest++;
 
             //verification Charle joueur courant
-            if (partie.getJoueurCourant().getNom() == "Charles") {
+            if (partie.getJoueurCourant()==charles) {
                 NbTestPassee++;
             } else {
                 System.out.println("Charles n'est pas le joueur courant");
@@ -81,13 +81,11 @@ public class TestCartePlus2 {
             NbTestPassee++;
             partie.getJoueurCourant().finirTour();
 
-            //test alice joueur courant
-            if (partie.getJoueurCourant().getNom() == "Alice") {
-                NbTestPassee++;
-            } else {
-                System.out.println("Alice n'est pas le joueur courant");
-            }
+            if (charles.TailleDeLaMain() == 2) NbTestPassee++;
+            else
+                System.out.println("Charles possède"+ charles.TailleDeLaMain()+" cartes");
             NbTest++;
+
         }catch (Exception e){
             System.out.println(("/ATTENTION "+e.getMessage()));
         }
@@ -117,7 +115,7 @@ public class TestCartePlus2 {
         int NbTest=0,NbTestPassee=0;
 
         //test alice joueur courant
-        if (partie.getJoueurCourant().getNom() == "Alice") {
+        if (partie.getJoueurCourant()==alice) {
             NbTestPassee++;
         } else {
             System.out.println("Alice n'est pas le joueur courant");
@@ -129,7 +127,7 @@ public class TestCartePlus2 {
             partie.getJoueurCourant().finirTour();
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant().getNom() == "Bob") {
+            if (partie.getJoueurCourant()==bob) {
                 NbTestPassee++;
             } else {
                 System.out.println("Bob n'est pas le joueur courant");
@@ -141,7 +139,7 @@ public class TestCartePlus2 {
             partie.getJoueurCourant().finirTour();
 
             //verification Charle joueur courant
-            if (partie.getJoueurCourant().getNom() == "Charles") {
+            if (partie.getJoueurCourant()==charles) {
                 NbTestPassee++;
             } else {
                 System.out.println("Charles n'est pas le joueur courant");
@@ -155,7 +153,7 @@ public class TestCartePlus2 {
             partie.getJoueurCourant().finirTour();
 
             //test alice joueur courant
-            if (partie.getJoueurCourant().getNom() == "Alice") {
+            if (partie.getJoueurCourant()==alice) {
                 NbTestPassee++;
             } else {
                 System.out.println("Alice n'est pas le joueur courant");
@@ -169,7 +167,7 @@ public class TestCartePlus2 {
             partie.getJoueurCourant().finirTour();
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant().getNom() == "Bob") {
+            if (partie.getJoueurCourant()==bob) {
                 NbTestPassee++;
             } else {
                 System.out.println("Bob n'est pas le joueur courant");
@@ -192,7 +190,7 @@ public class TestCartePlus2 {
             NbTest++;
 
             //verification Charle joueur courant
-            if (partie.getJoueurCourant().getNom() == "Charles") {
+            if (partie.getJoueurCourant()==charles) {
                 NbTestPassee++;
             } else {
                 System.out.println("Charles n'est pas le joueur courant");
