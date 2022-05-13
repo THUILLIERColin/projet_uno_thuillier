@@ -1,5 +1,6 @@
 package test;
 
+import cartes.Carte;
 import expert.ExpertCartePlus2CartePlus2;
 import expert.ExpertCartePlus2CarteSimple;
 import expert.ExpertCarteSimpleCarteSimple;
@@ -10,7 +11,13 @@ import fichiers.ParserPlus2;
 import joueur.Joueur;
 import partie.Partie;
 
+import org.junit.jupiter.api.Test;
+
+import static java.lang.System.exit;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestCartePlus2 {
+    @Test
     private static void Test1(){
         Partie partie = Partie.getInstance();
 
@@ -29,68 +36,38 @@ public class TestCartePlus2 {
 
         partie.initialisationPartie(3);
 
-        System.out.println("\n\tTEST 1 : COUP LEGAL +2\n");
-        int NbTest=0,NbTestPassee=0;
-
         //test alice joueur courant
-        if (partie.getJoueurCourant()==alice) {
-            NbTestPassee++;
-        } else {
-            System.out.println("Alice n'est pas le joueur courant");
-        }
-        NbTest++;
+        assertTrue(partie.getJoueurCourant()==alice);
+
         try{
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte Plus2vert = alice.getCarte(0);
+            alice.jouer(Plus2vert);
+
+            alice.finirTour();
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant()==bob) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Bob n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==bob);
 
             //verification bob possède 3 carte
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
-            else
-                System.out.println("Bob ne possède pas 3 cartes");
-            NbTest++;
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
 
             //bob prend le +2
-            partie.getJoueurCourant().encaisser();
+            bob.encaisser();
 
             //verification bob 5 carte
-            if (bob.getTailleDeLaMain() == 5) NbTestPassee++;
-            else
-                System.out.println("Bob ne possède pas 5 cartes");
-            NbTest++;
+            assertEquals(5,bob.getTailleDeLaMain());
 
             //verification Charle joueur courant
-            if (partie.getJoueurCourant()==charles) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Charles n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==charles);
+            Carte Vert1 = charles.getCarte(2);
+            charles.jouer(Vert1);
+            charles.finirTour();
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(2));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
-
-            if (charles.getTailleDeLaMain() == 2) NbTestPassee++;
-            else
-                System.out.println("Charles possède"+ charles.getTailleDeLaMain()+" cartes");
-            NbTest++;
-
+            assertEquals(2,charles.getTailleDeLaMain());
         }catch (Exception e){
             System.out.println(("/ATTENTION "+e.getMessage()));
+            exit(1);
         }
-
-        System.out.println("Test Passé "+NbTestPassee+"/"+NbTest);
     }
 
     private static void Test2(){
@@ -111,98 +88,57 @@ public class TestCartePlus2 {
 
         partie.initialisationPartie(3);
 
-        System.out.println("\n\tTEST 2 :  CUMUL +2\n");
-        int NbTest=0,NbTestPassee=0;
 
         //test alice joueur courant
-        if (partie.getJoueurCourant()==alice) {
-            NbTestPassee++;
-        } else {
-            System.out.println("Alice n'est pas le joueur courant");
-        }
-        NbTest++;
+        assertTrue(partie.getJoueurCourant()==alice);
+
         try{
-            //Aliche pioche 1 carte
-            partie.getJoueurCourant().piocher();NbTestPassee++;NbTest++;
-            partie.getJoueurCourant().finirTour();
+            //Alice pioche 1 carte
+            alice.piocher();
+            alice.finirTour();
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant()==bob) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Bob n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==bob);
 
             //Bob pioche 1 carte
-            partie.getJoueurCourant().piocher();NbTestPassee++;NbTest++;
-            partie.getJoueurCourant().finirTour();
+            bob.piocher();
+            bob.finirTour();
 
             //verification Charle joueur courant
-            if (partie.getJoueurCourant()==charles) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Charles n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==charles);
 
             //charle joue le +2 vert
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte Vert2 = charles.getCarte(1);
+            charles.jouer(Vert2);
+            charles.finirTour();
 
             //test alice joueur courant
-            if (partie.getJoueurCourant()==alice) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Alice n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==alice);
 
             //Alice joue le +2 vert
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte Vert2bis = alice.getCarte(0);
+            alice.jouer(Vert2bis);
+            alice.finirTour();
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant()==bob) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Bob n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==bob);
 
             //verification bob 4 carte
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 4) NbTestPassee++;
-            else
-                System.out.println("Bob ne possède pas 4 cartes");
-            NbTest++;
+            assertEquals(4,partie.getJoueurCourant().getTailleDeLaMain());
 
             //bob encaisse
-            partie.getJoueurCourant().encaisser();
+            bob.encaisser();
 
             //verification bob 8 carte
-            if (bob.getTailleDeLaMain() == 8) NbTestPassee++;
-            else
-                System.out.println("Bob ne possède pas 8 cartes, il en possède "+bob.getTailleDeLaMain());
-            NbTest++;
+            assertEquals(8,bob.getTailleDeLaMain());
 
             //verification Charle joueur courant
-            if (partie.getJoueurCourant()==charles) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Charles n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==charles);
 
         }catch (Exception e){
             System.out.println(("/ATTENTION "+e.getMessage()));
+            exit(1);
         }
-
-        System.out.println("Test Passé "+NbTestPassee+"/"+NbTest);
-
     }
     public static void main(String[] args) {
         try {

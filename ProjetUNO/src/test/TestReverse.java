@@ -2,6 +2,9 @@ package test;
 
 import partie.Partie;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestReverse {
 
     private static void Test1(){

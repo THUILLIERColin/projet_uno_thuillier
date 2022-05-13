@@ -9,7 +9,7 @@ public class ExpertCarteReveseCarteSimple extends Expert{
     }
 
     @Override
-    public boolean expertise(Carte carte) throws Exception {
+    public boolean expertise(Carte carte){
         return false;
     }
 

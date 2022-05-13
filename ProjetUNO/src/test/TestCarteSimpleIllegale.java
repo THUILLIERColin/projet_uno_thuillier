@@ -2,16 +2,20 @@ package test;
 
 import cartes.Carte;
 import cartes.CarteSimple;
+import exceptions.*;
 import expert.*;
-import fichiers.Fichier;
-import fichiers.Parser;
-import fichiers.ParserCarteSimple;
+import fichiers.*;
 import joueur.Joueur;
 import partie.Partie;
 
-public class TestCarteSimpleIllegale {
+import org.junit.jupiter.api.Test;
 
-    private static void Test1() {
+import static java.lang.System.exit;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TestCarteSimpleIllegale {
+    @Test
+    private static void Test1(){
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -29,25 +33,22 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse = 0, NbTest = 0;
-
-        System.out.println("\nTEST 1 : MAUVAISE CARTE\n");
 
         try {
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-        } catch (Exception e) {
-            // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPasse++;
-            NbTest++;
-            if (partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6))) NbTestPasse++;
-            NbTest++;
+            Carte Jaune6= alice.getCarte(1);
+            alice.jouer(Jaune6);
+        } catch (CartesValideException e) {
+            assertEquals(3, alice.getTailleDeLaMain());
+            assertTrue(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6)));
         }
-
-        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
-
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exit(1);
+        }
     }
 
-    private static void Test2() {
+    @Test
+    private static void Test2(){
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -65,37 +66,36 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse = 0, NbTest = 0;
-
-        System.out.println("\nTEST 2 : JOUE 2X\n");
-
         try {
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            partie.getJoueurCourant().finirTour();
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            partie.getJoueurCourant().finirTour();
+            Carte Vert2 = alice.getCarte(0);
+            alice.jouer(Vert2);
+            alice.finirTour();
+
+            Carte Bleu2 = bob.getCarte(0);
+            bob.jouer(Bleu2);
+            bob.finirTour();
+
             // Bob et Alice ont joué
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 2) NbTestPasse++;
-            else System.out.println("Charles ne possede pas 2 cartes");
-            NbTest++;
+            Carte Bleu6= charles.getCarte(0);
+            charles.jouer(Bleu6);
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-        } catch (Exception e) {
-            // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 2) NbTestPasse++;
-            else System.out.println("Charles ne possede pas 2 cartes");
-            NbTest++;
-            if (partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7))) NbTestPasse++;
-            else System.out.println("Charles ne possede pas le 7 BLEU");
-            NbTest++;
+            assertEquals(2,charles.getTailleDeLaMain());
+
+            Carte Bleu7 = charles.getCarte(0);
+            charles.jouer(Bleu7);
+
+        } catch (JoueurException e) {
+            assertEquals(2, charles.getTailleDeLaMain());
+            assertTrue(charles.getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7)));
         }
-
-        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exit(1);
+        }
     }
 
-    private static void Test3() {
+    private static void Test3(){
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -113,22 +113,18 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse = 0, NbTest = 0;
-
-        System.out.println("\nTEST 3 : FINIR LE TOUR \n");
-
         try {
-            partie.getJoueurCourant().finirTour();
-        } catch (Exception e) {
-            // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPasse++;
-            NbTest++;
+            alice.finirTour();
+        } catch (JoueurException e) {
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
         }
-
-        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exit(1);
+        }
     }
 
-    private static void Test4() {
+    private static void Test4(){
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -146,28 +142,23 @@ public class TestCarteSimpleIllegale {
 
         partie.initialisationPartie(3);
 
-        int NbTestPasse = 0, NbTest = 0;
-
-        System.out.println("\nTEST 4 : PIOCHE\n");
-
         try {
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            partie.getJoueurCourant().piocher();
-        } catch (Exception e) {
-            // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 2) NbTestPasse++;
-            NbTest++;
-            if (partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.JAUNE, 6))) NbTestPasse++;
-            NbTest++;
+            Carte Vert2 = alice.getCarte(0);
+            alice.jouer(Vert2);
+            alice.piocher();
+        } catch (JoueurException e) {
+            assertEquals(2,partie.getJoueurCourant().getTailleDeLaMain());
+            assertTrue(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.JAUNE, 6)));
         }
-
-        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exit(1);
+        }
     }
 
 
     public static void main(String[] args) {
         try {
-
             Test1();
             Partie.getInstance().reinitialiserPartie();
             Test2();
@@ -175,7 +166,6 @@ public class TestCarteSimpleIllegale {
             Test3();
             Partie.getInstance().reinitialiserPartie();
             Test4();
-
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
         }

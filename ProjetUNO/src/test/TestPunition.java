@@ -2,13 +2,21 @@ package test;
 
 import cartes.Carte;
 import cartes.CarteSimple;
+import exceptions.CartesValideException;
+import exceptions.JoueurException;
 import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.*;
 import joueur.Joueur;
 import partie.Partie;
 
+import org.junit.jupiter.api.Test;
+
+import static java.lang.System.exit;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestPunition {
-    private static void Test1() {
+    @Test
+    private static void Test1(){
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -27,51 +35,34 @@ public class TestPunition {
 
         partie.initialisationPartie(3);
 
-        int NbTest = 0, NbTestPasse = 0;
+        assertTrue(partie.getJoueurCourant()==alice);
 
-        /*
-                    TEST 1 : ALICE
-            */
-
-        System.out.println("\nTEST 1 : ALICE\n");
-        if(partie.getJoueurCourant()==alice)NbTestPasse++;
-        else
-            System.out.println("Le joueur courant n'est pas Alice");
-        NbTest++;
         try {
-            alice.jouer(partie.getJoueurCourant().getCarte(1));
-        } catch (Exception e) {
-            // System.out.println("\nATTENTION " + e.getMessage() + "\n");
-            try {
-                partie.getJoueurCourant().punir(e);
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+            Carte Jaune6 = alice.getCarte(1);
+            alice.jouer(Jaune6);
+        } catch (CartesValideException e) {
+            try{
+            alice.punirCarteValideException();
+            }catch (Exception exception){
+                System.out.println(exception.getMessage());
+                exit(1);
             }
-            if(partie.getJoueurCourant()==bob)NbTestPasse++;
-            else{
-                System.out.println("Le joueur courant est " + partie.getJoueurCourant());}
-            NbTest++;
-            if(alice.getTailleDeLaMain()==5)NbTestPasse++;
-            else{
-                System.out.println("Alice possede " + alice.getTailleDeLaMain() + " cartes");}
-            NbTest++;
-            if(alice.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)))NbTestPasse++;
-            else
-                System.out.println("Alice ne possede pas la carte 6 JAUNE");
-            NbTest++;
-            if(alice.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE,4)))NbTestPasse++;
-            else
-                System.out.println("Alice ne possede pas la carte 4 ROUGE");
-            NbTest++;
-            if(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.VERT,2)))NbTestPasse++;
-            else
-                System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==bob);
+
+            assertEquals(5,alice.getTailleDeLaMain());
+            assertTrue(alice.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)));
+
+            assertTrue(alice.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE,4)));
+
+            assertTrue(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.VERT,2)));
         }
-        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            exit(1);
+        }
     }
 
-    private static void Test2() {
+    private static void Test2(){
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -90,53 +81,30 @@ public class TestPunition {
 
         partie.initialisationPartie(3);
 
-        /*
-                    TEST 2 : BOB
-        */
-
-        int NbTest = 0, NbTestPasse = 0;
-
-        System.out.println("\nTEST 2 : BOB\n");
-
-        if(partie.getJoueurCourant()==alice)NbTestPasse++;
-        else
-            System.out.println("Le joueur courant est " + partie.getJoueurCourant());
-        NbTest++;
-
+        assertTrue(partie.getJoueurCourant()==alice);
         try {
             bob.piocher();
-        } catch (Exception e) {
-            //System.out.println("\nATTENTION " + e.getMessage() + "\n");
-            try {
-                bob.punir(e);
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+        } catch (JoueurException e) {
+            try{
+            bob.punir();
+            }catch (Exception exception){
+                System.out.println(exception.getMessage());
+                exit(1);
             }
 
-            if(partie.getJoueurCourant()==alice)NbTestPasse++;
-            else
-                System.out.println("Le joueur courant est " + partie.getJoueurCourant());
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==alice);
+            assertEquals(5, bob.getTailleDeLaMain());
 
-            if (bob.getTailleDeLaMain()==5)NbTestPasse++;
-            else
-                System.out.println("Bob possede "+ bob.getTailleDeLaMain());
-            NbTest++;
-            if(bob.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)))NbTestPasse++;
-            else
-                System.out.println("Bob ne possede pas la carte 6 JAUNE");
-            NbTest++;
-            if(bob.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE,4)))NbTestPasse++;
-            else
-                System.out.println("Bob ne possede pas la carte 4 ROUGE");
-            NbTest++;
 
-            if(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.VERT,2)))NbTestPasse++;
-            else
-                System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
-            NbTest++;
+            assertTrue(bob.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)));
+            assertTrue(bob.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE,4)));
+
+            assertTrue(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.VERT,2)));
         }
-        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            exit(1);
+        }
     }
 
     public static void main(String[] args) {
@@ -149,6 +117,9 @@ public class TestPunition {
 
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
     }
 }

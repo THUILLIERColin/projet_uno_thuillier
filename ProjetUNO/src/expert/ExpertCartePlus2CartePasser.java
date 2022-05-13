@@ -12,20 +12,16 @@ public class ExpertCartePlus2CartePasser extends Expert{
     }
 
     @Override
-    public boolean expertise(Carte carte) throws Exception {
+    public boolean expertise(Carte carte){
         Partie partie = Partie.getInstance();
-        if (carte.getCouleur() == super.getPartie().getPremiereCarteTas().getCouleur()){
-            return true;
-        }
-        return false;
+        return(carte.getCouleur() == partie.getPremiereCarteTas().getCouleur());
     }
 
     @Override
     public boolean saitExpertiser(Carte carte) {
-        if(carte instanceof CartePlus2 && super.getPartie().getPremiereCarteTas() instanceof CartePasser
-                || carte instanceof CartePasser && super.getPartie().getPremiereCarteTas() instanceof CartePlus2)
-            return true;
-        return false;
+        Partie partie = Partie.getInstance();
+        return (carte instanceof CartePlus2 && partie.getPremiereCarteTas() instanceof CartePasser
+                || carte instanceof CartePasser && partie.getPremiereCarteTas() instanceof CartePlus2);
     }
 }
 

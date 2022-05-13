@@ -9,120 +9,74 @@ import fichiers.ParserCarteSimple;
 import joueur.Joueur;
 import partie.Partie;
 
+import org.junit.jupiter.api.Test;
+
+import static java.lang.System.exit;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestCarteSimple {
 
+    @Test
     private static void Test1(Joueur alice, Joueur bob){
         /*
                     TEST 1 : ALICE
          */
         Partie partie = Partie.getInstance();
 
-        int NbTestPasse=0,NbTest=0;
+        assertTrue(partie.getJoueurCourant()==alice);
+        assertEquals(3,alice.getTailleDeLaMain());
 
-        System.out.println("\nTEST 1 : ALICE\n");
+        try {
 
-        if(partie.getJoueurCourant()==alice) NbTestPasse++;
-        else
-            System.out.println("Alice n'est pas le joueur courant");
-        NbTest++;
-        if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPasse++;
-        else
-            System.out.println("Alice ne possède pas 3 cartes");
-        NbTest++;
+            Carte Vert2 = alice.getCarte(0);
+            alice.jouer(Vert2);
 
-        try{
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));NbTestPasse++;            NbTest++;
+            assertEquals(2, alice.getTailleDeLaMain());
+            assertTrue(alice.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6)));
+            assertTrue(alice.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 1)));
+            assertTrue(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)));
 
-            if(partie.getJoueurCourant().getTailleDeLaMain()==2)NbTestPasse++;
-            else
-                System.out.println("Alice ne possede pas 2 cartes");
-            NbTest++;
+            assertEquals(2, partie.getTailleTas());
 
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6)))NbTestPasse++;
-            else
-                System.out.println("La carte 6 JAUNE n'est pas dans la main d'alice");
-            NbTest++;
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 1)))NbTestPasse++;
-            else
-                System.out.println("La carte 1 ROUGE n'est pas dans la main d'alice");
-            NbTest++;
-
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++;
-            else
-                System.out.println("La premiere carte du tas n'est pas le 2 VERT");
-            NbTest++;
-            if(partie.getTailleTas()==2)NbTestPasse++;
-            else
-                System.out.println("Le tas ne possede pas 2 carte");
-            NbTest++;
             partie.getJoueurCourant().finirTour();
 
-            if(partie.getJoueurCourant()==bob) NbTestPasse++;
-            else
-                System.out.println("Le joueur courant n'est pas bob");
-            NbTest++;
-
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+            assertTrue(partie.getJoueurCourant() == bob);
         }
-
-        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            exit(1);
+        }
 
     }
 
-    private static void Test2(Joueur charles){
+    private static void Test2(Joueur bob,Joueur charles){
         /*
                     TEST 2 : BOB
          */
 
         Partie partie = Partie.getInstance();
 
-        int NbTestPasse=0,NbTest=0;
+        assertEquals(3, bob.getTailleDeLaMain());
 
-        System.out.println("\nTEST 2 : BOB\n");
+        try {
+            Carte Bleu2 = bob.getCarte(0);
+            bob.jouer(Bleu2);
 
-        if(partie.getJoueurCourant().getTailleDeLaMain()==3)NbTestPasse++;
-        else
-            System.out.println("Bob ne possede pas 3 cartes");
-        NbTest++;
+            assertEquals(2, bob.getTailleDeLaMain());
+            assertTrue(bob.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 4)));
+            assertTrue(bob.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 9)));
 
-        try{
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
 
-            if(partie.getJoueurCourant().getTailleDeLaMain()==2)NbTestPasse++;
-            else
-                System.out.println("Bob ne possede pas 2 cartes");NbTest++;
+            assertTrue(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.BLEU, 2)));
+            assertEquals(3, partie.getTailleTas());
+            bob.finirTour();
 
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 4)))NbTestPasse++;
-            else
-                System.out.println("La carte 4 JAUNE n'est pas dans la main de Bob");
-            NbTest++;
-            if(partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.ROUGE, 9)))NbTestPasse++;
-            else
-                System.out.println("La carte 9 ROUGE n'est pas dans la main de Bob");
-            NbTest++;
-
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.BLEU, 2)))NbTestPasse++;
-            else
-                System.out.println("La carte 2 BLEU n'est pas la premiere carte du tas");
-            NbTest++;
-
-            if(partie.getTailleTas()==3)NbTestPasse++;
-            else
-                System.out.println("Le tas n'est pas de taille 3");
-            NbTest++;
-
-            partie.getJoueurCourant().finirTour();
-
-            if(partie.getJoueurCourant().equals(charles))NbTestPasse++;
-            else
-                System.out.println("Charles n'est pas le joueur courant");
-            NbTest++;
-
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+            assertTrue(partie.getJoueurCourant() == charles);
         }
-        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            exit(1);
+        }
     }
 
     public static void main(String[] args) {
@@ -145,7 +99,7 @@ public class TestCarteSimple {
             partie.initialisationPartie(3);
 
             Test1(alice,bob);
-            Test2(charles);
+            Test2(bob,charles);
 
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());

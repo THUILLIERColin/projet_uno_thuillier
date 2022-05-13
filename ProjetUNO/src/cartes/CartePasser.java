@@ -10,7 +10,7 @@ public class CartePasser extends Carte {
 
     public void joueurSuivant(){
         Partie partie = Partie.getInstance();
-        partie.Suivant();
+        partie.getJoueurCourant().setPasser(true);
     }
 
     @Override

@@ -8,8 +8,6 @@ public abstract class Expert {
 
     private Expert suivant = null;
 
-    private Partie partie = Partie.getInstance();
-
     public Expert(Expert suivant) {
         this.suivant = suivant;
     }
@@ -19,7 +17,7 @@ public abstract class Expert {
      * la ligne. Dans ce cas la ligne est parsée et la recherche s'arrête
      * @param carte la ligne à parser
      */
-    public boolean traiter(Carte carte) throws Exception {
+    public boolean traiter(Carte carte) throws ExpertManquantException {
         if (saitExpertiser(carte))
             return expertise(carte);
         else if (aUnSuivant())
@@ -36,17 +34,12 @@ public abstract class Expert {
         return suivant != null;
     }
 
-    public Partie getPartie() {
-        return partie;
-    }
-
-
     /**
      * Parse une ligne. Renvoie une Exception si quelque chose a mal tourné...
      * @param ligne
      * @throws Exception
      */
-    public abstract boolean expertise(Carte carte) throws Exception;
+    public abstract boolean expertise(Carte carte);
 
     /**
      * Renvoie true si le parser en question reconnait le type de ligne, c'est-à-dire

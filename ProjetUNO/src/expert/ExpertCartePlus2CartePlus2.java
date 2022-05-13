@@ -2,6 +2,7 @@ package expert;
 
 import cartes.Carte;
 import cartes.CartePlus2;
+import partie.Partie;
 
 public class ExpertCartePlus2CartePlus2 extends Expert{
 
@@ -10,15 +11,14 @@ public class ExpertCartePlus2CartePlus2 extends Expert{
     }
 
     @Override
-    public boolean expertise(Carte carte) throws Exception {
+    public boolean expertise(Carte carte){
         return true;
     }
 
     @Override
     public boolean saitExpertiser(Carte carte) {
-        if(carte instanceof CartePlus2 && super.getPartie().getPremiereCarteTas() instanceof CartePlus2)
-            return true;
-        return false;
+        Partie partie = Partie.getInstance();
+        return(carte instanceof CartePlus2 && partie.getPremiereCarteTas() instanceof CartePlus2);
     }
 }
 

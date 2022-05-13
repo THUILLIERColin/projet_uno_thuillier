@@ -11,27 +11,33 @@ public class AllTest {
         TestDisUno testDisUno = new TestDisUno();
         TestCarteSimpleIllegale testCarteSimpleIllegale = new TestCarteSimpleIllegale();
 
-        System.out.println("\t------ TEST CARTE SIMPLE  ------");
+        System.out.println("------ TEST CARTE SIMPLE  ------");
         testCarteSimple.main(args);
+        System.out.println("\n\t\tTEST OK");
         Partie.getInstance().reinitialiserPartie();
 
-        System.out.println("\n\n\t------ TEST CARTE SIMPLE ILLÉGALES  ------");
+        System.out.println("\n\n------ TEST CARTE SIMPLE ILLÉGALES  ------");
         testCarteSimpleIllegale.main(args);
+        System.out.println("\n\t\tTEST OK");
         Partie.getInstance().reinitialiserPartie();
 
-        System.out.println("\n\n\t------ TEST PUNITION ------");
+        System.out.println("\n\n------ TEST PUNITION ------");
         testPunition.main(args);
+        System.out.println("\n\t\tTEST OK");
         Partie.getInstance().reinitialiserPartie();
 
-        System.out.println("\n\n\t------ TEST UNO  ------");
+        System.out.println("\n\n------ TEST UNO  ------");
         testDisUno.main(args);
+        System.out.println("\n\t\tTEST OK");
         Partie.getInstance().reinitialiserPartie();
 
-        System.out.println("\n\n\t------ TEST CARTE PASSE TOUR  ------");
+        System.out.println("\n\n------ TEST CARTE PASSE TOUR  ------");
         testCartePasser.main(args);
+        System.out.println("\n\t\tTEST OK");
         Partie.getInstance().reinitialiserPartie();
 
-        System.out.println("\n\n\t------ TEST CARTE +2  ------");
+        System.out.println("\n\n------ TEST CARTE +2  ------");
         testCartePlus2.main(args);
+        System.out.println("\n\t\tTEST OK");
     }
 }

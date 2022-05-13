@@ -2,6 +2,8 @@ package test;
 
 import cartes.Carte;
 import cartes.CarteSimple;
+import exceptions.JoueurException;
+import exceptions.UnoException;
 import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
@@ -9,7 +11,13 @@ import fichiers.ParserCarteSimple;
 import joueur.Joueur;
 import partie.Partie;
 
+import org.junit.jupiter.api.Test;
+
+import static java.lang.System.exit;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestDisUno {
+    @Test
     private static void Test1(){
         /*
                     TEST 1 : ALICE DIT UNO QUAND IL FAUT
@@ -31,42 +39,27 @@ public class TestDisUno {
 
         partie.initialisationPartie(2);
 
-        int NbTestPasse=0,NbTest=0;
+        assertTrue(partie.getJoueurCourant()==alice);
 
-        System.out.println("\nTEST 1 : ALICE UNO BON MOMENT\n");
-
-        if(partie.getJoueurCourant()==alice) NbTestPasse++;
-        else
-            System.out.println("Le joueur courant n'est pas Alice");
-        NbTest++;
-        if(partie.getJoueurCourant().getTailleDeLaMain()==2)NbTestPasse++;
-        else
-            System.out.println("");
-        NbTest++;
+        assertEquals(2,alice.getTailleDeLaMain());
         try{
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));//alice joue le 2 Vert
-            partie.getJoueurCourant().disUNO();//alice dit uno
-            if(partie.getJoueurCourant().getUno())NbTestPasse++;
-            else
-                System.out.println("");
-            NbTest++;//verification de uno
-            partie.getJoueurCourant().finirTour(); //Alice fini le tour
+            Carte Vert2 = alice.getCarte(0);
+            alice.jouer(Vert2);//alice joue le 2 Vert
+            alice.disUNO();//alice dit uno
+            assertTrue(partie.getJoueurCourant().getUno());//verification de uno
+            alice.finirTour(); //Alice fini le tour
+            assertEquals(1, alice.getTailleDeLaMain());//verification que alice a que 1 carte
 
-            if(alice.getTailleDeLaMain()==1)NbTestPasse++;
-            else System.out.println("Alice ne possede pas une carte");
-            NbTest++;//verification que alice a que 1 carte
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++;
-            else System.out.println("La premiere carte du tas n'est pas le 2 VERT"); ; NbTest++;//verification 1er carte tas = 2vert
-            if(partie.getJoueurCourant()==bob) NbTestPasse++;
-            else System.out.println("le joueur courant n'est pas bob"); NbTest++;
-        }catch(Exception e){
-            System.out.println("\nATTENTION " + e.getMessage()+"\n");
+            assertTrue(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)));//verification 1er carte tas = 2vert
+            assertTrue(partie.getJoueurCourant()==bob);
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            exit(1);
         }
-
-        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
     }
 
-    private static void Test2 (){
+    private static void Test2 () throws Exception{
         /*
                     TEST 2 : ALICE OUBLIE UNO
          */
@@ -87,36 +80,24 @@ public class TestDisUno {
 
         partie.initialisationPartie(2);
 
-        int NbTestPasse=0,NbTest=0;
-
-        System.out.println("\nTEST 2 : OUBLIE UNO\n");
-
         try{
-            alice.jouer(alice.getCarte(0));
+            Carte Vert2 = alice.getCarte(0);
+            alice.jouer(Vert2);
             alice.finirTour();
-            //mettre 2 exeption : 1 uno et une general(ou y doit jamais aller)
-        }catch (Exception e){
-            try{
-                alice.punir(e);
-            }catch (Exception ex){
-                System.out.println(ex.getMessage());
-            }
-            if(alice.getTailleDeLaMain()==4)NbTestPasse++;
-            else
-                System.out.println("Alice ne possede pas le bon nombre de carte");
-            NbTest++;
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPasse++;
-            else
-                System.out.println("La carte 8 VERT n'est pas la premiere carte du tas");
-            NbTest++;
-            if(partie.getJoueurCourant()==bob) NbTestPasse++;
-            else
-                System.out.println("Le joueur courant n'est pas Bob");
-            NbTest++;
-        }
+        }catch (UnoException e){
+            alice.punirUnoException();
 
-        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
+            assertEquals(4,alice.getTailleDeLaMain());
+
+            assertTrue(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)));
+            assertTrue(partie.getJoueurCourant()==bob);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            exit(1);
+        }
     }
+    @Test
     private static void Test3(){
         Partie partie = Partie.getInstance();
 
@@ -135,40 +116,27 @@ public class TestDisUno {
 
         partie.initialisationPartie(2);
 
-        int NbTestPassee=0,NbTest=0;
-
-        System.out.println("\nTEST 3 : MAUVAIS UNO\n");
-
         //verification Alice joueur courant
-        if (partie.getJoueurCourant().getNom() == "Alice")NbTestPassee++;
-        else
-            System.out.println("Alice n'est pas le joueur courant");
-        NbTest++;
+        assertTrue(partie.getJoueurCourant()==alice);
 
         try{
-            partie.getJoueur(1).getUno();
-        }catch (Exception e){
+            bob.disUNO();
+        }catch (JoueurException e){
             try{
-                bob.punir(e);NbTestPassee++; NbTest++;
-            }catch (Exception ex){
-                System.out.println(ex.getMessage());
+                bob.punir();
+            }catch (Exception exception){
+                System.out.println(exception.getMessage());
+                exit(1);
             }
-            if(bob.getTailleDeLaMain()==4)NbTestPassee++;
-            else
-                System.out.println("Bob ne possede pas 4 cartes");
-            NbTest++;
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPassee++;
-            else
-                System.out.println("La premiere carte du tas n'est pas le 8 VERT");
-            NbTest++;
-            if(partie.getJoueurCourant().getNom()=="Alice") NbTestPassee++;
-            else
-                System.out.println("Le joueur courant n'est pas Alice");
-            NbTest++;
+
+            assertEquals(4,bob.getTailleDeLaMain());
+            assertTrue(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)));
+
+            assertTrue(partie.getJoueurCourant()==alice);
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exit(1);
         }
-
-        System.out.println("\tTest passé : "+NbTestPassee+"/"+NbTest);
-
     }
     public static void main(String[] args) {
         try {
@@ -179,6 +147,9 @@ public class TestDisUno {
             Test3();
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
         }
     }
 }

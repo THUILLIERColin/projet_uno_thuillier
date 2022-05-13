@@ -3,6 +3,7 @@ package test;
 import cartes.Carte;
 import cartes.CartePasser;
 import cartes.CarteSimple;
+import exceptions.CartesValideException;
 import expert.ExpertCartePasserCartePasser;
 import expert.ExpertCartePasserCarteSimple;
 import expert.ExpertCarteSimpleCarteSimple;
@@ -13,7 +14,13 @@ import fichiers.ParserCarteSimple;
 import joueur.Joueur;
 import partie.Partie;
 
+import org.junit.jupiter.api.Test;
+
+import static java.lang.System.exit;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class TestCartePasser {
+    @Test
     private static void Test1() {
         Partie partie = Partie.getInstance();
 
@@ -35,82 +42,49 @@ public class TestCartePasser {
             /*
                     TEST 1 : PASSER
             */
-        int NbTestPassee = 0, NbTest = 0;
-        System.out.println("\nTEST 1 : Passer\n");
 
         //test alice joueur courant
-        if (partie.getJoueurCourant()==alice) {
-            NbTestPassee++;
-        } else {
-            System.out.println("Alice n'est pas le joueur courant");
-        }
-        NbTest++;
+        assertTrue(partie.getJoueurCourant()==alice);
 
         try {
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte PasserRouge = alice.getCarte(0);
+            alice.jouer(PasserRouge);
+            alice.finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant()==charles) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Charles n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==charles);
 
             //verification carte du tas = passe tour rouge
-            if (partie.getPremiereCarteTas().equals(new CartePasser(Carte.Color.ROUGE))) NbTestPassee++;
-            else
-                System.out.println("La premiere carte du tas n'est pas le PASSE TOUT ROUGE");
-            NbTest++;
+            assertTrue(partie.getPremiereCarteTas().equals(new CartePasser(Carte.Color.ROUGE)));
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte PasserVert = charles.getCarte(1);
+            charles.jouer(PasserVert);
+            charles.finirTour();
+
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant()==bob) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Bob n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==bob);
 
             //verification carte du tas = passe tour vert
-            if (partie.getPremiereCarteTas().equals(new CartePasser(Carte.Color.VERT))) NbTestPassee++;
-            else
-                System.out.println("La premiere carte du tas n'est pas le PASSE TOUT ROUGE");
-            NbTest++;
+            assertTrue(partie.getPremiereCarteTas().equals(new CartePasser(Carte.Color.VERT)));
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-            NbTestPassee++;
-            NbTest++;
-            partie.getJoueurCourant().finirTour();
+            Carte Vert6 = bob.getCarte(1);
+            bob.jouer(Vert6);
+            bob.finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant()==charles) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Charles n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==charles);
 
             //verification carte du tas = 6 vert
-            if (partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 6))) NbTestPassee++;
-            else
-                System.out.println("La premiere carte du tas n'est pas le PASSE TOUT ROUGE");
-            NbTest++;
-
-            System.out.println("\tTest passé : " + NbTestPassee + "/" + NbTest);
+            assertTrue(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 6)));
 
         } catch (Exception e) {
-            //System.out.println("\nATTENTION " + e.getMessage() + "\n");
+            System.out.println("\nATTENTION " + e.getMessage() + "\n");
+            exit(1);
         }
     }
 
+    @Test
     private static void Test2() {
         Partie partie = Partie.getInstance();
 
@@ -128,54 +102,35 @@ public class TestCartePasser {
 
         partie.initialisationPartie(3);
 
-        System.out.println("\nTEST 2 : CARTE SIMPLE ILLEGALE CARTE PASSER\n\n");
-        int NbTestPassee = 0, NbTest = 0;
-
         //verification alice joueur courant
-        if (partie.getJoueurCourant()==alice) {
-            NbTestPassee++;
-        } else {
-            System.out.println("Alice n'est pas le joueur courant");
-        }
-        NbTest++;
+        assertTrue(partie.getJoueurCourant()==alice);
 
         try {
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            NbTestPassee++;
-            NbTest++;
-            partie.getJoueurCourant().finirTour();
+            Carte PasserRouge = alice.getCarte(0);
+            alice.jouer(PasserRouge);
+            alice.finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant()==charles) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Charles n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==charles);
 
             //verification Charle possède 3 carte
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
-            else
-                System.out.println("Charle ne possède pas 3 cartes");
-            NbTest++;
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte Bleu1 = charles.getCarte(0);
+            charles.jouer(Bleu1);
+            charles.finirTour();
 
-        } catch (Exception e) {
-            // System.out.println("\nATTENTION " + e.getMessage() + "\n");
+        } catch (CartesValideException e) {
             //verification Charle a 3 carte
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
-            else
-                System.out.println("Charle ne possède pas 3 cartes");
-            NbTest++;
-            System.out.println("\tTest passé : " + NbTestPassee + "/" + NbTest);
-
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exit(1);
         }
     }
 
+    @Test
     private static void Test3() {
         Partie partie = Partie.getInstance();
 
@@ -193,58 +148,38 @@ public class TestCartePasser {
 
         partie.initialisationPartie(3);
         /*
-                    TEST 2 : CARTE PASSE TOUR ILLEGALE
-             */
-
-        System.out.println("\nTEST 3 : CARTE PASSE TOUR ILLEGALE SUR CARTE SIMPLE\n\n");
-        int NbTest = 0, NbTestPassee = 0;
+                    TEST 3 : CARTE PASSE TOUR ILLEGALE
+        */
 
         //verification alice joueur courant
-        if (partie.getJoueurCourant()==alice) {
-            NbTestPassee++;
-        } else {
-            System.out.println("Alice n'est pas le joueur courant");
-        }
-        NbTest++;
+        assertTrue(partie.getJoueurCourant()==alice);
 
         try {
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte Bleu9 = alice.getCarte(1);
+            alice.jouer(Bleu9);
+            alice.finirTour();
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(2));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
+            Carte Bleu7 = bob.getCarte(2);
+            bob.jouer(Bleu7);
+            bob.finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant()==charles) {
-                NbTestPassee++;
-            } else {
-                System.out.println("Charles n'est pas le joueur courant");
-            }
-            NbTest++;
+            assertTrue(partie.getJoueurCourant()==charles);
 
             //verification Charle possède 3 carte
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
-            else
-                System.out.println("Charle ne possède pas 3 cartes");
-            NbTest++;
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
 
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-            NbTest++;
-            NbTestPassee++;
-            partie.getJoueurCourant().finirTour();
-        } catch (Exception e) {
-            System.out.println("\nATTENTION " + e.getMessage() + "\n");
+            Carte PasserVert = charles.getCarte(1);
+            charles.jouer(PasserVert);
+            charles.finirTour();
+
+        } catch (CartesValideException e) {
             //verification Charle possède 3 carte
-            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
-            else
-                System.out.println("Charle ne possède pas 3 cartes");
-            NbTest++;
-
-            System.out.println("\tTest passé : " + NbTestPassee + "/" + NbTest);
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
+        }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+            exit(1);
         }
     }
 
@@ -254,7 +189,7 @@ public class TestCartePasser {
             Partie.getInstance().reinitialiserPartie();
             Test2();
             Partie.getInstance().reinitialiserPartie();
-            //Test3();
+            Test3();
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
         }

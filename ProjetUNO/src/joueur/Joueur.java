@@ -15,6 +15,8 @@ public class Joueur {
     private boolean uno=false;
     private ArrayList<Carte> laMain = new ArrayList<>();
 
+    private boolean passer=false;
+
     /*
             DE BASES
      */
@@ -22,6 +24,14 @@ public class Joueur {
     public Joueur(String nom){
         setNom(nom);
         Partie.getInstance().ajouterJoueurs(this);
+    }
+
+    public void setPasser(boolean passer) {
+        this.passer = passer;
+    }
+
+    public boolean getPasser() {
+        return passer;
     }
 
     public void setNom(String nom) {
@@ -85,7 +95,7 @@ public class Joueur {
 
     // FONCTION ENCAISSER 2
 
-    public void piocher() throws Exception{
+    public void piocher() throws JoueurException{
         Partie partie = Partie.getInstance();
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur : tu as deja joue", this);
@@ -107,7 +117,7 @@ public class Joueur {
         partie.getPremiereCarteTas().effet();
     }
 
-    public void finirTour() throws Exception{
+    public void finirTour() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Ce n'est pas ton tour ", this);
@@ -116,27 +126,33 @@ public class Joueur {
         if(doitDireUno() && !uno)
             throw new UnoException("Le joueur n'a pas dit UNO ", this);
         partie.Suivant();
+        if (passer) partie.Suivant();
         partie.setJoueurAJoue(false);
     }
 
-    public void punir(Exception e) throws Exception {
+    public void punir() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         laMain.add(partie.prendrePioche());
         laMain.add(partie.prendrePioche());
-        if(e instanceof CartesValideException)
-            partie.Suivant();//directement dans le catch
-        if(e instanceof UnoException){
-            laMain.add(partie.getPremiereCarteTas());
-            partie.removeCarteTas(partie.getPremiereCarteTas());
-            partie.Suivant();
-        }
-        if(e instanceof JoueurException){
-            if(partie.getPremiereCarteTas() instanceof CartePlus2)
-                encaisser();
-        }
+        if(partie.getPremiereCarteTas() instanceof CartePlus2)
+            encaisser();
     }
 
-    public void encaisser() throws Exception {
+
+    public void punirCarteValideException() throws JoueurException,UnoException{
+        punir();
+        Partie.getInstance().Suivant();
+    }
+
+    public void punirUnoException() throws JoueurException,UnoException{
+        Partie partie = Partie.getInstance();
+        punir();
+        laMain.add(partie.getPremiereCarteTas());
+        partie.removeCarteTas(partie.getPremiereCarteTas());
+        partie.Suivant();
+    }
+
+    public void encaisser() throws JoueurException,UnoException {
         Partie partie = Partie.getInstance();
 
         if(partie.getPremiereCarteTas() instanceof CartePlus2) {

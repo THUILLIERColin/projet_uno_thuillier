@@ -9,14 +9,12 @@ public class ExpertCartePasserCartePasser extends Expert{
     public ExpertCartePasserCartePasser(Expert suivant){ super(suivant);}
 
     @Override
-    public boolean expertise(Carte carte) throws Exception {
+    public boolean expertise(Carte carte) {
         return true;
     }
 
     @Override
     public boolean saitExpertiser(Carte carte) {
-        if(carte instanceof CartePasser && Partie.getInstance().getPremiereCarteTas() instanceof CartePasser)
-            return true;
-        return false;
+        return(carte instanceof CartePasser && Partie.getInstance().getPremiereCarteTas() instanceof CartePasser);
     }
 }
