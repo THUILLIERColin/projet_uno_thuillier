@@ -132,11 +132,11 @@ public class Joueur {
         }
         if(e instanceof JoueurException){
             if(partie.getPremiereCarteTas() instanceof CartePlus2);
-                prendre();
+                encaisser();
         }
     }
 
-    public void prendre() throws Exception {
+    public void encaisser() throws Exception {
         Partie partie = Partie.getInstance();
 
         if(partie.getPremiereCarteTas() instanceof CartePlus2){
@@ -145,6 +145,7 @@ public class Joueur {
                 piocher();
                 partie.setJoueurAJoue(false);
         }
+        finirTour();
     }
 
     /*

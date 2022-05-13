@@ -109,7 +109,7 @@ public class TestCartePasser {
             System.out.println("Test passé : " + NbTestPassee + "/" + NbTest);
 
         } catch (Exception e) {
-            System.out.println("\nATTENTION " + e.getMessage() + "\n");
+            //System.out.println("\nATTENTION " + e.getMessage() + "\n");
         }
     }
 
@@ -167,7 +167,7 @@ public class TestCartePasser {
             partie.getJoueurCourant().finirTour();
 
         } catch (Exception e) {
-            System.out.println("\nATTENTION " + e.getMessage() + "\n");
+            // System.out.println("\nATTENTION " + e.getMessage() + "\n");
             //verification Charle a 3 carte
             if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPassee++;
             else

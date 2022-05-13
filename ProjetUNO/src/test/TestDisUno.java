@@ -102,9 +102,18 @@ public class TestDisUno {
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
             }
-            if(alice.TailleDeLaMain()==4)NbTestPasse++; NbTest++;
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPasse++; NbTest++;
-            if(partie.getJoueurCourant()==bob) NbTestPasse++; NbTest++;
+            if(alice.TailleDeLaMain()==4)NbTestPasse++;
+            else
+                System.out.println("Alice ne possede pas carte");
+            NbTest++;
+            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPasse++;
+            else
+                System.out.println("La carte 8 VERT n'est pas la premiere carte du tas");
+            NbTest++;
+            if(partie.getJoueurCourant()==bob) NbTestPasse++;
+            else
+                System.out.println("Le joueur courant n'est pas Bob");
+            NbTest++;
         }
 
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
@@ -132,11 +141,9 @@ public class TestDisUno {
         System.out.println("\n---------------------------------\nTEST 3 : MAUVAIS UNO\n");
 
         //verification Alice joueur courant
-        if (partie.getJoueurCourant().getNom() == "Alice") {
-            NbTestPassee++;
-        } else {
+        if (partie.getJoueurCourant().getNom() == "Alice")NbTestPassee++;
+        else
             System.out.println("Alice n'est pas le joueur courant");
-        }
         NbTest++;
 
         try{
@@ -147,9 +154,18 @@ public class TestDisUno {
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
             }
-            if(bob.TailleDeLaMain()==4)NbTestPassee++; NbTest++;
-            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPassee++; NbTest++;
-            if(partie.getJoueurCourant().getNom()=="Alice") NbTestPassee++; NbTest++;
+            if(bob.TailleDeLaMain()==4)NbTestPassee++;
+            else
+                System.out.println("Bob ne possede pas 4 cartes");
+            NbTest++;
+            if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 8)))NbTestPassee++;
+            else
+                System.out.println("La premiere carte du tas n'est pas le 8 VERT");
+            NbTest++;
+            if(partie.getJoueurCourant().getNom()=="Alice") NbTestPassee++;
+            else
+                System.out.println("Le joueur courant n'est pas Alice");
+            NbTest++;
         }
 
         System.out.println("Test passé : "+NbTestPassee+"/"+NbTest);
