@@ -1,12 +1,14 @@
 package test;
 
+import cartes.Carte;
+import cartes.CarteSimple;
 import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.*;
 import joueur.Joueur;
 import partie.Partie;
 
 public class TestPunition {
-    public static void Test1() {
+    private static void Test1() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -25,34 +27,51 @@ public class TestPunition {
 
         partie.initialisationPartie(3);
 
+        int NbTest = 0, NbTestPasse = 0;
 
         /*
                     TEST 1 : ALICE
             */
 
         System.out.println("\n---------------------------------\nTEST 1 : ALICE\n");
-        System.out.println("Le joueur courant est " + partie.getJoueurCourant());
-        System.out.println("" + partie.getJoueurCourant() + " possede " + partie.getJoueurCourant().TailleDeLaMain() + " cartes");
-
-
+        if(partie.getJoueurCourant()==alice)NbTestPasse++;
+        else
+            System.out.println("Le joueur courant n'est pas Alice");
+        NbTest++;
         try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
-            System.out.println("" + partie.getJoueurCourant() + " possède : " + partie.getJoueurCourant().TailleDeLaMain() + " cartes");
         } catch (Exception e) {
-            System.out.println("\nATTENTION " + e.getMessage() + "\n");
+            // System.out.println("\nATTENTION " + e.getMessage() + "\n");
             try {
                 partie.getJoueurCourant().punir(e);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-            System.out.println("Le joueur courant est " + partie.getJoueurCourant());
-            System.out.println("" + partie.getJoueur(0) + " possede " + partie.getJoueur(0).TailleDeLaMain() + " cartes");
-            System.out.println("Alice a la main : " + partie.getJoueur(0).getLaMain());
-            System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
+            if(partie.getJoueurCourant()==bob)NbTestPasse++;
+            else
+                System.out.println("Le joueur courant est " + partie.getJoueurCourant());
+            NbTestPasse++;
+            if(alice.TailleDeLaMain()==5)NbTestPasse++;
+            else
+                System.out.println("Alice possede " + alice.TailleDeLaMain() + " cartes");
+            NbTest++;
+            if(alice.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)))NbTestPasse++;
+            else
+                System.out.println("Alice ne possede pas la carte 6 JAUNE");
+            NbTest++;
+            if(alice.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE,4)))NbTestPasse++;
+            else
+                System.out.println("Alice ne possede pas la carte 4 ROUGE");
+            NbTest++;
+            if(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.VERT,2)))NbTestPasse++;
+            else
+                System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
+            NbTest++;
         }
+        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
     }
 
-    public static void Test2() {
+    private static void Test2() {
         Partie partie = Partie.getInstance();
 
         String nomDuFichier = "/JeuTestCarteSimple.csv";
@@ -75,9 +94,14 @@ public class TestPunition {
                     TEST 2 : BOB
         */
 
+        int NbTest = 0, NbTestPasse = 0;
+
         System.out.println("\n---------------------------------\nTEST 2 : BOB\n");
 
-        System.out.println("Le joueur courant est " + partie.getJoueurCourant());
+        if(partie.getJoueurCourant()==alice)NbTestPasse++;
+        else
+            System.out.println("Le joueur courant est " + partie.getJoueurCourant());
+        NbTest++;
 
         try {
             partie.getJoueur(1).piocher();
