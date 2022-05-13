@@ -130,10 +130,10 @@ public class Joueur {
             partie.removeCarteTas(partie.getPremiereCarteTas());
             partie.Suivant();
         }
-        /*if(e instanceof JoueurException){
-            if(partie.getPremiereCarteTas() instanceof CartePlus2);
+        if(e instanceof JoueurException){
+            if(partie.getPremiereCarteTas() instanceof CartePlus2)
                 encaisser();
-        }*/
+        }
     }
 
     public void encaisser() throws Exception {
@@ -141,8 +141,11 @@ public class Joueur {
 
         if(partie.getPremiereCarteTas() instanceof CartePlus2) {
             CartePlus2 plus2 = (CartePlus2) partie.getPremiereCarteTas();
+            for(int i =0; i < partie.getCumulPlus2(); i++){
+                piocher();
                 partie.setJoueurAJoue(false);
             }
+        }
         partie.setJoueurAJoue(true);
         finirTour();
     }
