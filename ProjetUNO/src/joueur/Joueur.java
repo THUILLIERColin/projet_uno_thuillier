@@ -61,7 +61,7 @@ public class Joueur {
         laMain.add(cartes);
     }
 
-    public int TailleDeLaMain(){
+    public int getTailleDeLaMain(){
         return laMain.size();
     }
     public boolean doitDireUno(){

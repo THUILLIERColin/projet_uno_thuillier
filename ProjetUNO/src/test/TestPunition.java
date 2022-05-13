@@ -51,9 +51,9 @@ public class TestPunition {
             else{
                 System.out.println("Le joueur courant est " + partie.getJoueurCourant());}
             NbTest++;
-            if(alice.TailleDeLaMain()==5)NbTestPasse++;
+            if(alice.getTailleDeLaMain()==5)NbTestPasse++;
             else{
-                System.out.println("Alice possede " + alice.TailleDeLaMain() + " cartes");}
+                System.out.println("Alice possede " + alice.getTailleDeLaMain() + " cartes");}
             NbTest++;
             if(alice.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)))NbTestPasse++;
             else
@@ -118,9 +118,9 @@ public class TestPunition {
                 System.out.println("Le joueur courant est " + partie.getJoueurCourant());
             NbTest++;
 
-            if (bob.TailleDeLaMain()==5)NbTestPasse++;
+            if (bob.getTailleDeLaMain()==5)NbTestPasse++;
             else
-                System.out.println("Bob possede "+ bob.TailleDeLaMain());
+                System.out.println("Bob possede "+ bob.getTailleDeLaMain());
             NbTest++;
             if(bob.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)))NbTestPasse++;
             else

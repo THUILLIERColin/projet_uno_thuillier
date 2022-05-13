@@ -54,7 +54,7 @@ public class TestCartePlus2 {
             NbTest++;
 
             //verification bob possède 3 carte
-            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPassee++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
             else
                 System.out.println("Bob ne possède pas 3 cartes");
             NbTest++;
@@ -63,7 +63,7 @@ public class TestCartePlus2 {
             partie.getJoueurCourant().encaisser();
 
             //verification bob 5 carte
-            if (bob.TailleDeLaMain() == 5) NbTestPassee++;
+            if (bob.getTailleDeLaMain() == 5) NbTestPassee++;
             else
                 System.out.println("Bob ne possède pas 5 cartes");
             NbTest++;
@@ -81,9 +81,9 @@ public class TestCartePlus2 {
             NbTestPassee++;
             partie.getJoueurCourant().finirTour();
 
-            if (charles.TailleDeLaMain() == 2) NbTestPassee++;
+            if (charles.getTailleDeLaMain() == 2) NbTestPassee++;
             else
-                System.out.println("Charles possède"+ charles.TailleDeLaMain()+" cartes");
+                System.out.println("Charles possède"+ charles.getTailleDeLaMain()+" cartes");
             NbTest++;
 
         }catch (Exception e){
@@ -175,7 +175,7 @@ public class TestCartePlus2 {
             NbTest++;
 
             //verification bob 4 carte
-            if (partie.getJoueurCourant().TailleDeLaMain() == 4) NbTestPassee++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 4) NbTestPassee++;
             else
                 System.out.println("Bob ne possède pas 4 cartes");
             NbTest++;
@@ -184,9 +184,9 @@ public class TestCartePlus2 {
             partie.getJoueurCourant().encaisser();
 
             //verification bob 8 carte
-            if (bob.TailleDeLaMain() == 8) NbTestPassee++;
+            if (bob.getTailleDeLaMain() == 8) NbTestPassee++;
             else
-                System.out.println("Bob ne possède pas 8 cartes, il en possède "+bob.TailleDeLaMain());
+                System.out.println("Bob ne possède pas 8 cartes, il en possède "+bob.getTailleDeLaMain());
             NbTest++;
 
             //verification Charle joueur courant

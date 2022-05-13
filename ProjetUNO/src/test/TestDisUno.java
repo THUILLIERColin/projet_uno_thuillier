@@ -9,8 +9,6 @@ import fichiers.ParserCarteSimple;
 import joueur.Joueur;
 import partie.Partie;
 
-import static java.lang.System.exit;
-
 public class TestDisUno {
     private static void Test1(){
         /*
@@ -41,7 +39,7 @@ public class TestDisUno {
         else
             System.out.println("Le joueur courant n'est pas Alice");
         NbTest++;
-        if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+        if(partie.getJoueurCourant().getTailleDeLaMain()==2)NbTestPasse++;
         else
             System.out.println("");
         NbTest++;
@@ -54,7 +52,7 @@ public class TestDisUno {
             NbTest++;//verification de uno
             partie.getJoueurCourant().finirTour(); //Alice fini le tour
 
-            if(alice.TailleDeLaMain()==1)NbTestPasse++;
+            if(alice.getTailleDeLaMain()==1)NbTestPasse++;
             else System.out.println("Alice ne possede pas une carte");
             NbTest++;//verification que alice a que 1 carte
             if(partie.getPremiereCarteTas().equals(new CarteSimple(Carte.Color.VERT, 2)))NbTestPasse++;
@@ -102,7 +100,7 @@ public class TestDisUno {
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
             }
-            if(alice.TailleDeLaMain()==4)NbTestPasse++;
+            if(alice.getTailleDeLaMain()==4)NbTestPasse++;
             else
                 System.out.println("Alice ne possede pas carte");
             NbTest++;
@@ -154,7 +152,7 @@ public class TestDisUno {
             }catch (Exception ex){
                 System.out.println(ex.getMessage());
             }
-            if(bob.TailleDeLaMain()==4)NbTestPassee++;
+            if(bob.getTailleDeLaMain()==4)NbTestPassee++;
             else
                 System.out.println("Bob ne possede pas 4 cartes");
             NbTest++;

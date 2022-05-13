@@ -1,5 +1,7 @@
 package cartes;
 
+import joueur.Joueur;
+
 public class CarteReverse extends Carte {
     @Override
     public void effet() throws Exception {
@@ -10,8 +12,10 @@ public class CarteReverse extends Carte {
         super(c);
     }
 
-    public CarteReverse(CarteReverse r){
-        super(r.getCouleur());
+
+    // PEUT-ETRE ENLEVER LE BOOL SENS ET FOURNIR A LA FONCTION LA LISTE DES JOUEURS
+    public void ChangeDeSens() throws Exception {
+
     }
 
     //EQUALS + TO STRING
@@ -26,19 +30,4 @@ public class CarteReverse extends Carte {
     public String toString() {
         return "Reverse[ Couleur : "+super.getCouleur()+" ]";
     }
-
-    // PEUT-ETRE ENLEVER LE BOOL SENS ET FOURNIR A LA FONCTION LA LISTE DES JOUEURS
-    /*public void ChangeDeSens(Joueur j) throws Exception {
-        if(j.getPartie().getExpert().traiter(this))
-        {
-            if(j.getPartie().getSens() == Partie.SENS_INVERSE){
-                j.getPartie().setSens(Partie.AIGUILLE_MONTRE) ;
-            }
-            else
-                j.getPartie().setSens(Partie.SENS_INVERSE) ;
-        }
-        else
-            throw new CartesValideException("Impossible de changer de sens le coup n'est pas valide",this);
-    }
-    */
 }

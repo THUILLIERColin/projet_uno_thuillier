@@ -37,7 +37,7 @@ public class TestCarteSimpleIllegale {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
         } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPasse++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPasse++;
             NbTest++;
             if (partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.JAUNE, 6))) NbTestPasse++;
             NbTest++;
@@ -77,14 +77,14 @@ public class TestCarteSimpleIllegale {
             // Bob et Alice ont joué
 
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
-            if (partie.getJoueurCourant().TailleDeLaMain() == 2) NbTestPasse++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 2) NbTestPasse++;
             else System.out.println("Charles ne possede pas 2 cartes");
             NbTest++;
 
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
         } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().TailleDeLaMain() == 2) NbTestPasse++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 2) NbTestPasse++;
             else System.out.println("Charles ne possede pas 2 cartes");
             NbTest++;
             if (partie.getJoueurCourant().getLaMain().contains(new CarteSimple(Carte.Color.BLEU, 7))) NbTestPasse++;
@@ -121,7 +121,7 @@ public class TestCarteSimpleIllegale {
             partie.getJoueurCourant().finirTour();
         } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPasse++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPasse++;
             NbTest++;
         }
 
@@ -155,7 +155,7 @@ public class TestCarteSimpleIllegale {
             partie.getJoueurCourant().piocher();
         } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage()+"\n");
-            if (partie.getJoueurCourant().TailleDeLaMain() == 2) NbTestPasse++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 2) NbTestPasse++;
             NbTest++;
             if (partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.JAUNE, 6))) NbTestPasse++;
             NbTest++;

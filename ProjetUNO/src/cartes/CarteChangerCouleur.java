@@ -19,9 +19,8 @@ public class CarteChangerCouleur extends Carte {
         couleurChanger =couleur;
     }
 
-    public Color JeVeuxCouleur(Color couleur){
-        setCouleurChanger(couleur);
-        return couleur;
+    public Color JeVeuxCouleur(){
+        return super.getCouleur();
     }
 
     /*

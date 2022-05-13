@@ -16,7 +16,6 @@ public class Partie {
     private Expert expert;
 
     private int NbJoueurs;
-    private int cumulPlus2=0;
     private boolean sens=AIGUILLE_MONTRE;
     private ArrayList<Joueur> lesJoueurs = new ArrayList<Joueur>();
     private ArrayList<Carte> leTas = new ArrayList<Carte>();
@@ -24,6 +23,8 @@ public class Partie {
     private ArrayList<Carte> listeCartesInitiales = new ArrayList<>();
 
     private static volatile Partie instance= null;
+
+    private int cumulPlus2=0;
 
     private Joueur joueurCourant;
     private boolean JoueurAJoue=false;

@@ -25,7 +25,7 @@ public class TestCarteSimple {
         else
             System.out.println("Alice n'est pas le joueur courant");
         NbTest++;
-        if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPasse++;
+        if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPasse++;
         else
             System.out.println("Alice ne possède pas 3 cartes");
         NbTest++;
@@ -33,7 +33,7 @@ public class TestCarteSimple {
         try{
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));NbTestPasse++;            NbTest++;
 
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            if(partie.getJoueurCourant().getTailleDeLaMain()==2)NbTestPasse++;
             else
                 System.out.println("Alice ne possede pas 2 cartes");
             NbTest++;
@@ -81,7 +81,7 @@ public class TestCarteSimple {
 
         System.out.println("\nTEST 2 : BOB\n");
 
-        if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++;
+        if(partie.getJoueurCourant().getTailleDeLaMain()==3)NbTestPasse++;
         else
             System.out.println("Bob ne possede pas 3 cartes");
         NbTest++;
@@ -89,7 +89,7 @@ public class TestCarteSimple {
         try{
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
 
-            if(partie.getJoueurCourant().TailleDeLaMain()==2)NbTestPasse++;
+            if(partie.getJoueurCourant().getTailleDeLaMain()==2)NbTestPasse++;
             else
                 System.out.println("Bob ne possede pas 2 cartes");NbTest++;
 

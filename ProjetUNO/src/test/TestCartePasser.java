@@ -13,8 +13,6 @@ import fichiers.ParserCarteSimple;
 import joueur.Joueur;
 import partie.Partie;
 
-import java.rmi.NotBoundException;
-
 public class TestCartePasser {
     private static void Test1() {
         Partie partie = Partie.getInstance();
@@ -156,7 +154,7 @@ public class TestCartePasser {
             NbTest++;
 
             //verification Charle possède 3 carte
-            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPassee++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
             else
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
@@ -169,7 +167,7 @@ public class TestCartePasser {
         } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage() + "\n");
             //verification Charle a 3 carte
-            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPassee++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
             else
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
@@ -229,7 +227,7 @@ public class TestCartePasser {
             NbTest++;
 
             //verification Charle possède 3 carte
-            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPassee++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
             else
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
@@ -241,7 +239,7 @@ public class TestCartePasser {
         } catch (Exception e) {
             System.out.println("\nATTENTION " + e.getMessage() + "\n");
             //verification Charle possède 3 carte
-            if (partie.getJoueurCourant().TailleDeLaMain() == 3) NbTestPassee++;
+            if (partie.getJoueurCourant().getTailleDeLaMain() == 3) NbTestPassee++;
             else
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
