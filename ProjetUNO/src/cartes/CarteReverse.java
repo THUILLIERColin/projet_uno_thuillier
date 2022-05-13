@@ -1,12 +1,10 @@
 package cartes;
 
 import joueur.Joueur;
+import partie.Partie;
 
 public class CarteReverse extends Carte {
-    @Override
-    public void effet() throws Exception {
 
-    }
     //CONSTRUCTEUR
     public CarteReverse(Color c) {
         super(c);
@@ -15,7 +13,16 @@ public class CarteReverse extends Carte {
 
     // PEUT-ETRE ENLEVER LE BOOL SENS ET FOURNIR A LA FONCTION LA LISTE DES JOUEURS
     public void ChangeDeSens() throws Exception {
+        Partie partie =Partie.getInstance();
+        if(partie.getSens()==Partie.AIGUILLE_MONTRE)
+            partie.setSens(Partie.SENS_INVERSE);
+        else
+            partie.setSens(Partie.AIGUILLE_MONTRE);
+    }
 
+    @Override
+    public void effet() throws Exception {
+        ChangeDeSens();
     }
 
     //EQUALS + TO STRING
