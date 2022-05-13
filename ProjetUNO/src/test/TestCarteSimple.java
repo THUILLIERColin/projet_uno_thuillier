@@ -62,9 +62,9 @@ public class TestCarteSimple {
             else
                 System.out.println("Le joueur courant n'est pas bob");
             NbTest++;
-            NbTest++;
+
         }catch (Exception e){
-            if(e instanceof CartesValideException)NbTestPasse++;
+            System.out.println(e.getMessage());
         }
 
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
@@ -121,9 +121,8 @@ public class TestCarteSimple {
             NbTest++;
 
         }catch (Exception e){
-            if(e instanceof CartesValideException)NbTestPasse++;
+            System.out.println(e.getMessage());
         }
-        NbTest++;
         System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
     }
 
@@ -131,7 +130,7 @@ public class TestCarteSimple {
         try {
             Partie partie = Partie.getInstance();
 
-            String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
+            String nomDuFichier = "/JeuTestCarteSimple.csv";
             nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
             Parser premierParser = new ParserCarteSimple(null);

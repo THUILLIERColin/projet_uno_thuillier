@@ -54,7 +54,7 @@
       <recent name="$PROJECT_DIR$/jeux_test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestCarteSimpleIllegale">
+  <component name="RunManager" selected="Application.TestCarteSimple">
     <configuration name="TestCartePasser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.TestCartePasser" />
       <module name="ProjetUNO" />
@@ -122,9 +122,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestCarteSimple" />
         <item itemvalue="Application.TestCarteSimpleIllegale" />
         <item itemvalue="Application.TestPunition" />
-        <item itemvalue="Application.TestCarteSimple" />
         <item itemvalue="Application.TestDisUno" />
         <item itemvalue="Application.TestCartePasser" />
       </list>
