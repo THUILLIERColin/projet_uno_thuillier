@@ -16,6 +16,7 @@ public class Partie {
     private Expert expert;
 
     private int NbJoueurs;
+    private int cumulPlus2=0;
     private boolean sens=AIGUILLE_MONTRE;
     private ArrayList<Joueur> lesJoueurs = new ArrayList<Joueur>();
     private ArrayList<Carte> leTas = new ArrayList<Carte>();
@@ -51,6 +52,15 @@ public class Partie {
     /*
             DE BASE
      */
+
+    public void setCumulPlus2(int cumulPlus2) {
+        this.cumulPlus2 = cumulPlus2;
+    }
+
+    public int getCumulPlus2() {
+        return cumulPlus2;
+    }
+
     public void setSens(boolean sens) {
         this.sens = sens;
     }

@@ -4,19 +4,16 @@ import partie.Partie;
 
 public class CartePlus2 extends Carte {
 
-    private int nbPlus2Pose=0;
-
     public CartePlus2(Color c) {
         super(c);
     }
 
     public void plus2Joue() {
-        nbPlus2Pose++;
+        Partie partie = Partie.getInstance();
+        partie.setCumulPlus2(partie.getCumulPlus2()+1);
+
     }
 
-    public int getNbPlus2Pose() {
-        return nbPlus2Pose*2;
-    }
 
     @Override
     public String toString() {
