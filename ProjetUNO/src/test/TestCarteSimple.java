@@ -131,7 +131,7 @@ public class TestCarteSimple {
         try {
             Partie partie = Partie.getInstance();
 
-            String nomDuFichier = "/JeuTestCarteSimplePourUno.csv";
+            String nomDuFichier = "/JeuTestCarteSimple.csv";
             nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
 
             Parser premierParser = new ParserCarteSimple(null);
