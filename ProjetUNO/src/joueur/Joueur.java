@@ -130,10 +130,10 @@ public class Joueur {
             partie.removeCarteTas(partie.getPremiereCarteTas());
             partie.Suivant();
         }
-        if(e instanceof JoueurException){
+        /*if(e instanceof JoueurException){
             if(partie.getPremiereCarteTas() instanceof CartePlus2);
                 encaisser();
-        }
+        }*/
     }
 
     public void encaisser() throws Exception {
@@ -141,10 +141,12 @@ public class Joueur {
 
         if(partie.getPremiereCarteTas() instanceof CartePlus2){
             CartePlus2 plus2 = (CartePlus2) partie.getPremiereCarteTas();
-            for (int i=0; i < plus2.getNbPlus2Pose(); i++ )
+            for (int i=0; i < plus2.getNbPlus2Pose(); i++ ){
                 piocher();
                 partie.setJoueurAJoue(false);
+            }
         }
+        partie.setJoueurAJoue(true);
         finirTour();
     }
 

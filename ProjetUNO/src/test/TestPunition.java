@@ -39,7 +39,7 @@ public class TestPunition {
             System.out.println("Le joueur courant n'est pas Alice");
         NbTest++;
         try {
-            partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
+            alice.jouer(partie.getJoueurCourant().getCarte(1));
         } catch (Exception e) {
             // System.out.println("\nATTENTION " + e.getMessage() + "\n");
             try {
@@ -48,12 +48,12 @@ public class TestPunition {
                 System.out.println(ex.getMessage());
             }
             if(partie.getJoueurCourant()==bob)NbTestPasse++;
-            else
-                System.out.println("Le joueur courant est " + partie.getJoueurCourant());
-            NbTestPasse++;
+            else{
+                System.out.println("Le joueur courant est " + partie.getJoueurCourant());}
+            NbTest++;
             if(alice.TailleDeLaMain()==5)NbTestPasse++;
-            else
-                System.out.println("Alice possede " + alice.TailleDeLaMain() + " cartes");
+            else{
+                System.out.println("Alice possede " + alice.TailleDeLaMain() + " cartes");}
             NbTest++;
             if(alice.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)))NbTestPasse++;
             else
@@ -104,20 +104,39 @@ public class TestPunition {
         NbTest++;
 
         try {
-            partie.getJoueur(1).piocher();
-            System.out.println("Bob possède : " + partie.getJoueurCourant().TailleDeLaMain() + " cartes");
+            bob.piocher();
         } catch (Exception e) {
-            System.out.println("\nATTENTION " + e.getMessage() + "\n");
+            //System.out.println("\nATTENTION " + e.getMessage() + "\n");
             try {
-                partie.getJoueur(1).punir(e);
+                bob.punir(e);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-            System.out.println("Le joueur courant est " + partie.getJoueurCourant());
-            System.out.println("Bob a la main : " + partie.getJoueur(1).getLaMain());
-            System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
-        }
 
+            if(partie.getJoueurCourant()==alice)NbTestPasse++;
+            else
+                System.out.println("Le joueur courant est " + partie.getJoueurCourant());
+            NbTest++;
+
+            if (bob.TailleDeLaMain()==5)NbTestPasse++;
+            else
+                System.out.println("Bob possede "+ bob.TailleDeLaMain());
+            NbTest++;
+            if(bob.getLaMain().contains(new CarteSimple(Carte.Color.JAUNE,6)))NbTestPasse++;
+            else
+                System.out.println("Bob ne possede pas la carte 6 JAUNE");
+            NbTest++;
+            if(bob.getLaMain().contains(new CarteSimple(Carte.Color.ROUGE,4)))NbTestPasse++;
+            else
+                System.out.println("Bob ne possede pas la carte 4 ROUGE");
+            NbTest++;
+
+            if(partie.getPremiereCartePioche().equals(new CarteSimple(Carte.Color.VERT,2)))NbTestPasse++;
+            else
+                System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
+            NbTest++;
+        }
+        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
     }
 
     public static void main(String[] args) {
