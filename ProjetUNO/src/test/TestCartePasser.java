@@ -38,10 +38,10 @@ public class TestCartePasser {
                     TEST 1 : PASSER
             */
         int NbTestPassee = 0, NbTest = 0;
-        System.out.println("\n---------------------------------\nTEST 1 : Passer\n");
+        System.out.println("\nTEST 1 : Passer\n");
 
         //test alice joueur courant
-        if (partie.getJoueurCourant().getNom() == "Alice") {
+        if (partie.getJoueurCourant()==alice) {
             NbTestPassee++;
         } else {
             System.out.println("Alice n'est pas le joueur courant");
@@ -55,7 +55,7 @@ public class TestCartePasser {
             partie.getJoueurCourant().finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant().getNom() == "Charles") {
+            if (partie.getJoueurCourant()==charles) {
                 NbTestPassee++;
             } else {
                 System.out.println("Charles n'est pas le joueur courant");
@@ -74,7 +74,7 @@ public class TestCartePasser {
             partie.getJoueurCourant().finirTour();
 
             //verification bob joueur courant
-            if (partie.getJoueurCourant().getNom() == "Bob") {
+            if (partie.getJoueurCourant()==bob) {
                 NbTestPassee++;
             } else {
                 System.out.println("Bob n'est pas le joueur courant");
@@ -93,7 +93,7 @@ public class TestCartePasser {
             partie.getJoueurCourant().finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant().getNom() == "Charles") {
+            if (partie.getJoueurCourant()==charles) {
                 NbTestPassee++;
             } else {
                 System.out.println("Charles n'est pas le joueur courant");
@@ -106,7 +106,7 @@ public class TestCartePasser {
                 System.out.println("La premiere carte du tas n'est pas le PASSE TOUT ROUGE");
             NbTest++;
 
-            System.out.println("Test passé : " + NbTestPassee + "/" + NbTest);
+            System.out.println("\tTest passé : " + NbTestPassee + "/" + NbTest);
 
         } catch (Exception e) {
             //System.out.println("\nATTENTION " + e.getMessage() + "\n");
@@ -130,11 +130,11 @@ public class TestCartePasser {
 
         partie.initialisationPartie(3);
 
-        System.out.println("\n---------------------------------\nTEST 2 : CARTE SIMPLE ILLEGALE CARTE PASSER\n\n");
+        System.out.println("\nTEST 2 : CARTE SIMPLE ILLEGALE CARTE PASSER\n\n");
         int NbTestPassee = 0, NbTest = 0;
 
         //verification alice joueur courant
-        if (partie.getJoueurCourant().getNom() == "Alice") {
+        if (partie.getJoueurCourant()==alice) {
             NbTestPassee++;
         } else {
             System.out.println("Alice n'est pas le joueur courant");
@@ -148,7 +148,7 @@ public class TestCartePasser {
             partie.getJoueurCourant().finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant().getNom() == "Charles") {
+            if (partie.getJoueurCourant()==charles) {
                 NbTestPassee++;
             } else {
                 System.out.println("Charles n'est pas le joueur courant");
@@ -173,7 +173,7 @@ public class TestCartePasser {
             else
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
-            System.out.println("Test passé : " + NbTestPassee + "/" + NbTest);
+            System.out.println("\tTest passé : " + NbTestPassee + "/" + NbTest);
 
         }
     }
@@ -198,11 +198,11 @@ public class TestCartePasser {
                     TEST 2 : CARTE PASSE TOUR ILLEGALE
              */
 
-        System.out.println("\n---------------------------------\nTEST 2 : CARTE PASSE TOUR ILLEGALE SUR CARTE SIMPLE\n\n");
+        System.out.println("\nTEST 3 : CARTE PASSE TOUR ILLEGALE SUR CARTE SIMPLE\n\n");
         int NbTest = 0, NbTestPassee = 0;
 
         //verification alice joueur courant
-        if (partie.getJoueurCourant().getNom() == "Alice") {
+        if (partie.getJoueurCourant()==alice) {
             NbTestPassee++;
         } else {
             System.out.println("Alice n'est pas le joueur courant");
@@ -221,7 +221,7 @@ public class TestCartePasser {
             partie.getJoueurCourant().finirTour();
 
             //verification charles joueur courant
-            if (partie.getJoueurCourant().getNom() == "Charles") {
+            if (partie.getJoueurCourant()==charles) {
                 NbTestPassee++;
             } else {
                 System.out.println("Charles n'est pas le joueur courant");
@@ -246,7 +246,7 @@ public class TestCartePasser {
                 System.out.println("Charle ne possède pas 3 cartes");
             NbTest++;
 
-            System.out.println("Test passé : " + NbTestPassee + "/" + NbTest);
+            System.out.println("\tTest passé : " + NbTestPassee + "/" + NbTest);
         }
     }
 

@@ -31,7 +31,7 @@ public class TestCarteSimpleIllegale {
 
         int NbTestPasse = 0, NbTest = 0;
 
-        System.out.println("\n---------------------------------\nTEST 1 : MAUVAISE CARTE\n");
+        System.out.println("\nTEST 1 : MAUVAISE CARTE\n");
 
         try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(1));
@@ -43,7 +43,7 @@ public class TestCarteSimpleIllegale {
             NbTest++;
         }
 
-        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
+        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
 
     }
 
@@ -67,7 +67,7 @@ public class TestCarteSimpleIllegale {
 
         int NbTestPasse = 0, NbTest = 0;
 
-        System.out.println("\n---------------------------------\nTEST 2 : JOUE 2X\n");
+        System.out.println("\nTEST 2 : JOUE 2X\n");
 
         try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
@@ -92,7 +92,7 @@ public class TestCarteSimpleIllegale {
             NbTest++;
         }
 
-        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
+        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
     }
 
     private static void Test3() {
@@ -115,7 +115,7 @@ public class TestCarteSimpleIllegale {
 
         int NbTestPasse = 0, NbTest = 0;
 
-        System.out.println("\n---------------------------------\nTEST 3 : FINIR LE TOUR \n");
+        System.out.println("\nTEST 3 : FINIR LE TOUR \n");
 
         try {
             partie.getJoueurCourant().finirTour();
@@ -125,7 +125,7 @@ public class TestCarteSimpleIllegale {
             NbTest++;
         }
 
-        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
+        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
     }
 
     private static void Test4() {
@@ -148,7 +148,7 @@ public class TestCarteSimpleIllegale {
 
         int NbTestPasse = 0, NbTest = 0;
 
-        System.out.println("\n---------------------------------\nTEST 4 : PIOCHE\n");
+        System.out.println("\nTEST 4 : PIOCHE\n");
 
         try {
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
@@ -161,7 +161,7 @@ public class TestCarteSimpleIllegale {
             NbTest++;
         }
 
-        System.out.println("Test passé : " + NbTestPasse + "/" + NbTest);
+        System.out.println("\tTest passé : " + NbTestPasse + "/" + NbTest);
     }
 
 

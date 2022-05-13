@@ -33,7 +33,7 @@ public class TestPunition {
                     TEST 1 : ALICE
             */
 
-        System.out.println("\n---------------------------------\nTEST 1 : ALICE\n");
+        System.out.println("\nTEST 1 : ALICE\n");
         if(partie.getJoueurCourant()==alice)NbTestPasse++;
         else
             System.out.println("Le joueur courant n'est pas Alice");
@@ -68,7 +68,7 @@ public class TestPunition {
                 System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
             NbTest++;
         }
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
     }
 
     private static void Test2() {
@@ -96,7 +96,7 @@ public class TestPunition {
 
         int NbTest = 0, NbTestPasse = 0;
 
-        System.out.println("\n---------------------------------\nTEST 2 : BOB\n");
+        System.out.println("\nTEST 2 : BOB\n");
 
         if(partie.getJoueurCourant()==alice)NbTestPasse++;
         else
@@ -136,7 +136,7 @@ public class TestPunition {
                 System.out.println("La prochaine carte de la pioche est " + partie.getPremiereCartePioche());
             NbTest++;
         }
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
     }
 
     public static void main(String[] args) {

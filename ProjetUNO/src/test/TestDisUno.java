@@ -35,7 +35,7 @@ public class TestDisUno {
 
         int NbTestPasse=0,NbTest=0;
 
-        System.out.println("\n---------------------------------\nTEST 1 : ALICE UNO BON MOMENT\n");
+        System.out.println("\nTEST 1 : ALICE UNO BON MOMENT\n");
 
         if(partie.getJoueurCourant()==alice) NbTestPasse++;
         else
@@ -65,7 +65,7 @@ public class TestDisUno {
             System.out.println("\nATTENTION " + e.getMessage()+"\n");
         }
 
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
     }
 
     private static void Test2 (){
@@ -91,7 +91,7 @@ public class TestDisUno {
 
         int NbTestPasse=0,NbTest=0;
 
-        System.out.println("\n---------------------------------\nTEST 2 : OUBLIE UNO\n");
+        System.out.println("\nTEST 2 : OUBLIE UNO\n");
 
         try{
             partie.getJoueurCourant().jouer(partie.getJoueurCourant().getCarte(0));
@@ -116,7 +116,7 @@ public class TestDisUno {
             NbTest++;
         }
 
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
     }
     private static void Test3(){
         Partie partie = Partie.getInstance();
@@ -138,7 +138,7 @@ public class TestDisUno {
 
         int NbTestPassee=0,NbTest=0;
 
-        System.out.println("\n---------------------------------\nTEST 3 : MAUVAIS UNO\n");
+        System.out.println("\nTEST 3 : MAUVAIS UNO\n");
 
         //verification Alice joueur courant
         if (partie.getJoueurCourant().getNom() == "Alice")NbTestPassee++;
@@ -168,7 +168,7 @@ public class TestDisUno {
             NbTest++;
         }
 
-        System.out.println("Test passé : "+NbTestPassee+"/"+NbTest);
+        System.out.println("\tTest passé : "+NbTestPassee+"/"+NbTest);
 
     }
     public static void main(String[] args) {

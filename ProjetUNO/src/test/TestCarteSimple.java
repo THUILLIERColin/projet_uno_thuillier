@@ -2,7 +2,6 @@ package test;
 
 import cartes.Carte;
 import cartes.CarteSimple;
-import exceptions.CartesValideException;
 import expert.ExpertCarteSimpleCarteSimple;
 import fichiers.Fichier;
 import fichiers.Parser;
@@ -20,7 +19,7 @@ public class TestCarteSimple {
 
         int NbTestPasse=0,NbTest=0;
 
-        System.out.println("\n---------------------------------\nTEST 1 : ALICE\n");
+        System.out.println("\nTEST 1 : ALICE\n");
 
         if(partie.getJoueurCourant()==alice) NbTestPasse++;
         else
@@ -67,7 +66,7 @@ public class TestCarteSimple {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
 
     }
 
@@ -80,7 +79,7 @@ public class TestCarteSimple {
 
         int NbTestPasse=0,NbTest=0;
 
-        System.out.println("\n---------------------------------\nTEST 2 : BOB\n");
+        System.out.println("\nTEST 2 : BOB\n");
 
         if(partie.getJoueurCourant().TailleDeLaMain()==3)NbTestPasse++;
         else
@@ -123,7 +122,7 @@ public class TestCarteSimple {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        System.out.println("Test passé : "+NbTestPasse+"/"+NbTest);
+        System.out.println("\tTest passé : "+NbTestPasse+"/"+NbTest);
     }
 
     public static void main(String[] args) {

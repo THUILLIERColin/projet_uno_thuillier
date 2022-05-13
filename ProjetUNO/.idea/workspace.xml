@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ede0efc-1f2e-4d51-8b76-8a1d9e116368" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/AllTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestCartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCartePasser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/TestCartePlus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCartePlus2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestCarteSimple.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +57,20 @@
       <recent name="$PROJECT_DIR$/jeux_test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestCartePlus2">
+  <component name="RunManager" selected="Application.AllTest">
+    <configuration name="AllTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.AllTest" />
+      <module name="ProjetUNO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestCartePlus2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.TestCartePlus2" />
       <module name="ProjetUNO" />
@@ -71,19 +86,6 @@
     </configuration>
     <configuration name="TestCarteSimple" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.TestCarteSimple" />
-      <module name="ProjetUNO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCarteSimpleIllegale" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.TestCarteSimpleIllegale" />
       <module name="ProjetUNO" />
       <extension name="coverage">
         <pattern>
@@ -123,11 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AllTest" />
         <item itemvalue="Application.TestCartePlus2" />
         <item itemvalue="Application.TestPunition" />
         <item itemvalue="Application.TestCarteSimple" />
         <item itemvalue="Application.TestDisUno" />
-        <item itemvalue="Application.TestCarteSimpleIllegale" />
       </list>
     </recent_temporary>
   </component>

@@ -29,7 +29,7 @@ public class TestCartePlus2 {
 
         partie.initialisationPartie(3);
 
-        System.out.println("\n---------------------------------\nTEST 1 : COUP LEGAL +2\n");
+        System.out.println("\n\tTEST 1 : COUP LEGAL +2\n");
         int NbTest=0,NbTestPassee=0;
 
         //test alice joueur courant
@@ -111,7 +111,7 @@ public class TestCartePlus2 {
 
         partie.initialisationPartie(3);
 
-        System.out.println("\n---------------------------------\nTEST 2 :  CUMUL +2\n");
+        System.out.println("\n\tTEST 2 :  CUMUL +2\n");
         int NbTest=0,NbTestPassee=0;
 
         //test alice joueur courant
