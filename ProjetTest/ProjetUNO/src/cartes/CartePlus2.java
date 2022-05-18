@@ -8,6 +8,9 @@ public class CartePlus2 extends Carte {
         super(c);
     }
 
+    /**
+     * Permet de savoir combien de carte +2 on était jouer et les cumuls si besoin
+     */
     public void plus2Joue() {
         Partie partie = Partie.getInstance();
         partie.setCumulPlus2(partie.getCumulPlus2()+1);

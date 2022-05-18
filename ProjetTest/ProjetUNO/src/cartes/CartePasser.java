@@ -8,6 +8,9 @@ public class CartePasser extends Carte {
         super(c);
     }
 
+    /**
+     * Change le joueur courante de la partie ne faisant sauter un tour a la personne qui suis le joueur qui a jouer la carte passer
+     */
     public void joueurSuivant(){
         Partie partie = Partie.getInstance();
         partie.getJoueurCourant().setPasser(true);
