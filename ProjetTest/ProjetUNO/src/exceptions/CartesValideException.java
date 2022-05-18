@@ -3,6 +3,9 @@ package exceptions;
 import cartes.Carte;
 import joueur.Joueur;
 
+/**
+ * Exception pour els cartes valide
+ */
 public class CartesValideException extends Exception{
     private Carte cartesErreur;
     private Joueur mauvaisJoueur;

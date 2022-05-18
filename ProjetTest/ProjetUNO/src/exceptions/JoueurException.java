@@ -2,6 +2,9 @@ package exceptions;
 
 import joueur.Joueur;
 
+/**
+ * Exception lier au joueur
+ */
 public class JoueurException extends Exception{
     Joueur mauvaisJoueur;
 
