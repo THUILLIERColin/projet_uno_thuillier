@@ -36,7 +36,7 @@ public abstract class Expert {
 
     /**
      * Parse une ligne. Renvoie une Exception si quelque chose a mal tourné...
-     * @param ligne
+     * @param carte
      * @throws Exception
      */
     public abstract boolean expertise(Carte carte);
@@ -45,7 +45,7 @@ public abstract class Expert {
      * Renvoie true si le parser en question reconnait le type de ligne, c'est-à-dire
      * qu'il sait la "décortiquer", et créer le ou les objets qu'il faut. Il n'y a pas
      * d'exception. En cas de problème, on renvoie false !
-     * @param ligne
+     * @param carte
      * @return true si la ligne est reconnue
      */
     public abstract boolean saitExpertiser(Carte carte);

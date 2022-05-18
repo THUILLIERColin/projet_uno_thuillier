@@ -21,6 +21,10 @@ public class Joueur {
             DE BASES
      */
 
+    /**
+     * Constructeur classique d'un joueur
+     * @param nom
+     */
     public Joueur(String nom){
         setNom(nom);
         Partie.getInstance().ajouterJoueurs(this);
@@ -35,7 +39,7 @@ public class Joueur {
     }
 
     public void setNom(String nom) {
-        if(nom.equals(null)|| nom.trim().equals(""))
+        if( (nom==null) || nom.trim().equals(""))
             throw new IllegalArgumentException("Probleme de nom");
         this.nom = nom;
     }
@@ -95,6 +99,10 @@ public class Joueur {
 
     // FONCTION ENCAISSER 2
 
+    /**
+     * Fonction qui permet a un joueur de piocher
+     * @throws JoueurException
+     */
     public void piocher() throws JoueurException{
         Partie partie = Partie.getInstance();
         if(partie.getSiJoueurAJoue())
@@ -105,6 +113,11 @@ public class Joueur {
         partie.setJoueurAJoue(true);
     }
 
+    /**
+     * Fonction qui permet de jouer
+     * @param carte Carte que le joueur souhaite jouer
+     * @throws Exception
+     */
     public void jouer(Carte carte) throws Exception {
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
@@ -117,6 +130,11 @@ public class Joueur {
         partie.getPremiereCarteTas().effet();
     }
 
+    /**
+     * Fonction qui dit permet au joueur de finir son tour
+     * @throws JoueurException
+     * @throws UnoException
+     */
     public void finirTour() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
@@ -130,6 +148,11 @@ public class Joueur {
         partie.setJoueurAJoue(false);
     }
 
+    /**
+     * Fonction qui puni un joueur quand il fait quelque chose qu'il n'avait pas le droit de faire
+     * @throws JoueurException
+     * @throws UnoException
+     */
     public void punir() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         laMain.add(partie.prendrePioche());
@@ -144,6 +167,11 @@ public class Joueur {
         Partie.getInstance().Suivant();
     }
 
+    /**
+     * Fonction qui punis le joueur dans le cas d'un mauvais UNO
+     * @throws JoueurException
+     * @throws UnoException
+     */
     public void punirUnoException() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         punir();
@@ -152,6 +180,11 @@ public class Joueur {
         partie.Suivant();
     }
 
+    /**
+     * Fonction qui permet au joueur d'encaisser les cartes
+     * @throws JoueurException
+     * @throws UnoException
+     */
     public void encaisser() throws JoueurException,UnoException {
         Partie partie = Partie.getInstance();
 

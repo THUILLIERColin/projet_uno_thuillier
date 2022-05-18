@@ -43,6 +43,10 @@ public class Partie {
     }
     */
 
+    /**
+     * Permet de crée une nouvelle partie
+     * @return Partie
+     */
     public static Partie getInstance() {
         if (instance == null) {
             instance = new Partie();
@@ -133,6 +137,10 @@ public class Partie {
             POUR LES CARTES DE PIOCHE
      */
 
+    /**
+     * Fonction qui permet de prendre la première carte de la pioche et de l'enlever de la pioche
+     * @return Carte nouvelle carte du haut de la pioche
+     */
     public Carte prendrePioche(){
         Carte cartesPioche= laPioche.get(0);
         laPioche.remove(cartesPioche);
@@ -198,6 +206,9 @@ public class Partie {
             FONCTION POUR JOUER
      */
 
+    /**
+     * Fonction qui permet de passer au joueur suivant le joueur courant
+     */
     public void Suivant(){
         if(getIndiceJoueur(joueurCourant) == lesJoueurs.size()-1){
             if(sens==SENS_INVERSE){
@@ -234,6 +245,10 @@ public class Partie {
             FAIRE FONCTION DISTRIBUER
      */
 
+    /**
+     * Fonction qui permet la distribution des cartes au différent joueurs
+     * @param nbCartesJoueur nombre de carte que l'on donne au joueur
+     */
     public void distribuerCartes(int nbCartesJoueur){
         for(int i=0; i< nbCartesJoueur; i++){
             for(int j=0; j<lesJoueurs.size(); j++) {
