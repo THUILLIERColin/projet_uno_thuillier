@@ -12,7 +12,7 @@ public class CarteReverse extends Carte {
 
 
     // PEUT-ETRE ENLEVER LE BOOL SENS ET FOURNIR A LA FONCTION LA LISTE DES JOUEURS
-    public void ChangeDeSens() throws Exception {
+    public void ChangeDeSens() {
         Partie partie =Partie.getInstance();
         if(partie.getSens()==Partie.AIGUILLE_MONTRE)
             partie.setSens(Partie.SENS_INVERSE);
@@ -21,7 +21,7 @@ public class CarteReverse extends Carte {
     }
 
     @Override
-    public void effet() throws Exception {
+    public void effet() {
         ChangeDeSens();
     }
 

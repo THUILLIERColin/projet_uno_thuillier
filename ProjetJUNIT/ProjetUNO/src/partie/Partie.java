@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import cartes.Carte;
 import exceptions.CartesValideException;
+import exceptions.ExpertManquantException;
 import expert.Expert;
 import joueur.Joueur;
 
@@ -123,6 +124,11 @@ public class Partie {
             POUR LES CARTES DE PIOCHE
      */
 
+    /**
+     * Sert à piocher,
+     * Retourne la premiere carte de la pioche
+     * @return carte
+     */
     public Carte prendrePioche(){
         Carte cartesPioche= laPioche.get(0);
         laPioche.remove(cartesPioche);
@@ -149,7 +155,7 @@ public class Partie {
         return leTas.get(leTas.size()-1);
     }
 
-    public void ajouterDansTas(Carte carte) throws Exception {
+    public void ajouterDansTas(Carte carte) throws CartesValideException, ExpertManquantException {
         if(!expert.traiter(carte))
             throw new CartesValideException("Cout invalide, la carte "+ carte +" ne peut pas etre pose sur " + getPremiereCarteTas() , joueurCourant, carte);
         leTas.add(carte);
@@ -188,6 +194,10 @@ public class Partie {
             FONCTION POUR JOUER
      */
 
+    /**
+     * Sert à passer au joueur Suivant
+     */
+
     public void Suivant(){
         if(getIndiceJoueur(joueurCourant) == lesJoueurs.size()-1){
             if(sens==SENS_INVERSE){
@@ -224,6 +234,11 @@ public class Partie {
             FAIRE FONCTION DISTRIBUER
      */
 
+    /**
+     * Sert à distribuer les cartes, elle est appelée uniquement dans initialisationPartie
+     * @param nbCartesJoueur
+     */
+
     public void distribuerCartes(int nbCartesJoueur){
         for(int i=0; i< nbCartesJoueur; i++){
             for(int j=0; j<lesJoueurs.size(); j++) {
@@ -240,12 +255,18 @@ public class Partie {
     /*
             FONCTION D'INITIALISATION
      */
-
+    /**
+     * Fonction qui initialise la partie, le parametre sert à distribuer les cartes
+     * @param nbCartesParJoueur
+     */
     public void initialisationPartie(int nbCartesParJoueur){
         distribuerCartes(nbCartesParJoueur);
         joueurCourant=lesJoueurs.get(0);
     }
 
+    /**
+     * Fonction qui réinitialise la Partie
+     */
     public void reinitialiserPartie(){
         instance= new Partie();
     }

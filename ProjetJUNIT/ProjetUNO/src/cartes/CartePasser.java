@@ -14,7 +14,7 @@ public class CartePasser extends Carte {
     }
 
     @Override
-    public void effet() throws Exception {
+    public void effet() {
         joueurSuivant();
     }
 

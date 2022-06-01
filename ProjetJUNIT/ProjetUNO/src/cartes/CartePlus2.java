@@ -20,7 +20,7 @@ public class CartePlus2 extends Carte {
     }
 
     @Override
-    public void effet() throws Exception {
+    public void effet() {
         plus2Joue();
     }
 }

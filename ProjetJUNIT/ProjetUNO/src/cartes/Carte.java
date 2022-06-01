@@ -18,7 +18,7 @@ public abstract class Carte {
         return couleur;
     }
 
-    public abstract void effet() throws Exception;
+    public abstract void effet();
 
     @Override
     public boolean equals(Object o) {

@@ -7,6 +7,7 @@ public class CarteChangerCouleur extends Carte {
     /*
             CONSTRUCTEUR
      */
+
     public CarteChangerCouleur() {
         super(Color.NOIR);
     }
@@ -35,7 +36,7 @@ public class CarteChangerCouleur extends Carte {
     }
 
     @Override
-    public void effet() throws Exception {
+    public void effet() {
         
     }
 }
