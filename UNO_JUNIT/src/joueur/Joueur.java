@@ -101,14 +101,14 @@ public class Joueur {
      * @throws JoueurException
      * @throws UnoException
      */
-    public void disUNO() throws JoueurException, UnoException{
+    public void disUNO() throws JoueurException{
         if(this != Partie.getInstance().getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(doitDireUno()) {
             this.uno=true;
         }
         else{
-            throw new UnoException("Le joueur "+ this +"possède plus d'une cartes",this);
+            throw new JoueurException("Le joueur "+ this +"possède plus d'une cartes",this);
         }
     }
 
@@ -156,16 +156,21 @@ public class Joueur {
         partie.setJoueurAJoue(false);
     }
 
-    public void punir() throws JoueurException,UnoException{
+    public void punir(){
         Partie partie = Partie.getInstance();
         laMain.add(partie.prendrePioche());
         laMain.add(partie.prendrePioche());
         if(partie.getPremiereCarteTas() instanceof CartePlus2)
-            encaisser();
+            try{
+                encaisser();
+            }catch (JoueurException | UnoException e){
+                System.out.println(e.getMessage());
+            }
+
     }
 
 
-    public void punirCarteValideException() throws JoueurException,UnoException{
+    public void punirCarteValideException(){
         punir();
         Partie.getInstance().Suivant();
     }
@@ -175,7 +180,7 @@ public class Joueur {
      * @throws JoueurException
      * @throws UnoException
      */
-    public void punirUnoException() throws JoueurException,UnoException{
+    public void punirUnoException(){
         Partie partie = Partie.getInstance();
         punir();
         laMain.add(partie.getPremiereCarteTas());
