@@ -11,9 +11,6 @@ import partie.Partie;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/**
- * Définition d'un joueur
- */
 public class Joueur {
     private String nom;
     private boolean uno=false;
@@ -117,10 +114,6 @@ public class Joueur {
 
     // FONCTION ENCAISSER 2
 
-    /**
-     * Fonction qui permet au joueur de piocher
-     * @throws JoueurException
-     */
     public void piocher() throws JoueurException{
         Partie partie = Partie.getInstance();
         if(partie.getSiJoueurAJoue())
@@ -150,11 +143,6 @@ public class Joueur {
         partie.getPremiereCarteTas().effet();
     }
 
-    /**
-     * Fonction qui permet de finir le tour
-     * @throws JoueurException
-     * @throws UnoException
-     */
     public void finirTour() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
@@ -168,35 +156,31 @@ public class Joueur {
         partie.setJoueurAJoue(false);
     }
 
-    /**
-     * Fonction qui puni le joueur
-     * @throws JoueurException
-     * @throws UnoException
-     */
-    public void punir() throws JoueurException,UnoException{
+    public void punir(){
         Partie partie = Partie.getInstance();
         laMain.add(partie.prendrePioche());
         laMain.add(partie.prendrePioche());
         if(partie.getPremiereCarteTas() instanceof CartePlus2)
-            encaisser();
+            try{
+                encaisser();
+            }catch (JoueurException | UnoException e){
+                System.out.println(e.getMessage());
+            }
+
     }
 
-    /**
-     * Punition lors d'une Carte invalide jouer
-     * @throws JoueurException
-     * @throws UnoException
-     */
-    public void punirCarteValideException() throws JoueurException,UnoException{
+
+    public void punirCarteValideException(){
         punir();
         Partie.getInstance().Suivant();
     }
 
     /**
-     * Fonction lors d'un mauvais uno ou d'un oublis de uno
+     *
      * @throws JoueurException
      * @throws UnoException
      */
-    public void punirUnoException() throws JoueurException, UnoException {
+    public void punirUnoException(){
         Partie partie = Partie.getInstance();
         punir();
         laMain.add(partie.getPremiereCarteTas());
