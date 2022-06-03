@@ -114,6 +114,10 @@ public class Joueur {
 
     // FONCTION ENCAISSER 2
 
+    /**
+     * Fonction qui permet au joueur de piocher
+     * @throws JoueurException
+     */
     public void piocher() throws JoueurException{
         Partie partie = Partie.getInstance();
         if(partie.getSiJoueurAJoue())
@@ -143,6 +147,11 @@ public class Joueur {
         partie.getPremiereCarteTas().effet();
     }
 
+    /**
+     * Fonction qui permet de finir le tour
+     * @throws JoueurException
+     * @throws UnoException
+     */
     public void finirTour() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
@@ -156,6 +165,11 @@ public class Joueur {
         partie.setJoueurAJoue(false);
     }
 
+    /**
+     * Fonction qui puni le joueur
+     * @throws JoueurException
+     * @throws UnoException
+     */
     public void punir() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
         laMain.add(partie.prendrePioche());
@@ -164,14 +178,18 @@ public class Joueur {
             encaisser();
     }
 
-
+    /**
+     * Punition lors d'une Carte invalide jouer
+     * @throws JoueurException
+     * @throws UnoException
+     */
     public void punirCarteValideException() throws JoueurException,UnoException{
         punir();
         Partie.getInstance().Suivant();
     }
 
     /**
-     *
+     * Fonction lors d'un mauvais uno ou d'un oublis de uno
      * @throws JoueurException
      * @throws UnoException
      */

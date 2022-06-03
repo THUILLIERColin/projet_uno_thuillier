@@ -19,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/src/exceptions/JoueurException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/JoueurException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exceptions/ParserManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/ParserManquantException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exceptions/UnoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/UnoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654262741467</updated>
-      <workItem from="1654262742889" duration="852000" />
+      <workItem from="1654262742889" duration="1126000" />
     </task>
     <servers />
   </component>
