@@ -34,6 +34,10 @@ public class Partie {
 
     private Partie() {}
 
+    /**
+     * Renvoie l'instance de la partie
+     * @return instance de la partie
+     */
     public static Partie getInstance() {
         if (instance == null) {
             instance = new Partie();
@@ -45,38 +49,74 @@ public class Partie {
             DE BASE
      */
 
+    /**
+     * set le cumulPlus2
+     * @param cumulPlus2 le cumul de +2
+     */
     public void setCumulPlus2(int cumulPlus2) {
         this.cumulPlus2 = cumulPlus2;
     }
 
+    /**
+     * renvoie le cumul de plus2
+     * @return int cumul+2
+     */
     public int getCumulPlus2() {
         return cumulPlus2;
     }
 
+    /**
+     * Configure le sens de jeux
+     * @param sens sens de jeux
+     */
     public void setSens(boolean sens) {
         this.sens = sens;
     }
 
+    /**
+     * renvoie le sens en cour de la partie
+     * @return sens
+     */
     public boolean getSens() {
         return sens;
     }
 
+    /**
+     * Renvoie le nombre de joueur
+     * @return nombre de joueur
+     */
     public int getNbJoueurs() {
         return NbJoueurs;
     }
 
+    /**
+     *
+     * @param expert expert utiliser
+     */
     public void setExpert(Expert expert) {
         this.expert = expert;
     }
 
+    /**
+     *
+     * @return expert
+     */
     public Expert getExpert() {
         return expert;
     }
 
+    /**
+     *
+     * @param joueurCourant joueur qui est en train de jouer
+     */
     public void setJoueurCourant(Joueur joueurCourant) {
         this.joueurCourant = joueurCourant;
     }
 
+    /**
+     *
+     * @return joueur courant
+     */
     public Joueur getJoueurCourant() {
         return joueurCourant;
     }
@@ -86,20 +126,37 @@ public class Partie {
             POUR LES JOUEURS
      */
 
+    /**
+     *
+     * @return lesJoueurs
+     */
     public ArrayList<Joueur> getLesJoueurs() {
         return lesJoueurs;
     }
 
+    /**
+     *
+     * @return nombre de joueurs
+     */
     public int getTaille(){
         return lesJoueurs.size();
     }
 
+    /**
+     * renvoie un certain joueur
+     * @param i position du joueur dans la liste Joueur
+     * @return joueur souahité
+     */
     public Joueur getJoueur(int i){
         if(i<0)
             return lesJoueurs.get(lesJoueurs.size()+i);  // A verifier car peut-etre ajouter 1
         return lesJoueurs.get(i);
     }
 
+    /**
+     * Ajoute un joueur dans la liste de joueur
+     * @param joueur joueur a ajouter
+     */
     public void ajouterJoueurs(Joueur joueur){
         if(lesJoueurs.size()< 0 || lesJoueurs.size()>4)
             throw new IllegalArgumentException("NbJoueurs trop élevée");
@@ -109,6 +166,10 @@ public class Partie {
         NbJoueurs = lesJoueurs.size();
     }
 
+    /**
+     *
+     * @param joueur joueur a supprimer de la liste
+     */
     public void removeJoueur(Joueur joueur){
         if(!lesJoueurs.contains(joueur))
             throw new IllegalArgumentException("Joueur non trouvé");
@@ -116,6 +177,11 @@ public class Partie {
         NbJoueurs = lesJoueurs.size();
     }
 
+    /**
+     * renvoie l'indice d'un joueur
+     * @param joueurEnJeu joueur dont on souhaite avoir l'indice
+     * @return indice du  joueur
+     */
     public int getIndiceJoueur(Joueur joueurEnJeu){
         return lesJoueurs.indexOf(joueurEnJeu);
     }
