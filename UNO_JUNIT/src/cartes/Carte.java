@@ -18,6 +18,9 @@ public abstract class Carte {
         return couleur;
     }
 
+    /**
+     * correspond a l'effet de chaque carte
+     */
     public abstract void effet();
 
     @Override

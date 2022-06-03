@@ -12,6 +12,10 @@ public class CarteReverse extends Carte {
 
 
     // PEUT-ETRE ENLEVER LE BOOL SENS ET FOURNIR A LA FONCTION LA LISTE DES JOUEURS
+
+    /**
+     * Change le sens de jeu dans la partie
+     */
     public void ChangeDeSens() {
         Partie partie =Partie.getInstance();
         if(partie.getSens()==Partie.AIGUILLE_MONTRE)

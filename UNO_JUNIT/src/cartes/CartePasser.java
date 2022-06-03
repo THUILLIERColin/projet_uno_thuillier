@@ -8,6 +8,9 @@ public class CartePasser extends Carte {
         super(c);
     }
 
+    /**
+     * Change le prochain joueur en sautant un tour
+     */
     public void joueurSuivant(){
         Partie partie = Partie.getInstance();
         partie.getJoueurCourant().setPasser(true);
