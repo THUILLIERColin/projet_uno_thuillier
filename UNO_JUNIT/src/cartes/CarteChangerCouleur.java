@@ -20,6 +20,9 @@ public class CarteChangerCouleur extends Carte {
         couleurChanger =couleur;
     }
 
+    /**
+     * @return couleur souhaiter par le joueur
+     */
     public Color JeVeuxCouleur(){
         return super.getCouleur();
     }

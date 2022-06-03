@@ -4,6 +4,9 @@ import cartes.Carte;
 import exceptions.ExpertManquantException;
 import partie.Partie;
 
+/**
+ * Permet de faire appel au différent expert qui sont les coups valide lors d'une partie
+ */
 public abstract class Expert {
 
     private Expert suivant = null;
