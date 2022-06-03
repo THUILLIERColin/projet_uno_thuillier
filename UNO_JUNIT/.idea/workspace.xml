@@ -2,25 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="787c21a2-8a9c-4d97-81f2-35b1a814900c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../ProjetTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProjetTest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UNO_JUNIT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UNO_JUNIT.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cartes/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/Carte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cartes/CarteChangerCouleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CarteChangerCouleur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cartes/CartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CartePasser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cartes/CartePlus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CartePlus2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cartes/CarteReverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CarteReverse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/ExpertManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/ExpertManquantException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/JoueurException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/JoueurException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/ParserManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/ParserManquantException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exceptions/UnoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/UnoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/Expert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fichiers/Fichier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/Fichier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fichiers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/partie/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/AllTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestCartePasser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestCartePlus2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimple.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimpleIllegale.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestDisUno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestPunition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestReverse.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +57,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654262741467</updated>
-      <workItem from="1654262742889" duration="1539000" />
+      <workItem from="1654262742889" duration="1687000" />
+      <workItem from="1654265305439" duration="437000" />
     </task>
     <servers />
   </component>

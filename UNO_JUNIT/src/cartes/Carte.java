@@ -2,6 +2,9 @@ package cartes;
 
 import java.util.Objects;
 
+/**
+ * Definition d'une carte
+ */
 public abstract class Carte {
     public enum Color {BLEU, ROUGE, JAUNE, VERT, NOIR};
     private Color couleur;

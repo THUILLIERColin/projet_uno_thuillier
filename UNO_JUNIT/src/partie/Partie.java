@@ -9,6 +9,9 @@ import exceptions.ExpertManquantException;
 import expert.Expert;
 import joueur.Joueur;
 
+/**
+ * Définition d'une partie
+ */
 public class Partie {
 
     public final static boolean AIGUILLE_MONTRE = true;

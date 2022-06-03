@@ -4,6 +4,9 @@ import cartes.Carte;
 import exceptions.ParserManquantException;
 import partie.Partie;
 
+/**
+ * Permet de crée les différente carte a l'aide des différents parser
+ */
 public abstract class Parser {
 
     // Un parser est en fait un maillon dans une liste chainée...

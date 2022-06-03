@@ -11,6 +11,9 @@ import partie.Partie;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Définition d'un joueur
+ */
 public class Joueur {
     private String nom;
     private boolean uno=false;
