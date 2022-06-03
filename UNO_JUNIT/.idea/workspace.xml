@@ -7,12 +7,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UNO_JUNIT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UNO_JUNIT.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cartes/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/Carte.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cartes/CarteChangerCouleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CarteChangerCouleur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cartes/CartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CartePasser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cartes/CartePlus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CartePlus2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cartes/CarteReverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CarteReverse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/CartesValideException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/ExpertManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/ExpertManquantException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/JoueurException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/JoueurException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/ParserManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/ParserManquantException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/UnoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/UnoException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +50,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654262741467</updated>
-      <workItem from="1654262742889" duration="296000" />
+      <workItem from="1654262742889" duration="852000" />
     </task>
     <servers />
   </component>
