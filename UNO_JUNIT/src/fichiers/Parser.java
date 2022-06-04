@@ -5,13 +5,10 @@ import exceptions.ParserManquantException;
 import partie.Partie;
 
 /**
- * Permet de crée les différente carte a l'aide des différents parser
+ * Permet de creer les différentes cartes a l'aide des différents parser
  */
 public abstract class Parser {
 
-    // Un parser est en fait un maillon dans une liste chainée...
-    // Cette liste chainée représente une instruction "switch"
-    // Chaque maillon représente un "case" du switch
     private Parser suivant = null;
 
     public Parser(Parser suivant) {
@@ -20,7 +17,7 @@ public abstract class Parser {
 
     private Partie partie = Partie.getInstance();
 
-    /*
+    /**
      * La fonction traiter() parcours la liste à la recherche d'un maillon qui sait comment parser
      * la ligne. Dans ce cas la ligne est parsée et la recherche s'arrête
      * @param ligne la ligne à parser

@@ -8,6 +8,9 @@ public class CartePlus2 extends Carte {
         super(c);
     }
 
+    /**
+     * Permet de cumuler le nombre de +2 jouer
+     */
     public void plus2Joue() {
         Partie partie = Partie.getInstance();
         partie.setCumulPlus2(partie.getCumulPlus2()+1);
@@ -16,7 +19,7 @@ public class CartePlus2 extends Carte {
 
     @Override
     public String toString() {
-        return "CartePlus2" + " "+ super.getCouleur();
+        return "carte_Plus2_"+ super.getCouleur()+".png";
     }
 
     @Override

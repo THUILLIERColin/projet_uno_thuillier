@@ -2,27 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="787c21a2-8a9c-4d97-81f2-35b1a814900c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../UNO_JAVAFX/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/Carte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteChangerCouleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteChangerCouleur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePasser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePlus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePlus2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteReverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteReverse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/CartesValideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/CartesValideException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ExpertManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ExpertManquantException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/JoueurException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/JoueurException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ParserManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ParserManquantException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/UnoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/UnoException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/Expert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Fichier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Fichier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/joueur/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/partie/Partie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cartes/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/Carte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/expert/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/Expert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fichiers/Fichier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/Fichier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UNO_JUNIT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UNO_JUNIT.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTest.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteCouleur.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCartePasser.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCartePlus2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteSimple.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteSimplePourTestUno.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteSimplePourUno.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fichiers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/partie/Partie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/AllTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestCartePasser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestCartePlus2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimple.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestCarteSimpleIllegale.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestDisUno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestPunition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestReverse.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -38,6 +55,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2A4J57tx76CqSd50TTSgzZhgYtC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -45,9 +65,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,5 +90,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

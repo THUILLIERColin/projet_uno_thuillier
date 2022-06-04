@@ -5,6 +5,8 @@ import exceptions.CartesValideException;
 import exceptions.ExpertManquantException;
 import exceptions.JoueurException;
 import exceptions.UnoException;
+import expert.*;
+import fichiers.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,6 +22,7 @@ import javafx.stage.Stage;
 import joueur.Joueur;
 import partie.Partie;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -43,24 +46,37 @@ public class Main extends Application {
             primaryStage.setScene(scene);
 
             Partie partie = Partie.getInstance();
-            listeCartes.add("carte_1_Bleu.png");
-            listeCartes.add("carte_Passe_Jaune.png");
 
-            listeCartes.add("carte_2_Bleu.png");
-            listeCartes.add("carte_Passe_Rouge.png");
+            // Acces au fichier contenant les cartes
+            File file = new File("");
+            String nomDuFichier = file.getAbsolutePath();
+            nomDuFichier+="/src/main/resources/JeuTest.csv";
 
-            VBox joueurNord = initJoueur("Yann");
+
+            Parser premierParser = new ParserCarteSimple(new ParserCartePasser(new ParserPlus2(new ParserChangerCouleur(null) )));
+
+            Fichier.lire(nomDuFichier, premierParser);
+
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(null)))))));
+
+            Joueur joueurN = new Joueur("Yann");
+            Joueur joueurO = new Joueur("Camille");
+            Joueur joueurS = new Joueur("Isabelle");
+            Joueur joueurE = new Joueur("Charlotte");
+
+            partie.distribuerCartes(7);
+
+            VBox joueurNord = initJoueur(joueurN);
             root.setTop(joueurNord);
 
-            VBox joueurOuest = initJoueur("Camille");
+            VBox joueurOuest = initJoueur(joueurO);
             root.setRight(joueurOuest);
 
-            VBox joueurSud = initJoueur("Isabelle");
+            VBox joueurSud = initJoueur(joueurS);
             root.setBottom(joueurSud);
 
-            VBox joueurEst = initJoueur("Charlotte");
+            VBox joueurEst = initJoueur(joueurE);
             root.setLeft(joueurEst);
-
 
             root.setCenter(initSabot());
 
@@ -72,16 +88,15 @@ public class Main extends Application {
     }
 
 
-    private VBox initJoueur(String nom) {
+    private VBox initJoueur(Joueur joueur) {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
-        Label nomNord = initLabelNom(nom);
+        Label nomNord = initLabelNom(joueur.getNom());
         /*
                 rajouter
          */
-        Joueur joueur = new Joueur(nom);
-        //**************************
-        Canvas canMainNord = initMain(listeCartes/* paramètres ?*/);
+        //  **************************  //
+        Canvas canMainNord = initMain(joueur.getLaMain()/* paramètres ?*/);
         HBox unoNord = initBoutonUno(canMainNord, joueur/* et d'autres paramètres ? */);
         vBox.getChildren().addAll(nomNord,canMainNord,unoNord);
         return vBox;
@@ -105,7 +120,13 @@ public class Main extends Application {
                 joueur.disUNO();
             } catch (JoueurException e) {
                 e.printStackTrace();
-                joueur.punir();
+                try {
+                    joueur.punir();
+                } catch (JoueurException ex) {
+                    ex.printStackTrace();
+                } catch (UnoException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -117,7 +138,13 @@ public class Main extends Application {
                 joueur.piocher();
             } catch (JoueurException e) {
                 e.printStackTrace();
-                joueur.punir();
+                try {
+                    joueur.punir();
+                } catch (JoueurException ex) {
+                    ex.printStackTrace();
+                } catch (UnoException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -125,13 +152,27 @@ public class Main extends Application {
 
         boutonJouer.setOnAction(select -> {
             System.out.println("Le joueur joue");
+
             try {
+                System.out.println("Le joueur a joué le "+ carteChoisi);
                 joueur.jouer(carteChoisi);
             } catch (JoueurException | ExpertManquantException e) {
                 e.printStackTrace();
-                joueur.punir();
+                try {
+                    joueur.punir();
+                } catch (JoueurException ex) {
+                    ex.printStackTrace();
+                } catch (UnoException ex) {
+                    ex.printStackTrace();
+                }
             } catch (CartesValideException cartesValideException){
-                joueur.punirCarteValideException();
+                try {
+                    joueur.punirCarteValideException();
+                } catch (JoueurException e) {
+                    e.printStackTrace();
+                } catch (UnoException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -181,8 +222,7 @@ public class Main extends Application {
          * de vos classes
          */
 
-        // getClass().getResourceAsStream()
-        Image imageCarte = new Image("carte_6_Rouge.png");
+        Image imageCarte = new Image(""+ Partie.getInstance().getPremiereCartePioche());
 
         canSabot.getGraphicsContext2D().drawImage(sabot,0,0);
         canSabot.getGraphicsContext2D().drawImage(imageCarte,25,20);
@@ -190,7 +230,7 @@ public class Main extends Application {
     }
 
 
-    private Canvas initMain(ArrayList<String> liste) {
+    private Canvas initMain(ArrayList<Carte> liste) {
         Canvas canMain = new Canvas(L_CANVAS,H_CANVAS);
 
         dessinerMain(liste, canMain);
@@ -216,7 +256,7 @@ public class Main extends Application {
     }
 
 
-    private void dessinerMain(ArrayList<String> liste, Canvas canvas) {
+    private void dessinerMain(ArrayList<Carte> liste, Canvas canvas) {
         /* liste est une liste de chaines de car. Mais vous devriez sans doute utiliser
          * vos propres classes, pas des String !
          */

@@ -20,6 +20,9 @@ public class CarteChangerCouleur extends Carte {
         couleurChanger =couleur;
     }
 
+    /**
+     * @return couleur souhaiter par le joueur
+     */
     public Color JeVeuxCouleur(){
         return super.getCouleur();
     }
@@ -30,9 +33,7 @@ public class CarteChangerCouleur extends Carte {
 
     @Override
     public String toString() {
-        return "ChangerCouleur{" +
-                "couleurChanger=" + couleurChanger +
-                '}';
+        return "carte_Change_Couleur.png";
     }
 
     @Override

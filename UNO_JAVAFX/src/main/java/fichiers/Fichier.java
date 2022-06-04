@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * Permet de gerer les fichier
+ */
 public class Fichier {
 
 
