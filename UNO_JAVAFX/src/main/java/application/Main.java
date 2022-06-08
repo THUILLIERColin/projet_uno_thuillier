@@ -114,10 +114,10 @@ public class Main extends Application {
                     System.err.println(ex.getMessage());
                 }
             }
+            actualiserAffichagePartie();
         });
 
         Button	boutonPioche = new Button("Pioche");
-
         boutonPioche.setOnAction(select -> {
             System.out.println("Le joueur pioche");
             try {
@@ -126,6 +126,40 @@ public class Main extends Application {
                 e.printStackTrace();
                 try {
                     joueur.punir();
+                } catch (JoueurException ex) {
+                    ex.printStackTrace();
+                } catch (UnoException ex) {
+                    ex.printStackTrace();
+                }
+            } catch (UnoException e) {
+                try {
+                    joueur.punirUnoException();
+                } catch (JoueurException ex) {
+                    ex.printStackTrace();
+                } catch (UnoException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            actualiserAffichagePartie();
+        });
+
+        Button	boutonEncaisser = new Button("Encaisser");
+        boutonEncaisser.setOnAction(select -> {
+            System.out.println("Le joueur encaisse les plus 2");
+            try {
+                joueur.encaisser();
+            } catch (JoueurException e) {
+                e.printStackTrace();
+                try {
+                    joueur.punir();
+                } catch (JoueurException ex) {
+                    ex.printStackTrace();
+                } catch (UnoException ex) {
+                    ex.printStackTrace();
+                }
+            } catch (UnoException e) {
+                try {
+                    joueur.punirUnoException();
                 } catch (JoueurException ex) {
                     ex.printStackTrace();
                 } catch (UnoException ex) {
@@ -160,7 +194,7 @@ public class Main extends Application {
             actualiserAffichagePartie();
         });
 
-        hBox.getChildren().addAll(boutonUno,boutonPioche, boutonFinirTour);
+        hBox.getChildren().addAll(boutonUno,boutonPioche, boutonEncaisser, boutonFinirTour);
 
         return hBox;
     }
@@ -236,7 +270,7 @@ public class Main extends Application {
                     } catch (JoueurException e) {
                         System.err.println(e.getMessage());
                         try {
-                            e.getMauvaisJoueur().punir();
+                            joueur.punir();
                         } catch (JoueurException ex) {
                             System.err.println(ex.getMessage());
                         } catch (UnoException ex) {
@@ -253,6 +287,8 @@ public class Main extends Application {
                         } catch (UnoException ex) {
                             System.err.println(ex.getMessage());
                         }
+                    } catch (UnoException e) {
+                        e.printStackTrace();
                     }
                     actualiserAffichagePartie();
                 }
