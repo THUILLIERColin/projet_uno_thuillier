@@ -1,16 +1,12 @@
 package application;
 
-import exceptions.CartesValideException;
-import exceptions.ExpertManquantException;
-import exceptions.JoueurException;
-import exceptions.UnoException;
+import exceptions.*;
 import expert.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -139,6 +135,8 @@ public class Main extends Application {
                 } catch (UnoException ex) {
                     ex.printStackTrace();
                 }
+            } catch (VictoireException e) {
+                e.printStackTrace();
             }
             actualiserAffichagePartie();
         });
@@ -146,26 +144,7 @@ public class Main extends Application {
         Button	boutonEncaisser = new Button("Encaisser");
         boutonEncaisser.setOnAction(select -> {
             System.out.println("Le joueur encaisse les plus 2");
-            try {
-                joueur.encaisser();
-            } catch (JoueurException e) {
-                e.printStackTrace();
-                try {
-                    joueur.punir();
-                } catch (JoueurException ex) {
-                    ex.printStackTrace();
-                } catch (UnoException ex) {
-                    ex.printStackTrace();
-                }
-            } catch (UnoException e) {
-                try {
-                    joueur.punirUnoException();
-                } catch (JoueurException ex) {
-                    ex.printStackTrace();
-                } catch (UnoException ex) {
-                    ex.printStackTrace();
-                }
-            }
+            joueur.encaisser();
             actualiserAffichagePartie();
         });
 
@@ -190,6 +169,13 @@ public class Main extends Application {
                 } catch (UnoException ex) {
                     System.err.println(ex.getMessage());
                 }
+            } catch (VictoireException e) {
+                Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                dialog.setTitle("Boite de Victoire");
+                dialog.setHeaderText("Un joueur a gagné la partie");
+                dialog.setContentText("Félicitation " + e.getJoueurVainqueur()+ " vous avez gagné cette partie !");
+                dialog.showAndWait();
+                fenetreEnCours.close();
             }
             actualiserAffichagePartie();
         });
@@ -288,6 +274,8 @@ public class Main extends Application {
                             System.err.println(ex.getMessage());
                         }
                     } catch (UnoException e) {
+                        e.printStackTrace();
+                    } catch (VictoireException e) {
                         e.printStackTrace();
                     }
                     actualiserAffichagePartie();

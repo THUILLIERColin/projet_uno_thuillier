@@ -56,7 +56,7 @@ public class CarteSimple extends Carte {
 
     @Override
     public String toString() {
-        return "" + numero + " "+super.getCouleur();
+        return "carte_" + numero + "_"+super.getCouleur()+".png";
     }
 
     @Override

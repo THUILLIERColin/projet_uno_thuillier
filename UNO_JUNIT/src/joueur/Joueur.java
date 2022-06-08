@@ -82,7 +82,7 @@ public class Joueur {
      * Ajoute la carte à la main du joueur
      * @param cartes
      */
-    public void InitialisationCartes(Carte cartes){
+    public void initLaMain(Carte cartes){
         if(laMain.size() < 0 || laMain.size() >7)
             throw new IllegalArgumentException("Nombres de cartes non valide");
         laMain.add(cartes);
@@ -111,7 +111,7 @@ public class Joueur {
             this.uno=true;
         }
         else{
-            throw new JoueurException("Le joueur "+ this +"possède plus d'une cartes",this);
+            throw new JoueurException("Le joueur "+ this +" possède plus d'une cartes",this);
         }
     }
 
@@ -121,14 +121,20 @@ public class Joueur {
      * Fonction qui permet au joueur de piocher
      * @throws JoueurException
      */
-    public void piocher() throws JoueurException{
+    public void piocher() throws JoueurException, UnoException {
         Partie partie = Partie.getInstance();
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur : tu as deja joue", this);
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
-        laMain.add(partie.prendrePioche());
-        partie.setJoueurAJoue(true);
+        if(partie.getCumulPlus2()!= 0 && !partie.getSiJoueurAJoue()){
+            encaisser(); punir();
+            finirTour();
+        }
+        else {
+            laMain.add(partie.prendrePioche());
+            partie.setJoueurAJoue(true);
+        }
     }
 
     /**
@@ -138,16 +144,25 @@ public class Joueur {
      * @throws CartesValideException
      * @throws ExpertManquantException
      */
-    public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException {
+    public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException, UnoException {
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur ce joueur a deja joue ", this);
-        partie.ajouterDansTas(carte);
-        laMain.remove(carte);
-        partie.setJoueurAJoue(true);
-        partie.getPremiereCarteTas().effet();
+        if(partie.getCumulPlus2()!=0 && !(carte instanceof CartePlus2)) {
+            System.out.println("punition");
+            partie.setJoueurAJoue(true);
+            encaisser();
+            punir();
+            finirTour();
+        }
+        else {
+            partie.ajouterDansTas(carte);
+            laMain.remove(carte);
+            partie.setJoueurAJoue(true);
+            partie.getPremiereCarteTas().effet();
+        }
     }
 
     /**
@@ -157,19 +172,23 @@ public class Joueur {
      */
     public void finirTour() throws JoueurException,UnoException{
         Partie partie = Partie.getInstance();
-        if(this != partie.getJoueurCourant())
-            throw new JoueurException("Ce n'est pas ton tour ", this);
-        if(!partie.getSiJoueurAJoue())
-            throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
-        if(doitDireUno() && !uno)
-            throw new UnoException("Le joueur n'a pas dit UNO ", this);
+        if(this != partie.getJoueurCourant()) throw new JoueurException("Ce n'est pas ton tour ", this);
+        if(partie.getCumulPlus2()!=0 && !partie.getSiJoueurAJoue()) {
+            encaisser();
+            punir();
+        }
+        if(!partie.getSiJoueurAJoue()) throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
+        if(doitDireUno() && !uno) throw new UnoException("Le joueur n'a pas dit UNO ", this);
         partie.Suivant();
-        if (passer) partie.Suivant();
+        if (passer){
+            partie.Suivant();
+            passer=false;
+        }
         partie.setJoueurAJoue(false);
     }
 
     /**
-     * Fonction qui puni le joueur
+     * Fonction qui puni le joueur en lui donnant 2 carte de la pioche
      * @throws JoueurException
      * @throws UnoException
      */
@@ -177,8 +196,6 @@ public class Joueur {
         Partie partie = Partie.getInstance();
         laMain.add(partie.prendrePioche());
         laMain.add(partie.prendrePioche());
-        if(partie.getPremiereCarteTas() instanceof CartePlus2)
-            encaisser();
     }
 
     /**
@@ -192,7 +209,7 @@ public class Joueur {
     }
 
     /**
-     * Fonction lors d'un mauvais uno ou d'un oublis de uno
+     * Fonction lors d'un oublis de uno
      * @throws JoueurException
      * @throws UnoException
      */
@@ -206,21 +223,18 @@ public class Joueur {
 
     /**
      * encaisse les plus 2
-     * @throws JoueurException
-     * @throws UnoException
      */
-    public void encaisser() throws JoueurException,UnoException {
+    public void encaisser() {
         Partie partie = Partie.getInstance();
 
-        if(partie.getPremiereCarteTas() instanceof CartePlus2) {
+        if(partie.getPremiereCarteTas() instanceof CartePlus2 && !partie.getSiJoueurAJoue()) {
             CartePlus2 plus2 = (CartePlus2) partie.getPremiereCarteTas();
             for(int i =0; i < partie.getCumulPlus2()*2; i++){
-                piocher();
-                partie.setJoueurAJoue(false);
+                laMain.add(partie.prendrePioche());
             }
+            partie.setCumulPlus2(0);
+            partie.setJoueurAJoue(true);
         }
-        partie.setJoueurAJoue(true);
-        finirTour();
     }
 
     /*

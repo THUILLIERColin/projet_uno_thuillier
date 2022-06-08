@@ -23,6 +23,6 @@ public class CartePasser extends Carte {
 
     @Override
     public String toString() {
-        return "Passe ton tour "+ getCouleur();
+        return "carte_Passe_"+ getCouleur()+".png";
     }
 }

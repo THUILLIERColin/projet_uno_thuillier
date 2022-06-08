@@ -39,6 +39,6 @@ public class CarteReverse extends Carte {
 
     @Override
     public String toString() {
-        return "Reverse[ Couleur : "+super.getCouleur()+" ]";
+        return "carte_Change_"+super.getCouleur()+".png";
     }
 }

@@ -1,6 +1,7 @@
 package partie;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 
 import cartes.Carte;
@@ -201,9 +202,20 @@ public class Partie {
      * @return carte
      */
     public Carte prendrePioche(){
+        if(laPioche.isEmpty()){
+            refairePioche();
+        }
         Carte cartesPioche= laPioche.get(0);
         laPioche.remove(cartesPioche);
         return cartesPioche;
+    }
+
+    public void refairePioche(){
+        for (int i=1; i < leTas.size(); i++){
+            laPioche.add(leTas.get(i));
+            leTas.remove(i);
+        }
+        Collections.shuffle(laPioche);
     }
 
     public ArrayList<Carte> getLaPioche() {

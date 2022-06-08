@@ -53,6 +53,7 @@ public class TestCartePlus2 {
 
             //bob prend le +2
             bob.encaisser();
+            bob.finirTour();
 
             //verification bob 5 carte
             assertEquals(5,bob.getTailleDeLaMain());
@@ -65,7 +66,7 @@ public class TestCartePlus2 {
 
             assertEquals(2,charles.getTailleDeLaMain());
         }catch (Exception e){
-            System.out.println(("/ATTENTION "+e.getMessage()));
+            System.err.println((" ATTENTION "+e.getMessage()));
             exit(1);
         }
     }
@@ -128,6 +129,7 @@ public class TestCartePlus2 {
 
             //bob encaisse
             bob.encaisser();
+            bob.finirTour();
 
             //verification bob 8 carte
             assertEquals(8,bob.getTailleDeLaMain());
@@ -136,15 +138,120 @@ public class TestCartePlus2 {
             assertTrue(partie.getJoueurCourant()==charles);
 
         }catch (Exception e){
-            System.out.println(("/ATTENTION "+e.getMessage()));
+            System.out.println((" ATTENTION "+e.getMessage()));
             exit(1);
         }
     }
+
+    private static void Test3(){
+        Partie partie = Partie.getInstance();
+
+        String nomDuFichier = "/JeuTestCartePlus2.csv";
+        nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
+
+        Parser premierParser = new ParserCarteSimple(new ParserPlus2(null));
+
+        Fichier.lire(nomDuFichier, premierParser);
+
+        partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePlus2CarteSimple(new ExpertCartePlus2CartePlus2(null))));
+
+        Joueur alice = new Joueur("Alice");
+        Joueur bob = new Joueur("Bob");
+        Joueur charles = new Joueur("Charles");
+
+        partie.initialisationPartie(3);
+
+
+        //test alice joueur courant
+        assertTrue(partie.getJoueurCourant()==alice);
+
+        try{
+
+            Carte Plus2vert = alice.getCarte(0);
+            alice.jouer(Plus2vert);
+
+            alice.finirTour();
+
+            //verification bob joueur courant
+            assertTrue(partie.getJoueurCourant()==bob);
+
+            //verification bob possède 3 carte
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
+
+            //bob ne veut pas le plus2 et fini le tour
+            bob.finirTour();
+
+            //verification bob 4 carte
+            assertEquals(7,bob.getTailleDeLaMain());
+
+            //verification Charle joueur courant
+            assertTrue(partie.getJoueurCourant()==charles);
+
+        }catch (Exception e){
+            System.out.println((" ATTENTION "+e.getMessage()));
+            exit(1);
+        }
+    }
+
+    private static void Test4(){
+        Partie partie = Partie.getInstance();
+
+        String nomDuFichier = "/JeuTestCartePlus2.csv";
+        nomDuFichier = Fichier.class.getResource(nomDuFichier).getPath();
+
+        Parser premierParser = new ParserCarteSimple(new ParserPlus2(null));
+
+        Fichier.lire(nomDuFichier, premierParser);
+
+        partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePlus2CarteSimple(new ExpertCartePlus2CartePlus2(null))));
+
+        Joueur alice = new Joueur("Alice");
+        Joueur bob = new Joueur("Bob");
+        Joueur charles = new Joueur("Charles");
+
+        partie.initialisationPartie(3);
+
+
+        //test alice joueur courant
+        assertTrue(partie.getJoueurCourant()==alice);
+
+        try{
+
+            Carte Plus2vert = alice.getCarte(0);
+            alice.jouer(Plus2vert);
+
+            alice.finirTour();
+
+            //verification bob joueur courant
+            assertTrue(partie.getJoueurCourant()==bob);
+
+            //verification bob possède 3 carte
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
+
+            //bob ne veut pas le plus2 et fini le tour
+            bob.piocher();
+
+            //verification bob 4 carte
+            assertEquals(7,bob.getTailleDeLaMain());
+
+            //verification Charle joueur courant
+            assertTrue(partie.getJoueurCourant()==charles);
+
+        }catch (Exception e){
+            System.out.println((" ATTENTION "+e.getMessage()));
+            exit(1);
+        }
+    }
+
     public static void main(String[] args) {
         try {
             Test1();
             Partie.getInstance().reinitialiserPartie();
             Test2();
+            Partie.getInstance().reinitialiserPartie();
+            Test3();
+            Partie.getInstance().reinitialiserPartie();
+            Test4();
 
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());

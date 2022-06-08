@@ -19,7 +19,7 @@ public class CartePlus2 extends Carte {
 
     @Override
     public String toString() {
-        return "CartePlus2" + " "+ super.getCouleur();
+        return "carte_Plus2_"+ super.getCouleur()+".png";
     }
 
     @Override

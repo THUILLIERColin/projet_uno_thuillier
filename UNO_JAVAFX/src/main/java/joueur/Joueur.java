@@ -2,10 +2,7 @@ package joueur;
 
 import cartes.Carte;
 import cartes.CartePlus2;
-import exceptions.CartesValideException;
-import exceptions.ExpertManquantException;
-import exceptions.JoueurException;
-import exceptions.UnoException;
+import exceptions.*;
 import partie.Partie;
 
 import java.util.ArrayList;
@@ -121,7 +118,7 @@ public class Joueur {
      * Fonction qui permet au joueur de piocher
      * @throws JoueurException
      */
-    public void piocher() throws JoueurException, UnoException {
+    public void piocher() throws JoueurException, UnoException, VictoireException {
         Partie partie = Partie.getInstance();
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur : tu as deja joue", this);
@@ -129,9 +126,12 @@ public class Joueur {
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(partie.getCumulPlus2()!= 0 && !partie.getSiJoueurAJoue()){
             encaisser(); punir();
+            finirTour();
         }
-        laMain.add(partie.prendrePioche());
-        partie.setJoueurAJoue(true);
+        else {
+            laMain.add(partie.prendrePioche());
+            partie.setJoueurAJoue(true);
+        }
     }
 
     /**
@@ -141,14 +141,17 @@ public class Joueur {
      * @throws CartesValideException
      * @throws ExpertManquantException
      */
-    public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException, UnoException {
+    public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException, UnoException, VictoireException {
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur ce joueur a deja joue ", this);
-        if(partie.getPremiereCarteTas() instanceof CartePlus2 && !(carte instanceof CartePlus2)) {
+        if(partie.getCumulPlus2()!=0 && !(carte instanceof CartePlus2)) {
+            System.out.println("punition");
             partie.setJoueurAJoue(true);
+            encaisser();
+            punir();
             finirTour();
         }
         else {
@@ -164,19 +167,16 @@ public class Joueur {
      * @throws JoueurException
      * @throws UnoException
      */
-    public void finirTour() throws JoueurException,UnoException{
+    public void finirTour() throws JoueurException,UnoException, VictoireException {
         Partie partie = Partie.getInstance();
-        if(this != partie.getJoueurCourant())
-            throw new JoueurException("Ce n'est pas ton tour ", this);
-        if(!partie.getSiJoueurAJoue())
-            throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
-        if(doitDireUno() && !uno)
-            throw new UnoException("Le joueur n'a pas dit UNO ", this);
+        if(laMain.isEmpty()) throw new VictoireException(this);
+        if(this != partie.getJoueurCourant()) throw new JoueurException("Ce n'est pas ton tour ", this);
         if(partie.getCumulPlus2()!=0 && !partie.getSiJoueurAJoue()) {
             encaisser();
             punir();
-            partie.Suivant();
         }
+        if(!partie.getSiJoueurAJoue()) throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
+        if(doitDireUno() && !uno) throw new UnoException("Le joueur n'a pas dit UNO ", this);
         partie.Suivant();
         if (passer){
             partie.Suivant();
@@ -221,17 +221,14 @@ public class Joueur {
 
     /**
      * encaisse les plus 2
-     * @throws JoueurException
-     * @throws UnoException
      */
-    public void encaisser() throws JoueurException,UnoException {
+    public void encaisser() {
         Partie partie = Partie.getInstance();
 
         if(partie.getPremiereCarteTas() instanceof CartePlus2 && !partie.getSiJoueurAJoue()) {
             CartePlus2 plus2 = (CartePlus2) partie.getPremiereCarteTas();
             for(int i =0; i < partie.getCumulPlus2()*2; i++){
-                piocher();
-                partie.setJoueurAJoue(false);
+                laMain.add(partie.prendrePioche());
             }
             partie.setCumulPlus2(0);
             partie.setJoueurAJoue(true);
