@@ -2,10 +2,7 @@ package joueur;
 
 import cartes.Carte;
 import cartes.CartePlus2;
-import exceptions.CartesValideException;
-import exceptions.ExpertManquantException;
-import exceptions.JoueurException;
-import exceptions.UnoException;
+import exceptions.*;
 import partie.Partie;
 
 import java.util.ArrayList;
@@ -121,7 +118,7 @@ public class Joueur {
      * Fonction qui permet au joueur de piocher
      * @throws JoueurException
      */
-    public void piocher() throws JoueurException, UnoException {
+    public void piocher() throws JoueurException, UnoException, VictoireException {
         Partie partie = Partie.getInstance();
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur : tu as deja joue", this);
@@ -144,7 +141,7 @@ public class Joueur {
      * @throws CartesValideException
      * @throws ExpertManquantException
      */
-    public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException, UnoException {
+    public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException, UnoException, VictoireException {
         Partie partie = Partie.getInstance();
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
@@ -170,8 +167,9 @@ public class Joueur {
      * @throws JoueurException
      * @throws UnoException
      */
-    public void finirTour() throws JoueurException,UnoException{
+    public void finirTour() throws JoueurException,UnoException, VictoireException {
         Partie partie = Partie.getInstance();
+        if(laMain.isEmpty()) throw new VictoireException(this);
         if(this != partie.getJoueurCourant()) throw new JoueurException("Ce n'est pas ton tour ", this);
         if(partie.getCumulPlus2()!=0 && !partie.getSiJoueurAJoue()) {
             encaisser();
