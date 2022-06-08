@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="787c21a2-8a9c-4d97-81f2-35b1a814900c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../UNO_JAVAFX/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/Carte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteChangerCouleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteChangerCouleur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePasser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePlus2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CartePlus2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteReverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteReverse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/cartes/CarteSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/CartesValideException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/CartesValideException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ExpertManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ExpertManquantException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/JoueurException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/JoueurException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ParserManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ParserManquantException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/UnoException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/UnoException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/Expert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Fichier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Fichier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/fichiers/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/joueur/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/partie/Partie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UNO_JUNIT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/UNO_JUNIT.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTest.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteCouleur.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCartePasser.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCartePlus2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteSimple.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteSimplePourTestUno.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UNO_JUNIT/JeuTestCarteSimplePourUno.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fichiers/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fichiers/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

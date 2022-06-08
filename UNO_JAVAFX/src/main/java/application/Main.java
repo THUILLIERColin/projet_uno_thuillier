@@ -1,12 +1,10 @@
 package application;
 
-import cartes.Carte;
 import exceptions.CartesValideException;
 import exceptions.ExpertManquantException;
 import exceptions.JoueurException;
 import exceptions.UnoException;
 import expert.*;
-import fichiers.*;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,62 +20,49 @@ import javafx.stage.Stage;
 import joueur.Joueur;
 import partie.Partie;
 
-import java.io.File;
-import java.util.ArrayList;
-
 public class Main extends Application {
 
     private static final int H_CANVAS = 130;
     private static final int L_CANVAS = 400;
     private static final int L_CARTE = 80;
     private static final int ECART = 30;
+
+    private BorderPane root;
+    private Stage fenetreEnCours;
+
+    private Partie partie;
     private Canvas canSabot;
-
-    private Carte carteChoisi;
-
-    private ArrayList<Carte> listeCartes = new ArrayList<>();
+    private Joueur joueurNord;
+    private Joueur joueurOuest;
+    private Joueur joueurSud;
+    private Joueur joueurEst;
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            BorderPane root = new BorderPane();
+            root = new BorderPane();
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            fenetreEnCours = primaryStage;
 
             Partie partie = Partie.getInstance();
-
-            // Acces au fichier contenant les cartes
-            File file = new File("");
-            String nomDuFichier = file.getAbsolutePath();
-            nomDuFichier+="/src/main/resources/JeuTest.csv";
-
-
-            Parser premierParser = new ParserCarteSimple(new ParserCartePasser(new ParserPlus2(new ParserChangerCouleur(null) )));
-
-            Fichier.lire(nomDuFichier, premierParser);
-
             partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(null)))))));
 
-            Joueur joueurN = new Joueur("Yann");
-            Joueur joueurO = new Joueur("Camille");
-            Joueur joueurS = new Joueur("Isabelle");
-            Joueur joueurE = new Joueur("Charlotte");
+            GestionCartes.creerListeCarteInitial(new CreationCartes());
+            GestionCartes.melangerCarte(Partie.getInstance().getListeCartesInitiales());
 
-            partie.distribuerCartes(7);
+            joueurNord = new Joueur("Yann");
+            joueurOuest = new Joueur("Camille");
+            joueurSud = new Joueur("Isabelle");
+            joueurEst = new Joueur("Charlotte");
 
-            VBox joueurNord = initJoueur(joueurN);
-            root.setTop(joueurNord);
+            GestionCartes.distribuerAuxJoueurs(7);
 
-            VBox joueurOuest = initJoueur(joueurO);
-            root.setRight(joueurOuest);
-
-            VBox joueurSud = initJoueur(joueurS);
-            root.setBottom(joueurSud);
-
-            VBox joueurEst = initJoueur(joueurE);
-            root.setLeft(joueurEst);
-
+            root.setTop(initJoueur(joueurNord));
+            root.setRight(initJoueur(joueurOuest));
+            root.setBottom(initJoueur(joueurSud));
+            root.setLeft(initJoueur(joueurEst));
             root.setCenter(initSabot());
 
             primaryStage.show();
@@ -91,13 +76,14 @@ public class Main extends Application {
     private VBox initJoueur(Joueur joueur) {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
-        Label nomNord = initLabelNom(joueur.getNom());
-        /*
-                rajouter
-         */
-        //  **************************  //
-        Canvas canMainNord = initMain(joueur.getLaMain()/* paramètres ?*/);
-        HBox unoNord = initBoutonUno(canMainNord, joueur/* et d'autres paramètres ? */);
+
+        Label nomNord;
+
+        if(joueur == Partie.getInstance().getJoueurCourant()) nomNord= initLabelNom(joueur.getNom()+ " c'est ton tour");
+        else nomNord=initLabelNom(joueur.getNom());
+
+        Canvas canMainNord = initMain(joueur);
+        HBox unoNord = initBoutonUno(canMainNord, joueur);
         vBox.getChildren().addAll(nomNord,canMainNord,unoNord);
         return vBox;
     }
@@ -119,13 +105,13 @@ public class Main extends Application {
             try {
                 joueur.disUNO();
             } catch (JoueurException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
                 try {
                     joueur.punir();
                 } catch (JoueurException ex) {
-                    ex.printStackTrace();
+                    System.err.println(ex.getMessage());
                 } catch (UnoException ex) {
-                    ex.printStackTrace();
+                    System.err.println(ex.getMessage());
                 }
             }
         });
@@ -146,37 +132,35 @@ public class Main extends Application {
                     ex.printStackTrace();
                 }
             }
+            actualiserAffichagePartie();
         });
 
-        Button	boutonJouer = new Button("Jouer");
-
-        boutonJouer.setOnAction(select -> {
-            System.out.println("Le joueur joue");
-
+        Button boutonFinirTour = new Button("Finir tour");
+        boutonFinirTour.setOnAction(select -> {
+            System.out.println(joueur.getNom() + " finit son tour");
             try {
-                System.out.println("Le joueur a joué le "+ carteChoisi);
-                joueur.jouer(carteChoisi);
-            } catch (JoueurException | ExpertManquantException e) {
-                e.printStackTrace();
+                joueur.finirTour();
+            } catch (UnoException e) {
                 try {
-                    joueur.punir();
+                    joueur.punirUnoException();
                 } catch (JoueurException ex) {
-                    ex.printStackTrace();
+                    System.err.println(ex.getMessage());
                 } catch (UnoException ex) {
-                    ex.printStackTrace();
+                    System.err.println(ex.getMessage());
                 }
-            } catch (CartesValideException cartesValideException){
+            } catch (JoueurException e) {
                 try {
-                    joueur.punirCarteValideException();
-                } catch (JoueurException e) {
-                    e.printStackTrace();
-                } catch (UnoException e) {
-                    e.printStackTrace();
+                    e.getMauvaisJoueur().punir();
+                } catch (JoueurException ex) {
+                    System.err.println(ex.getMessage());
+                } catch (UnoException ex) {
+                    System.err.println(ex.getMessage());
                 }
             }
+            actualiserAffichagePartie();
         });
 
-        hBox.getChildren().addAll(boutonUno,boutonPioche, boutonJouer);
+        hBox.getChildren().addAll(boutonUno,boutonPioche, boutonFinirTour);
 
         return hBox;
     }
@@ -210,9 +194,7 @@ public class Main extends Application {
     }
 
     private void dessinerSabot() {
-        // getClass().getResourceAsStream()
         Image sabot = new Image("Sabot.png");
-        // getClass().getResourceAsStream("/carte_dos.png")
         Image dos = new Image("carte_dos.png");
         canSabot.setWidth(sabot.getWidth());
         canSabot.setHeight(sabot.getHeight());
@@ -222,7 +204,9 @@ public class Main extends Application {
          * de vos classes
          */
 
-        Image imageCarte = new Image(""+ Partie.getInstance().getPremiereCartePioche());
+
+
+        Image imageCarte = new Image(""+ Partie.getInstance().getPremiereCarteTas());
 
         canSabot.getGraphicsContext2D().drawImage(sabot,0,0);
         canSabot.getGraphicsContext2D().drawImage(imageCarte,25,20);
@@ -230,25 +214,48 @@ public class Main extends Application {
     }
 
 
-    private Canvas initMain(ArrayList<Carte> liste) {
+    private Canvas initMain(Joueur joueur) {
         Canvas canMain = new Canvas(L_CANVAS,H_CANVAS);
 
-        dessinerMain(liste, canMain);
-
+        dessinerMain(joueur, canMain);
 
         canMain.setOnMouseClicked(clic -> {
             int x = (int) clic.getX();
-            int nbCartes = liste.size();
+            int nbCartes = joueur.getTailleDeLaMain();
             int lMain = L_CARTE+((nbCartes-1)*ECART);
             int pad = (L_CANVAS-lMain) / 2;
 
-            if (x>=pad && x<=pad+lMain) {
-                int num = (int) ((x-pad) / ECART);
-                num = Math.min(nbCartes-1, num);
-                System.out.println("Le joueur a sélectionné la carte "+num);
-                /* sûrement à compléter */
+            if(joueur == Partie.getInstance().getJoueurCourant()){
+                if (x>=pad && x<=pad+lMain) {
+                    int num = (int) ((x-pad) / ECART);
+                    num = Math.min(nbCartes-1, num);
+                    System.out.println(joueur.getNom() + " a sélectionné la carte "+ joueur.getCarte(num));
 
-                carteChoisi = Partie.getInstance().getJoueurCourant().getCarte(num);
+                    try {
+                        joueur.jouer(joueur.getCarte(num));
+                    } catch (JoueurException e) {
+                        System.err.println(e.getMessage());
+                        try {
+                            e.getMauvaisJoueur().punir();
+                        } catch (JoueurException ex) {
+                            System.err.println(ex.getMessage());
+                        } catch (UnoException ex) {
+                            System.err.println(ex.getMessage());
+                        }
+                    } catch (ExpertManquantException e) {
+                        System.err.println(e.getMessage());
+                    } catch (CartesValideException e) {
+                        System.err.println(e.getMessage());
+                        try {
+                            joueur.punirCarteValideException();
+                        } catch (JoueurException ex) {
+                            System.err.println(ex.getMessage());
+                        } catch (UnoException ex) {
+                            System.err.println(ex.getMessage());
+                        }
+                    }
+                    actualiserAffichagePartie();
+                }
             }
         });
 
@@ -256,26 +263,28 @@ public class Main extends Application {
     }
 
 
-    private void dessinerMain(ArrayList<Carte> liste, Canvas canvas) {
-        /* liste est une liste de chaines de car. Mais vous devriez sans doute utiliser
-         * vos propres classes, pas des String !
-         */
-
+    private void dessinerMain(Joueur joueur, Canvas canvas) {
 
         canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        int nbCartes = liste.size();
+        int nbCartes = joueur.getTailleDeLaMain();
         int lMain = L_CARTE+((nbCartes-1)*ECART);
         int pad = (L_CANVAS-lMain) / 2;
 
         for (int i=0; i<nbCartes; i++) {
-            Image carte = new Image(""+liste.get(i)); /* à adapter */
+            Image carte = new Image(""+joueur.getCarte(i));
             canvas.getGraphicsContext2D().drawImage(carte,pad+i*ECART,0);
 
         }
     }
 
-
+    public void actualiserAffichagePartie() {
+        root.setTop(initJoueur(joueurNord));
+        root.setRight(initJoueur(joueurOuest));
+        root.setBottom(initJoueur(joueurSud));
+        root.setLeft(initJoueur(joueurEst));
+        root.setCenter(initSabot());
+    }
 
 
     public static void main(String[] args) {

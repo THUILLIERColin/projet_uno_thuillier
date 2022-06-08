@@ -82,7 +82,7 @@ public class Joueur {
      * Ajoute la carte à la main du joueur
      * @param cartes
      */
-    public void InitialisationCartes(Carte cartes){
+    public void initLaMain(Carte cartes){
         if(laMain.size() < 0 || laMain.size() >7)
             throw new IllegalArgumentException("Nombres de cartes non valide");
         laMain.add(cartes);
@@ -111,7 +111,7 @@ public class Joueur {
             this.uno=true;
         }
         else{
-            throw new JoueurException("Le joueur "+ this +"possède plus d'une cartes",this);
+            throw new JoueurException("Le joueur "+ this +" possède plus d'une cartes",this);
         }
     }
 

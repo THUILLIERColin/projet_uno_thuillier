@@ -165,6 +165,8 @@ public class Partie {
             throw new IllegalArgumentException("NbJoueurs trop élevée");
         if(lesJoueurs.contains(joueur))
             throw new IllegalArgumentException("La liste contient deja le joueur");
+        if(lesJoueurs.size()==0)
+            setJoueurCourant(joueur);
         lesJoueurs.add(joueur);
         NbJoueurs = lesJoueurs.size();
     }
@@ -254,7 +256,7 @@ public class Partie {
         listeCartesInitiales.add(cartes);
     }
 
-    public void removeListeCartesInitiales(){
+    public void removePremiereCarteTasInitiale(){
         listeCartesInitiales.remove(0);
     }
 
@@ -311,12 +313,12 @@ public class Partie {
     public void distribuerCartes(int nbCartesJoueur){
         for(int i=0; i< nbCartesJoueur; i++){
             for(int j=0; j<lesJoueurs.size(); j++) {
-                lesJoueurs.get(j).InitialisationCartes(listeCartesInitiales.get(0));
-                removeListeCartesInitiales();
+                lesJoueurs.get(j).initLaMain(listeCartesInitiales.get(0));
+                removePremiereCarteTasInitiale();
             }
         }
         leTas.add(listeCartesInitiales.get(0));
-        removeListeCartesInitiales();
+        removePremiereCarteTasInitiale();
 
         laPioche = listeCartesInitiales;
     }
