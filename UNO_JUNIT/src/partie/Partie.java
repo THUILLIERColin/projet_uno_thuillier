@@ -131,7 +131,6 @@ public class Partie {
      */
 
     /**
-     *
      * @return lesJoueurs
      */
     public ArrayList<Joueur> getLesJoueurs() {
@@ -139,7 +138,6 @@ public class Partie {
     }
 
     /**
-     *
      * @return nombre de joueurs
      */
     public int getTaille(){
@@ -149,7 +147,7 @@ public class Partie {
     /**
      * renvoie un certain joueur
      * @param i position du joueur dans la liste Joueur
-     * @return joueur souahité
+     * @return joueur souhaité
      */
     public Joueur getJoueur(int i){
         if(i<0)
@@ -159,7 +157,7 @@ public class Partie {
 
     /**
      * Ajoute un joueur dans la liste de joueur
-     * @param joueur joueur a ajouter
+     * @param joueur
      */
     public void ajouterJoueurs(Joueur joueur){
         if(lesJoueurs.size()< 0 || lesJoueurs.size()>4)
@@ -173,8 +171,8 @@ public class Partie {
     }
 
     /**
-     *
-     * @param joueur joueur a supprimer de la liste
+     *  Supprime le joueur de la liste de joueur
+     * @param joueur
      */
     public void removeJoueur(Joueur joueur){
         if(!lesJoueurs.contains(joueur))
@@ -186,7 +184,7 @@ public class Partie {
     /**
      * renvoie l'indice d'un joueur
      * @param joueurEnJeu joueur dont on souhaite avoir l'indice
-     * @return indice du  joueur
+     * @return indice du joueur
      */
     public int getIndiceJoueur(Joueur joueurEnJeu){
         return lesJoueurs.indexOf(joueurEnJeu);
@@ -210,6 +208,9 @@ public class Partie {
         return cartesPioche;
     }
 
+    /**
+     * Quand la pioche se vide on prend les cartes en dessous du tas et on les mélange
+     */
     public void refairePioche(){
         for (int i=1; i < leTas.size(); i++){
             laPioche.add(leTas.get(i));
