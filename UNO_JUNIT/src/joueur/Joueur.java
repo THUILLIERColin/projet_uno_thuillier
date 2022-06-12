@@ -222,9 +222,9 @@ public class Joueur {
     /**
      * encaisse les plus 2
      */
-    public void encaisser() {
+    public void encaisser() throws JoueurException {
         Partie partie = Partie.getInstance();
-
+        if(this != partie.getJoueurCourant()) throw new JoueurException("Ce n'est pas ton tour ", this);
         if(partie.getPremiereCarteTas() instanceof CartePlus2 && !partie.getSiJoueurAJoue()) {
             CartePlus2 plus2 = (CartePlus2) partie.getPremiereCarteTas();
             for(int i =0; i < partie.getCumulPlus2()*2; i++){

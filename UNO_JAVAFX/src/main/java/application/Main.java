@@ -144,7 +144,18 @@ public class Main extends Application {
         Button	boutonEncaisser = new Button("Encaisser");
         boutonEncaisser.setOnAction(select -> {
             System.out.println("Le joueur encaisse les plus 2");
-            joueur.encaisser();
+            try {
+                joueur.encaisser();
+            } catch (JoueurException e) {
+                e.printStackTrace();
+                try {
+                    joueur.punir();
+                } catch (JoueurException ex) {
+                    ex.printStackTrace();
+                } catch (UnoException ex) {
+                    ex.printStackTrace();
+                }
+            }
             actualiserAffichagePartie();
         });
 
