@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="787c21a2-8a9c-4d97-81f2-35b1a814900c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/CreationCartes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/CreationCartes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ExpertManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/exceptions/ExpertManquantException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/Expert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/ExpertCarteReveseCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/expert/ExpertCarteReveseCarteSimple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/joueur/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/partie/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -26,7 +26,7 @@ public abstract class Expert {
         else if (aUnSuivant())
             return getSuivant().traiter(carte);
         else
-            throw new ExpertManquantException();
+            throw new ExpertManquantException("Erreur : parser manquant pour la carte : " +carte);
     }
 
     private Expert getSuivant() {

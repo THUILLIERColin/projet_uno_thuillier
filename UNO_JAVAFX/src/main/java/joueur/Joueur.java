@@ -148,6 +148,7 @@ public class Joueur {
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur ce joueur a deja joue ", this);
         if(partie.getCumulPlus2()!=0 && !(carte instanceof CartePlus2)) {
+            partie.setJoueurAJoue(true);
             encaisser();
             punir();
             finirTour();

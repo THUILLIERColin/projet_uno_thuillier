@@ -2,6 +2,8 @@ package expert;
 
 import cartes.Carte;
 import cartes.CarteReverse;
+import cartes.CarteSimple;
+import partie.Partie;
 
 public class ExpertCarteReveseCarteSimple extends Expert{
     public ExpertCarteReveseCarteSimple(Expert suivant) {
@@ -10,12 +12,12 @@ public class ExpertCarteReveseCarteSimple extends Expert{
 
     @Override
     public boolean expertise(Carte carte){
-        return false;
+        return (carte.getCouleur()== Partie.getInstance().getPremiereCarteTas().getCouleur());
     }
 
     @Override
     public boolean saitExpertiser(Carte carte) {
-        //return if(carte instanceof CarteReverse);
-        return false;
+        return (carte instanceof CarteReverse && Partie.getInstance().getPremiereCarteTas() instanceof CarteSimple
+                    || carte instanceof CarteSimple && Partie.getInstance().getPremiereCarteTas() instanceof CarteReverse);
     }
 }

@@ -43,7 +43,7 @@ public class Main extends Application {
             fenetreEnCours = primaryStage;
 
             Partie partie = Partie.getInstance();
-            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(null)))))));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCarteReverse(new ExpertCarteReveseCarteSimple(null)))))))));
 
             GestionCartes.creerListeCarteInitial(new CreationCartes());
             GestionCartes.melangerCarte(Partie.getInstance().getListeCartesInitiales());
@@ -261,7 +261,7 @@ public class Main extends Application {
                     int num = (int) ((x-pad) / ECART);
                     num = Math.min(nbCartes-1, num);
                     System.out.println(joueur.getNom() + " a sélectionné la carte "+ joueur.getCarte(num));
-
+                    if(joueur.getCarte(num)==null) System.out.println("bug null");
                     try {
                         joueur.jouer(joueur.getCarte(num));
                     } catch (JoueurException e) {

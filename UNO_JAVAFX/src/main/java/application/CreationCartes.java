@@ -20,6 +20,7 @@ public class CreationCartes{
     private Carte bleu9 = new CarteSimple(Carte.Color.BLEU, 9);
     private Carte bleuPasse = new CartePasser(Carte.Color.BLEU);
     private Carte bleuPlus2 = new CartePlus2(Carte.Color.BLEU);
+    private Carte bleuReverse = new CarteReverse(Carte.Color.BLEU);
 
     private Carte jaune0 = new CarteSimple(Carte.Color.JAUNE, 0);
     private Carte jaune1 = new CarteSimple(Carte.Color.JAUNE, 1);
@@ -33,6 +34,7 @@ public class CreationCartes{
     private Carte jaune9 = new CarteSimple(Carte.Color.JAUNE, 9);
     private Carte jaunePasse = new CartePasser(Carte.Color.JAUNE);
     private Carte jaunePlus2 = new CartePlus2(Carte.Color.JAUNE);
+    private Carte jauneReverse = new CarteReverse(Carte.Color.JAUNE);
 
     private Carte rouge0 = new CarteSimple(Carte.Color.ROUGE, 0);
     private Carte rouge1 = new CarteSimple(Carte.Color.ROUGE, 1);
@@ -46,6 +48,7 @@ public class CreationCartes{
     private Carte rouge9 = new CarteSimple(Carte.Color.ROUGE, 9);
     private Carte rougePasse = new CartePasser(Carte.Color.ROUGE);
     private Carte rougePlus2 = new CartePlus2(Carte.Color.ROUGE);
+    private Carte rougeReverse = new CarteReverse(Carte.Color.ROUGE);
 
     private Carte vert0 = new CarteSimple(Carte.Color.VERT, 0);
     private Carte vert1 = new CarteSimple(Carte.Color.VERT, 1);
@@ -59,6 +62,7 @@ public class CreationCartes{
     private Carte vert9 = new CarteSimple(Carte.Color.VERT, 9);
     private Carte vertPasse = new CartePasser(Carte.Color.VERT);
     private Carte vertPlus2 = new CartePlus2(Carte.Color.VERT);
+    private Carte vertReverse = new CarteReverse(Carte.Color.VERT);
 
     public CreationCartes() {
         cartes.add(bleu0);
@@ -73,6 +77,7 @@ public class CreationCartes{
         cartes.add(bleu9);
         cartes.add(bleuPasse);
         cartes.add(bleuPlus2);
+        cartes.add(bleuReverse);
 
         cartes.add(jaune0);
         cartes.add(jaune1);
@@ -86,6 +91,7 @@ public class CreationCartes{
         cartes.add(jaune9);
         cartes.add(jaunePasse);
         cartes.add(jaunePlus2);
+        cartes.add(jauneReverse);
 
         cartes.add(rouge0);
         cartes.add(rouge1);
@@ -99,6 +105,7 @@ public class CreationCartes{
         cartes.add(rouge9);
         cartes.add(rougePasse);
         cartes.add(rougePlus2);
+        cartes.add(rougeReverse);
 
         cartes.add(vert0);
         cartes.add(vert1);
@@ -112,6 +119,7 @@ public class CreationCartes{
         cartes.add(vert9);
         cartes.add(vertPasse);
         cartes.add(vertPlus2);
+        cartes.add(vertReverse);
     }
 
     public ArrayList<Carte> getCartes() {
