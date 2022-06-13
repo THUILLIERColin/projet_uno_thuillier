@@ -1,7 +1,5 @@
 package cartes;
 
-import java.util.Objects;
-
 /**
  * Definition d'une carte
  */

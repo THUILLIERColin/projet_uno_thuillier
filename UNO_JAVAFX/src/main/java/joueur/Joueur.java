@@ -143,11 +143,13 @@ public class Joueur {
      */
     public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException, UnoException, VictoireException {
         Partie partie = Partie.getInstance();
+
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur ce joueur a deja joue ", this);
         if(partie.getCumulPlus2()!=0 && !(carte instanceof CartePlus2)) {
+            System.out.println("punition");
             partie.setJoueurAJoue(true);
             encaisser();
             punir();

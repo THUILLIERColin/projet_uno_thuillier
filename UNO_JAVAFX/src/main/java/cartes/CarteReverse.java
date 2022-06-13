@@ -1,6 +1,5 @@
 package cartes;
 
-import joueur.Joueur;
 import partie.Partie;
 
 public class CarteReverse extends Carte {
