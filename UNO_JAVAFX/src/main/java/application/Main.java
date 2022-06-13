@@ -25,6 +25,7 @@ public class Main extends Application {
 
     private BorderPane root;
     private Stage fenetreEnCours;
+    private boolean afficherCarte;
 
     private Partie partie;
     private Canvas canSabot;
@@ -43,7 +44,7 @@ public class Main extends Application {
             fenetreEnCours = primaryStage;
 
             Partie partie = Partie.getInstance();
-            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCarteReverse(new ExpertCarteReveseCarteSimple(null)))))))));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReveseCarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReverseCarteReverse(new ExpertCarteReverseCartePasser(null))))))))))));
 
             GestionCartes.creerListeCarteInitial(new CreationCartes());
             GestionCartes.melangerCarte(Partie.getInstance().getListeCartesInitiales());
@@ -78,8 +79,19 @@ public class Main extends Application {
         /*
                 Visualisation de toutes les cartes
          */
-        if(joueur == Partie.getInstance().getJoueurCourant()) nomNord= initLabelNom(joueur.getNom()+ " c'est ton tour");
-        else nomNord=initLabelNom(joueur.getNom());
+
+        //if(joueur == Partie.getInstance().getJoueurCourant()){
+        // nomNord= initLabelNom(joueur.getNom()+ " c'est ton tour");
+        // afficherCarte = true;
+        // }
+        //else nomNord=initLabelNom(joueur.getNom());
+
+        /*
+                Visualisation des cartes du joueur en cours
+         */
+        nomNord= initLabelNom(joueur.getNom());
+        afficherCarte = (joueur == Partie.getInstance().getJoueurCourant());
+        /* -------------------------------------------------------------------- */
 
         Canvas canMainNord = initMain(joueur);
         HBox unoNord = initBoutonUno(canMainNord, joueur);
@@ -118,9 +130,11 @@ public class Main extends Application {
 
         Button	boutonPioche = new Button("Pioche");
         boutonPioche.setOnAction(select -> {
-            System.out.println("Le joueur pioche");
+            System.out.print("Le joueur pioche : ");
+            int taille = joueur.getTailleDeLaMain();
             try {
                 joueur.piocher();
+                System.out.println(joueur.getTailleDeLaMain()-taille+" carte(s)");
             } catch (JoueurException e) {
                 e.printStackTrace();
                 try {
@@ -146,9 +160,11 @@ public class Main extends Application {
 
         Button	boutonEncaisser = new Button("Encaisser");
         boutonEncaisser.setOnAction(select -> {
-            System.out.println("Le joueur encaisse les plus 2");
+            System.out.print("Le joueur encaisse les plus 2 et prends donc : ");
+            int taille = joueur.getTailleDeLaMain();
             try {
                 joueur.encaisser();
+                System.out.println(joueur.getTailleDeLaMain()-taille);
             } catch (JoueurException e) {
                 e.printStackTrace();
                 try {
@@ -264,8 +280,8 @@ public class Main extends Application {
                     int num = (int) ((x-pad) / ECART);
                     num = Math.min(nbCartes-1, num);
                     try {
-                        joueur.jouer(joueur.getCarte(num));
                         System.out.println(joueur.getNom() + " a joué la carte "+ joueur.getCarte(num));
+                        joueur.jouer(joueur.getCarte(num));
                     } catch (JoueurException e) {
                         System.err.println(e.getMessage());
                         try {
@@ -301,7 +317,7 @@ public class Main extends Application {
 
 
     private void dessinerMain(Joueur joueur, Canvas canvas) {
-
+        Image dos = new Image("carte_dos.png");
         canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         int nbCartes = joueur.getTailleDeLaMain();
@@ -309,8 +325,13 @@ public class Main extends Application {
         int pad = (L_CANVAS-lMain) / 2;
 
         for (int i=0; i<nbCartes; i++) {
-            Image carte = new Image(""+joueur.getCarte(i));
-            canvas.getGraphicsContext2D().drawImage(carte,pad+i*ECART,0);
+            if(afficherCarte) {
+                Image carte = new Image("" + joueur.getCarte(i));
+                canvas.getGraphicsContext2D().drawImage(carte, pad + i * ECART, 0);
+            }
+            else {
+                canvas.getGraphicsContext2D().drawImage(dos, pad + i * ECART, 0);
+            }
 
         }
     }
