@@ -1,6 +1,8 @@
 package test;
 
 import cartes.Carte;
+import cartes.CartePlus2;
+import cartes.CarteSimple;
 import expert.ExpertCartePlus2CartePlus2;
 import expert.ExpertCartePlus2CarteSimple;
 import expert.ExpertCarteSimpleCarteSimple;
@@ -243,6 +245,75 @@ public class TestCartePlus2 {
         }
     }
 
+    private static void Test5(){
+        Partie partie = Partie.getInstance();
+
+        partie.ajouterListeCartesInitiales(new CartePlus2(Carte.Color.BLEU));
+        partie.ajouterListeCartesInitiales(new CartePlus2(Carte.Color.ROUGE));
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.ROUGE,6));
+
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.ROUGE, 1));
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.BLEU,5));
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.BLEU,6));
+
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.BLEU,7));
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.BLEU,8));
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.BLEU,9));
+
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.BLEU,0));
+
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.JAUNE,1));
+        partie.ajouterListeCartesInitiales(new CarteSimple(Carte.Color.VERT,6));
+
+        partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePlus2CarteSimple(new ExpertCartePlus2CartePlus2(null))));
+
+        Joueur alice = new Joueur("Alice");
+        Joueur bob = new Joueur("Bob");
+        Joueur charles = new Joueur("Charles");
+
+        partie.initialisationPartie(3);
+
+
+        //test alice joueur courant
+        assertTrue(partie.getJoueurCourant()==alice);
+
+        try{
+
+            Carte Plus2bleu = alice.getCarte(0);
+            alice.jouer(Plus2bleu);
+
+            alice.finirTour();
+
+            //verification bob joueur courant
+            assertTrue(partie.getJoueurCourant()==bob);
+
+            //verification bob possède 3 carte
+            assertEquals(3,partie.getJoueurCourant().getTailleDeLaMain());
+
+            //bob joue un plus 2
+            Carte Plus2rouge = bob.getCarte(0);
+            bob.jouer(Plus2rouge);
+
+            //fini le tour
+            bob.finirTour();
+
+            //verification Charle joueur courant
+            assertTrue(partie.getJoueurCourant()==charles);
+
+            // charles encaisse
+            charles.encaisser();
+
+            //verification charle a bien encaisse
+            assertEquals(7,charles.getTailleDeLaMain());
+
+
+
+        }catch (Exception e){
+            System.out.println((" ATTENTION "+e.getMessage()));
+            exit(1);
+        }
+    }
+
     public static void main(String[] args) {
         try {
             Test1();
@@ -252,6 +323,8 @@ public class TestCartePlus2 {
             Test3();
             Partie.getInstance().reinitialiserPartie();
             Test4();
+            Partie.getInstance().reinitialiserPartie();
+            Test5();
 
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());

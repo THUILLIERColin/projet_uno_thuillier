@@ -143,6 +143,7 @@ public class Joueur {
      */
     public void jouer(Carte carte) throws JoueurException, CartesValideException, ExpertManquantException, UnoException, VictoireException {
         Partie partie = Partie.getInstance();
+
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
         if(partie.getSiJoueurAJoue())
