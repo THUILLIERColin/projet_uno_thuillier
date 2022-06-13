@@ -75,6 +75,9 @@ public class Main extends Application {
 
         Label nomNord;
 
+        /*
+                Visualisation de toutes les cartes
+         */
         if(joueur == Partie.getInstance().getJoueurCourant()) nomNord= initLabelNom(joueur.getNom()+ " c'est ton tour");
         else nomNord=initLabelNom(joueur.getNom());
 
@@ -217,7 +220,7 @@ public class Main extends Application {
         canSabot.setOnMouseClicked(clic -> {
             System.out.println("Pioche!");
             /* j'ai prévu l'évènement mais personnellement je ne l'utilise pas. J'utilise le bouton
-             * prévu pour chaque joueur. Faites coimme vous voulez !
+             * prévu pour chaque joueur. Faites comme vous voulez !
              */
         });
 
@@ -260,10 +263,9 @@ public class Main extends Application {
                 if (x>=pad && x<=pad+lMain) {
                     int num = (int) ((x-pad) / ECART);
                     num = Math.min(nbCartes-1, num);
-                    System.out.println(joueur.getNom() + " a sélectionné la carte "+ joueur.getCarte(num));
-                    if(joueur.getCarte(num)==null) System.out.println("bug null");
                     try {
                         joueur.jouer(joueur.getCarte(num));
+                        System.out.println(joueur.getNom() + " a joué la carte "+ joueur.getCarte(num));
                     } catch (JoueurException e) {
                         System.err.println(e.getMessage());
                         try {
