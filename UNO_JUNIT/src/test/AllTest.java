@@ -11,6 +11,7 @@ public class AllTest {
         TestDisUno testDisUno = new TestDisUno();
         TestCarteSimpleIllegale testCarteSimpleIllegale = new TestCarteSimpleIllegale();
         TestReverse testReverse = new TestReverse();
+        TestCarteChangerCouleur testCarteChangerCouleur = new TestCarteChangerCouleur();
 
         System.out.println("------ TEST CARTE SIMPLE  ------");
         testCarteSimple.main(args);
@@ -45,5 +46,11 @@ public class AllTest {
         System.out.println("\n\n------ TEST REVERSE  ------");
         testReverse.main(args);
         System.out.println("\n\t\tTEST OK");
+        Partie.getInstance().reinitialiserPartie();
+
+        System.out.println("\n\n------ TEST CHANGER COULEUR  ------");
+        testCarteChangerCouleur.main(args);
+        System.out.println("\n\t\tTEST OK");
+        Partie.getInstance().reinitialiserPartie();
     }
 }
