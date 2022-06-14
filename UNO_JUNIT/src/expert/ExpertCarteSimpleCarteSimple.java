@@ -1,7 +1,7 @@
 package expert;
 
-import cartes.CarteSimple;
 import cartes.Carte;
+import cartes.CarteSimple;
 import partie.Partie;
 
 public class ExpertCarteSimpleCarteSimple extends Expert{

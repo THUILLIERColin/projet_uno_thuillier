@@ -1,8 +1,8 @@
 package expert;
 
 import cartes.Carte;
-import cartes.CartePlus2;
 import cartes.CartePasser;
+import cartes.CartePlus2;
 import partie.Partie;
 
 public class ExpertCartePlus2CartePasser extends Expert{

@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="787c21a2-8a9c-4d97-81f2-35b1a814900c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UNO_JAVAFX/src/main/java/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/Carte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/CarteChangerCouleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CarteChangerCouleur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cartes/CarteReverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cartes/CarteReverse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exceptions/ExpertManquantException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/exceptions/ExpertManquantException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/Expert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/Expert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/ExpertCartePlus2CartePasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/ExpertCartePlus2CartePasser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/ExpertCarteReverseCarteReverse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/ExpertCarteReverseCarteReverse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/expert/ExpertCarteSimpleCarteSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/expert/ExpertCarteSimpleCarteSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/joueur/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/joueur/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/partie/Partie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/partie/Partie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/AllTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/AllTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +65,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Application.TestCartePlus2">
+  <component name="RunManager" selected="Application.AllTest">
     <configuration name="AllTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="test.AllTest" />
       <module name="UNO_JUNIT" />
@@ -96,9 +107,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AllTest" />
         <item itemvalue="Application.TestCartePlus2" />
         <item itemvalue="Application.TestReverse" />
-        <item itemvalue="Application.AllTest" />
       </list>
     </recent_temporary>
   </component>

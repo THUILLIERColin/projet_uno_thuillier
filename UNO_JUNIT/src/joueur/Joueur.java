@@ -76,7 +76,8 @@ public class Joueur {
     }
 
     /**
-     * Ajoute la carte à la main du joueur
+     * Fonction qui initialise la main du joueur, elle
+     * ajoute la carte en argument à la main du joueur.
      * @param cartes
      */
     public void initLaMain(Carte cartes){
@@ -124,6 +125,7 @@ public class Joueur {
             throw new JoueurException("Erreur : tu as deja joue", this);
         if(this != partie.getJoueurCourant())
             throw new JoueurException("Erreur le joueur n'est pas celui qui doit jouer", this);
+        if(uno) uno=false;
         if(partie.getCumulPlus2()!= 0 && !partie.getSiJoueurAJoue()){
             encaisser(); punir();
             finirTour();
@@ -149,8 +151,7 @@ public class Joueur {
         if(partie.getSiJoueurAJoue())
             throw new JoueurException("Erreur ce joueur a deja joue ", this);
         if(partie.getCumulPlus2()!=0 && !(carte instanceof CartePlus2)) {
-            System.out.println("punition");
-            partie.setJoueurAJoue(true);
+            System.out.println("On rentre dans un Cumul punition");
             encaisser();
             punir();
             finirTour();

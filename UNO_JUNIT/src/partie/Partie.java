@@ -295,7 +295,7 @@ public class Partie {
         else{
             if(sens==SENS_INVERSE){
                 if(getIndiceJoueur(joueurCourant) == 0)
-                    joueurCourant= lesJoueurs.get(lesJoueurs.size());
+                    joueurCourant= lesJoueurs.get(lesJoueurs.size()-1);
                 else
                     joueurCourant= lesJoueurs.get(getIndiceJoueur(joueurCourant)-1);
             }

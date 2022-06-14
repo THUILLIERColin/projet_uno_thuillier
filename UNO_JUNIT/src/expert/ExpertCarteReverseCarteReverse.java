@@ -2,7 +2,6 @@ package expert;
 
 import cartes.Carte;
 import cartes.CarteReverse;
-import fichiers.Parser;
 import partie.Partie;
 
 public class ExpertCarteReverseCarteReverse extends Expert{
