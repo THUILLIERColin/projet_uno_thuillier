@@ -16,10 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestReverse {
 
-    private static void afficherMain(Joueur j){
-        System.out.println(j.getNom()+ " a la main "+ j.getLaMain());
-    }
-
     private static ArrayList<Carte> lesCartesDeBase = new ArrayList<>();
 
     private static void removeLesCartesDeBase(){

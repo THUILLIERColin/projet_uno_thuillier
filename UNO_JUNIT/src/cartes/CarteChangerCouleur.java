@@ -13,17 +13,19 @@ public class CarteChangerCouleur extends Carte {
     }
 
     /*
-            SETTER
+            SETTER / GETTER
      */
 
-    public void setCouleurChanger(Color couleur){
+    public void setCouleurDemander(Color couleur){
         couleurDemander=couleur;
     }
 
-    @Override
-    public void effet() {
-        if(couleurDemander==null) throw new IllegalArgumentException("Couleur demandé null");
+    public Color getCouleurDemander() {
+        return couleurDemander;
     }
+
+    @Override
+    public void effet() {}
 
     /*
             EQUALS + TO STRING
