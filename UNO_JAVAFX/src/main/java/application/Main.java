@@ -186,6 +186,7 @@ public class Main extends Application {
             } catch (UnoException e) {
                 try {
                     joueur.punirUnoException();
+                    System.err.println(e.getMessage());
                 } catch (JoueurException ex) {
                     System.err.println(ex.getMessage());
                 } catch (UnoException ex) {
@@ -194,6 +195,7 @@ public class Main extends Application {
             } catch (JoueurException e) {
                 try {
                     e.getMauvaisJoueur().punir();
+                    System.err.println(e.getMessage());
                 } catch (JoueurException ex) {
                     System.err.println(ex.getMessage());
                 } catch (UnoException ex) {
