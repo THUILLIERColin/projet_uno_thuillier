@@ -5,6 +5,7 @@ import cartes.CarteChangerCouleur;
 import exceptions.*;
 import expert.*;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -37,7 +38,7 @@ public class Main extends Application {
     private Joueur joueurSud;
     private Joueur joueurEst;
 
-    private Carte.Color couleurChoisiAvecBouton = Carte.Color.NOIR;
+    private Carte.Color couleurChoisiAvecBouton = null;
 
     @Override
     public void start(Stage primaryStage) {
@@ -295,11 +296,8 @@ public class Main extends Application {
                         {
                             GridPane changeColorBox = new GridPane();
                             changeColorBox.setPrefSize(300,300);
-                            //changeColorBox.setPadding(new Insets(100,100,100,100));
                             changeColorBox.setVgap(10);
                             changeColorBox.setHgap(8);
-
-
 
                             Button boutonBleu = new Button("Bleu");
                             boutonBleu.setStyle("-fx-background-color : blue; -fx-text-fill: white");
