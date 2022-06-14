@@ -1,5 +1,7 @@
 package application;
 
+import cartes.Carte;
+import cartes.CarteChangerCouleur;
 import exceptions.*;
 import expert.*;
 import javafx.application.Application;
@@ -8,13 +10,14 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import joueur.Joueur;
 import partie.Partie;
+
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Main extends Application {
 
@@ -34,6 +37,8 @@ public class Main extends Application {
     private Joueur joueurSud;
     private Joueur joueurEst;
 
+    private Carte.Color couleurChoisiAvecBouton = Carte.Color.NOIR;
+
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -44,7 +49,7 @@ public class Main extends Application {
             fenetreEnCours = primaryStage;
 
             Partie partie = Partie.getInstance();
-            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReveseCarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReverseCarteReverse(new ExpertCarteReverseCartePasser(null))))))))))));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReveseCarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReverseCarteReverse(new ExpertCarteReverseCartePasser(new ExpertCarteChangerCouleur(null)))))))))))));
 
             GestionCartes.creerListeCarteInitial(new CreationCartes());
             GestionCartes.melangerCarte(Partie.getInstance().getListeCartesInitiales());
@@ -282,7 +287,71 @@ public class Main extends Application {
                     int num = (int) ((x-pad) / ECART);
                     num = Math.min(nbCartes-1, num);
                     try {
-                        System.out.println(joueur.getNom() + " a joué la carte "+ joueur.getCarte(num));
+                        Carte carteChoisi = joueur.getCarte(num);
+                        System.out.println(joueur.getNom() + " a joué la carte "+ carteChoisi);
+
+                        // Pour carte changer couleur
+                        if(carteChoisi instanceof CarteChangerCouleur)
+                        {
+                            GridPane changeColorBox = new GridPane();
+                            changeColorBox.setPrefSize(300,300);
+                            //changeColorBox.setPadding(new Insets(100,100,100,100));
+                            changeColorBox.setVgap(10);
+                            changeColorBox.setHgap(8);
+
+
+
+                            Button boutonBleu = new Button("Bleu");
+                            boutonBleu.setStyle("-fx-background-color : blue; -fx-text-fill: white");
+                            boutonBleu.setPrefSize(110,110);
+                            GridPane.setConstraints(boutonBleu, 0 , 0);
+                            boutonBleu.setOnAction(select -> {
+                                couleurChoisiAvecBouton= Carte.Color.BLEU;
+                            });
+
+                            Button boutonRouge = new Button("Rouge");
+                            boutonRouge.setStyle("-fx-background-color : red");
+                            boutonRouge.setPrefSize(110,110);
+                            GridPane.setConstraints(boutonRouge, 0 , 1);
+                            boutonRouge.setOnAction(select -> {
+                                couleurChoisiAvecBouton= Carte.Color.ROUGE;
+                            });
+
+                            Button boutonJaune = new Button("Jaune");
+                            boutonJaune.setStyle("-fx-background-color : yellow");
+                            boutonJaune.setPrefSize(110,110);
+                            GridPane.setConstraints(boutonJaune, 1, 0);
+                            boutonJaune.setOnAction(select -> {
+                                couleurChoisiAvecBouton= Carte.Color.JAUNE;
+                            });
+
+                            Button boutonVert = new Button("Vert");
+                            boutonVert.setStyle("-fx-background-color : green");
+                            boutonVert.setPrefSize(110,110);
+                            GridPane.setConstraints(boutonVert, 1 , 1);
+                            boutonVert.setOnAction(select -> {
+                                couleurChoisiAvecBouton= Carte.Color.VERT;
+                            });
+
+                            changeColorBox.getChildren().addAll(boutonBleu,boutonRouge,boutonJaune,boutonVert);
+
+                            Dialog<ButtonType> dialog = new Dialog<ButtonType>();
+                            dialog.setTitle("Choisis la couleur que tu veux jouer");
+                            dialog.getDialogPane().setContent(changeColorBox);
+
+                            ButtonType buttonApply = new ButtonType("Appliquer", ButtonBar.ButtonData.APPLY);
+                            dialog.getDialogPane().getButtonTypes().addAll(buttonApply);
+
+                            Optional<ButtonType> choice = dialog.showAndWait();
+
+                            if(choice.get() == buttonApply){
+                                CarteChangerCouleur c = (CarteChangerCouleur) carteChoisi;
+                                c.setCouleurDemander(couleurChoisiAvecBouton);
+                            }
+                            else{
+                                dialog.close();
+                            }
+                        }
                         joueur.jouer(joueur.getCarte(num));
                     } catch (JoueurException e) {
                         System.err.println(e.getMessage());

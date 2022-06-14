@@ -64,7 +64,14 @@ public class CreationCartes{
     private Carte vertPlus2 = new CartePlus2(Carte.Color.VERT);
     private Carte vertReverse = new CarteReverse(Carte.Color.VERT);
 
+    private Carte changerCouleur = new CarteChangerCouleur();
+
     public CreationCartes() {
+        cartes.add(changerCouleur);
+        cartes.add(changerCouleur);
+        cartes.add(changerCouleur);
+        cartes.add(changerCouleur);
+
         cartes.add(bleu0);
         cartes.add(bleu1);
         cartes.add(bleu2);
@@ -125,166 +132,5 @@ public class CreationCartes{
     public ArrayList<Carte> getCartes() {
         return cartes;
     }
-
-    public Carte getBleu0() {
-        return bleu0;
-    }
-
-    public Carte getBleu1() {
-        return bleu1;
-    }
-
-    public Carte getBleu2() {
-        return bleu2;
-    }
-
-    public Carte getBleu3() {
-        return bleu3;
-    }
-
-    public Carte getBleu4() {
-        return bleu4;
-    }
-
-    public Carte getBleu5() {
-        return bleu5;
-    }
-
-    public Carte getBleu6() {
-        return bleu6;
-    }
-
-    public Carte getBleu7() {
-        return bleu7;
-    }
-
-    public Carte getBleu8() {
-        return bleu8;
-    }
-
-    public Carte getBleu9() {
-        return bleu9;
-    }
-
-    public Carte getJaune0() {
-        return jaune0;
-    }
-
-    public Carte getJaune1() {
-        return jaune1;
-    }
-
-    public Carte getJaune2() {
-        return jaune2;
-    }
-
-    public Carte getJaune3() {
-        return jaune3;
-    }
-
-    public Carte getJaune4() {
-        return jaune4;
-    }
-
-    public Carte getJaune5() {
-        return jaune5;
-    }
-
-    public Carte getJaune6() {
-        return jaune6;
-    }
-
-    public Carte getJaune7() {
-        return jaune7;
-    }
-
-    public Carte getJaune8() {
-        return jaune8;
-    }
-
-    public Carte getJaune9() {
-        return jaune9;
-    }
-
-    public Carte getRouge0() {
-        return rouge0;
-    }
-
-    public Carte getRouge1() {
-        return rouge1;
-    }
-
-    public Carte getRouge2() {
-        return rouge2;
-    }
-
-    public Carte getRouge3() {
-        return rouge3;
-    }
-
-    public Carte getRouge4() {
-        return rouge4;
-    }
-
-    public Carte getRouge5() {
-        return rouge5;
-    }
-
-    public Carte getRouge6() {
-        return rouge6;
-    }
-
-    public Carte getRouge7() {
-        return rouge7;
-    }
-
-    public Carte getRouge8() {
-        return rouge8;
-    }
-
-    public Carte getRouge9() {
-        return rouge9;
-    }
-
-    public Carte getVert0() {
-        return vert0;
-    }
-
-    public Carte getVert1() {
-        return vert1;
-    }
-
-    public Carte getVert2() {
-        return vert2;
-    }
-
-    public Carte getVert3() {
-        return vert3;
-    }
-
-    public Carte getVert4() {
-        return vert4;
-    }
-
-    public Carte getVert5() {
-        return vert5;
-    }
-
-    public Carte getVert6() {
-        return vert6;
-    }
-
-    public Carte getVert7() {
-        return vert7;
-    }
-
-    public Carte getVert8() {
-        return vert8;
-    }
-
-    public Carte getVert9() {
-        return vert9;
-    }
-
 }
 

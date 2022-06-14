@@ -2,7 +2,7 @@ package cartes;
 
 public class CarteChangerCouleur extends Carte {
 
-    private Color couleurChanger;
+    private Color couleurDemander=null;
 
     /*
             CONSTRUCTEUR
@@ -13,19 +13,22 @@ public class CarteChangerCouleur extends Carte {
     }
 
     /*
-            SETTER
+            SETTER / GETTER
      */
 
-    public void setCouleurChanger(Color couleur){
-        couleurChanger =couleur;
+    public void setCouleurDemander(Color couleur){
+        couleurDemander=couleur;
     }
 
     /**
      * @return couleur souhaiter par le joueur
      */
-    public Color JeVeuxCouleur(){
-        return super.getCouleur();
+    public Color getCouleurDemander() {
+        return couleurDemander;
     }
+
+    @Override
+    public void effet() {}
 
     /*
             EQUALS + TO STRING
@@ -34,10 +37,5 @@ public class CarteChangerCouleur extends Carte {
     @Override
     public String toString() {
         return "carte_Change_Couleur.png";
-    }
-
-    @Override
-    public void effet() {
-        
     }
 }
