@@ -217,6 +217,7 @@ public class Joueur {
         punir();
         laMain.add(partie.getPremiereCarteTas());
         partie.removeCarteTas(partie.getPremiereCarteTas());
+        partie.setCumulPlus2(0);
         partie.Suivant();
     }
 

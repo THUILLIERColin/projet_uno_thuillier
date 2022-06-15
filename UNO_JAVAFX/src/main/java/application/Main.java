@@ -216,7 +216,7 @@ public class Main extends Application {
                 Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                 dialog.setTitle("Le choix de couleur");
                 dialog.setHeaderText(joueur+" a joué la carte joker");
-                dialog.setContentText("La couleur demande est la couleur " + couleurChoisiAvecBouton);
+                dialog.setContentText("La couleur demandee est la couleur " + couleurChoisiAvecBouton);
                 couleurChoisiAvecBouton=null;
                 dialog.showAndWait();
             }
