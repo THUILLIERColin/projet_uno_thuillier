@@ -35,6 +35,7 @@ public class Main extends Application {
     private Joueur joueurEst;
 
     private Carte.Color couleurChoisiAvecBouton = null;
+    private String couleurChoisiAffichage;
 
     @Override
     public void start(Stage primaryStage) {
@@ -216,7 +217,7 @@ public class Main extends Application {
                 Alert dialog = new Alert(Alert.AlertType.INFORMATION);
                 dialog.setTitle("Le choix de couleur");
                 dialog.setHeaderText(joueur+" a joué la carte joker");
-                dialog.setContentText("La couleur demandee est la couleur " + couleurChoisiAvecBouton);
+                dialog.setContentText("La couleur demandée est la couleur " + couleurChoisiAffichage);
                 couleurChoisiAvecBouton=null;
                 dialog.showAndWait();
             }
@@ -348,6 +349,13 @@ public class Main extends Application {
 
                             CarteChangerCouleur c = (CarteChangerCouleur) carteChoisi;
                             c.setCouleurDemander(couleurChoisiAvecBouton);
+                            switch (couleurChoisiAvecBouton){
+                                case ROUGE : couleurChoisiAffichage="rouge";break;
+                                case VERT: couleurChoisiAffichage="verte";break;
+                                case JAUNE: couleurChoisiAffichage="jaune";break;
+                                case BLEU: couleurChoisiAffichage="bleu";break;
+                                default: System.err.println("Erreur couleur non répertorié");break;
+                            }
                             dialog.close();
                         }
                         joueur.jouer(joueur.getCarte(num));
