@@ -5,7 +5,6 @@ import cartes.CarteChangerCouleur;
 import exceptions.*;
 import expert.*;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -16,9 +15,6 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import joueur.Joueur;
 import partie.Partie;
-
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Main extends Application {
 
@@ -49,7 +45,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             fenetreEnCours = primaryStage;
 
-            Partie partie = Partie.getInstance();
+            partie = Partie.getInstance();
             partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReveseCarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReverseCarteReverse(new ExpertCarteReverseCartePasser(new ExpertCarteChangerCouleur(null)))))))))))));
 
             GestionCartes.creerListeCarteInitial(new CreationCartes());
@@ -216,6 +212,14 @@ public class Main extends Application {
                 fenetreEnCours.close();
             }
             actualiserAffichagePartie();
+            if(partie.getPremiereCarteTas() instanceof CarteChangerCouleur){
+                Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+                dialog.setTitle("Le choix de couleur");
+                dialog.setHeaderText(joueur+" a joué la carte joker");
+                dialog.setContentText("La couleur demande est la couleur " + couleurChoisiAvecBouton);
+                couleurChoisiAvecBouton=null;
+                dialog.showAndWait();
+            }
         });
 
         hBox.getChildren().addAll(boutonUno,boutonPioche, boutonEncaisser, boutonFinirTour);
@@ -340,15 +344,11 @@ public class Main extends Application {
                             ButtonType buttonApply = new ButtonType("Appliquer", ButtonBar.ButtonData.APPLY);
                             dialog.getDialogPane().getButtonTypes().addAll(buttonApply);
 
-                            Optional<ButtonType> choice = dialog.showAndWait();
+                            dialog.showAndWait();
 
-                            if(choice.get() == buttonApply){
-                                CarteChangerCouleur c = (CarteChangerCouleur) carteChoisi;
-                                c.setCouleurDemander(couleurChoisiAvecBouton);
-                            }
-                            else{
-                                dialog.close();
-                            }
+                            CarteChangerCouleur c = (CarteChangerCouleur) carteChoisi;
+                            c.setCouleurDemander(couleurChoisiAvecBouton);
+                            dialog.close();
                         }
                         joueur.jouer(joueur.getCarte(num));
                     } catch (JoueurException e) {

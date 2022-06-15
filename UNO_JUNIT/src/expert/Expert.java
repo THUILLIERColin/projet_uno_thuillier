@@ -5,7 +5,7 @@ import exceptions.ExpertManquantException;
 import partie.Partie;
 
 /**
- * Permet de faire appel au différent expert qui sont les coups valide lors d'une partie
+ * Permet de determiner si les coups sont valides lors d'une partie
  */
 public abstract class Expert {
 
