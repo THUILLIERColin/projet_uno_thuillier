@@ -47,7 +47,7 @@ public class Main extends Application {
             fenetreEnCours = primaryStage;
 
             partie = Partie.getInstance();
-            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReveseCarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReverseCarteReverse(new ExpertCarteReverseCartePasser(new ExpertCarteChangerCouleur(null)))))))))))));
+            partie.setExpert(new ExpertCarteSimpleCarteSimple(new ExpertCartePasserCartePasser(new ExpertCartePasserCarteSimple(new ExpertCartePlus2CartePasser(new ExpertCartePlus2CartePlus2(new ExpertCartePlus2CarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReveseCarteSimple(new ExpertCarteReverseCartePasser(new ExpertCarteReverseCarteReverse(new ExpertCarteReverseCartePasser(new ExpertCarteChangerCouleur(new ExpertCartePlus2CarteReverse(null))))))))))))));
 
             GestionCartes.creerListeCarteInitial(new CreationCartes());
             GestionCartes.melangerCarte(Partie.getInstance().getListeCartesInitiales());

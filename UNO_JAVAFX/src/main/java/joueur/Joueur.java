@@ -177,7 +177,9 @@ public class Joueur {
             punir();
         }
         if(!partie.getSiJoueurAJoue()) throw new JoueurException(""+ this +" tu n'as pas encore joue ", this);
-        if(doitDireUno() && !uno) throw new UnoException("Le joueur n'a pas dit UNO ", this);
+        if(doitDireUno() && !uno) {
+            throw new UnoException("Le joueur n'a pas dit UNO ", this);
+        }
         partie.Suivant();
         if (passer){
             partie.Suivant();
@@ -232,6 +234,7 @@ public class Joueur {
             for(int i =0; i < partie.getCumulPlus2()*2; i++){
                 laMain.add(partie.prendrePioche());
             }
+            if(uno) uno=false;
             partie.setCumulPlus2(0);
             partie.setJoueurAJoue(true);
         }
